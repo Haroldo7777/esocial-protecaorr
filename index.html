@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditor eSocial — Proteção RR</title>
+<meta name="description" content="Auditor eSocial da Proteção RR: gestão e auditoria de SST (S-2210, S-2220, S-2221, S-2240). Em construção.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#f0f2f5;
+  --surface:#ffffff;
+  --text:#1a1a2e;
+  --text2:#555770;
+  --accent:#0d6e3e;
+  --accent-light:#e8f5ee;
+  --border:#d8dbe2;
+  --shadow:0 2px 8px rgba(0,0,0,.07);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#111827;
+    --surface:#1f2937;
+    --text:#f1f3f5;
+    --text2:#9ca3af;
+    --accent:#34d399;
+    --accent-light:#064e3b;
+    --border:#374151;
+    --shadow:0 2px 8px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111827;
+  --surface:#1f2937;
+  --text:#f1f3f5;
+  --text2:#9ca3af;
+  --accent:#34d399;
+  --accent-light:#064e3b;
+  --border:#374151;
+  --shadow:0 2px 8px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:16px;
+}
+.card{
+  background:var(--surface);border-radius:12px;box-shadow:var(--shadow);
+  max-width:520px;width:100%;padding:36px 28px;text-align:center;
+}
+.badge{
+  display:inline-block;background:var(--accent-light);color:var(--accent);
+  font-size:.75rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;margin-bottom:18px;
+}
+h1{font-size:1.5rem;color:var(--accent);margin-bottom:6px}
+.sub{color:var(--text2);font-size:.95rem;margin-bottom:26px}
+ul{
+  text-align:left;list-style:none;border-top:1px solid var(--border);
+  margin-bottom:26px;
+}
+li{
+  padding:11px 4px;border-bottom:1px solid var(--border);
+  font-size:.92rem;color:var(--text2);display:flex;gap:10px;align-items:baseline;
+}
+li::before{content:"•";color:var(--accent);font-weight:700}
+.foot{font-size:.8rem;color:var(--text2)}
+.foot a{color:var(--accent);text-decoration:none}
+.foot a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<main class="card">
+  <span class="badge">Em construção</span>
+  <h1>Auditor eSocial</h1>
+  <p class="sub">A plataforma de gestão e auditoria de SST da Proteção RR</p>
+  <ul>
+    <li>Cadastro de empresas, setores, cargos e empregados</li>
+    <li>Gestão de vencimentos de exames, EPIs e treinamentos</li>
+    <li>Auditoria dos eventos S-2210, S-2220, S-2221 e S-2240</li>
+    <li>Cruzamento PGR × S-2240 e PCMSO × S-2220</li>
+  </ul>
+  <p class="foot">
+    Proteção RR — Consultoria em Segurança e Saúde no Trabalho<br>
+    <a href="https://agendamento.protecaorr.net">Agendamento de exames ocupacionais →</a>
+  </p>
+</main>
+</body>
+</html>
