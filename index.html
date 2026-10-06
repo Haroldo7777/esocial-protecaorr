@@ -141,7 +141,6 @@ h1.page{font-size:1.15rem;margin-bottom:14px}
 .btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;
   border:none;border-radius:8px;padding:9px 16px;font-size:.84rem;font-weight:600;cursor:pointer;text-decoration:none}
 .btn:hover{filter:brightness(1.08)}
-:root[data-theme="dark"] .btn, @media(prefers-color-scheme:dark){ }
 /* ---------- eventos eSocial ---------- */
 .ev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .ev-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px}
@@ -156,6 +155,51 @@ h1.page{font-size:1.15rem;margin-bottom:14px}
 .st .tag{font-size:.62rem;font-weight:700;border-radius:4px;padding:1px 6px}
 .st.err .tag{background:var(--st-err-bg);color:var(--st-err)}
 .st.warn .tag{background:var(--st-warn-bg);color:var(--st-warn)}
+/* ---------- módulo empresas ---------- */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.toolbar input[type="search"]{flex:1;min-width:180px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.88rem}
+.toolbar select{padding:10px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.84rem}
+.btn2{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);color:var(--text2);border-radius:8px;padding:9px 14px;font-size:.82rem;font-weight:600;cursor:pointer}
+.btn2:hover{border-color:var(--accent);color:var(--accent-ink)}
+.tbl-wrap{overflow-x:auto}
+table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
+.tbl th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);padding:10px;border-bottom:1px solid var(--border);white-space:nowrap}
+.tbl td{padding:11px 10px;border-bottom:1px solid var(--border);color:var(--text2);white-space:nowrap}
+.tbl td.emp{color:var(--text);font-weight:600;white-space:normal;min-width:200px}
+.tbl tr:hover td{background:var(--surface2)}
+.chip2{display:inline-block;font-size:.7rem;font-weight:700;border-radius:999px;padding:3px 10px}
+.chip2.lib{background:var(--st-ok-bg);color:var(--st-ok)}
+.chip2.blo{background:var(--st-err-bg);color:var(--st-err)}
+.chip2.tipo{background:var(--accent-light);color:var(--accent-ink);font-weight:600}
+.pager{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:12px;font-size:.8rem;color:var(--text2);flex-wrap:wrap}
+.pager button{border:1px solid var(--border);background:var(--surface);color:var(--text2);border-radius:6px;padding:5px 10px;cursor:pointer}
+.pager button[disabled]{opacity:.4;cursor:default}
+.link-acessar{color:var(--accent-ink);font-weight:600;text-decoration:none;white-space:nowrap}
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);max-width:520px;width:100%;padding:22px;max-height:90vh;overflow:auto}
+.modal h2{font-size:1rem;margin-bottom:14px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-size:.9rem}
+.field .err{color:var(--st-err);font-size:.72rem;margin-top:4px;display:none}
+.field.invalid input{border-color:var(--st-err)}
+.field.invalid .err{display:block}
+.field .okmsg{color:var(--st-ok);font-size:.72rem;margin-top:4px;display:none}
+.field.valid .okmsg{display:block}
+.modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+/* detalhe da empresa */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:14px;flex-wrap:wrap}
+.tabs button{border:none;background:none;color:var(--text2);font-size:.84rem;padding:9px 14px;cursor:pointer;border-bottom:2px solid transparent}
+.tabs button.on{color:var(--accent-ink);font-weight:700;border-bottom-color:var(--accent)}
+.back{font-size:.8rem;margin-bottom:10px;display:inline-block}
+.det-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.det-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px}
+.det-item .k{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
+.det-item .v{font-size:.9rem;font-weight:600}
+.empty{padding:30px;text-align:center;color:var(--text2);font-size:.85rem;line-height:1.7}
+@media(max-width:920px){.det-grid{grid-template-columns:1fr 1fr}}
 /* ---------- placeholder de módulo ---------- */
 .ph{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
   padding:40px 24px;text-align:center}
@@ -313,6 +357,54 @@ h1.page{font-size:1.15rem;margin-bottom:14px}
       </div>
     </section>
 
+    <!-- ================= MÓDULO: EMPRESAS ================= -->
+    <section id="mod-empresas" hidden>
+      <h1 class="page">Empresas</h1>
+      <div class="card">
+        <div class="toolbar">
+          <input type="search" id="empBusca" placeholder="Buscar por nome, CNPJ ou ID…">
+          <select id="fSit">
+            <option value="">Situação: todas</option>
+            <option value="liberado">Liberado</option>
+            <option value="bloqueado">Bloqueado</option>
+          </select>
+          <select id="fTipo">
+            <option value="">Tipo: todos</option>
+            <option>Gestão</option>
+            <option>Só treinamentos</option>
+            <option>Via link</option>
+          </select>
+          <button class="btn" id="btnNova">+ Nova empresa</button>
+          <button class="btn2" id="btnExport">Exportar CSV</button>
+          <button class="btn2" id="btnImport">Importar</button>
+        </div>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>ID</th><th>Empresa</th><th>CNPJ</th><th>Empregados</th><th>Inclusão</th><th>Tipo</th><th>Situação</th><th></th></tr></thead>
+            <tbody id="empTbody"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="empPager"></div>
+      </div>
+    </section>
+
+    <!-- ================= DETALHE DA EMPRESA (Acessar) ================= -->
+    <section id="mod-empresa-det" hidden>
+      <a class="back" href="#/empresas">← Voltar para Empresas</a>
+      <h1 class="page" id="detNome"></h1>
+      <div class="card">
+        <div class="det-grid" id="detGrid"></div>
+        <div class="tabs" id="detTabs">
+          <button class="on" data-tab="estab">Estabelecimentos</button>
+          <button data-tab="setores">Setores</button>
+          <button data-tab="cargos">Cargos</button>
+          <button data-tab="ghe">GHE</button>
+          <button data-tab="empregados">Empregados</button>
+        </div>
+        <div class="empty" id="detTabBody"></div>
+      </div>
+    </section>
+
     <!-- ================= PLACEHOLDER DOS DEMAIS MÓDULOS ================= -->
     <section id="mod-placeholder" hidden>
       <h1 class="page" id="phTitle"></h1>
@@ -326,6 +418,34 @@ h1.page{font-size:1.15rem;margin-bottom:14px}
 
     <p class="footer-note">Protótipo com dados de demonstração · nenhum dado pessoal real de trabalhador (LGPD) · Proteção RR</p>
   </main>
+</div>
+
+<!-- modal: nova empresa -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2>Nova empresa</h2>
+    <div class="field" id="fRazao">
+      <label>Razão social *</label>
+      <input id="inRazao" type="text" placeholder="EMPRESA EXEMPLO LTDA">
+      <div class="err">Informe a razão social</div>
+    </div>
+    <div class="field" id="fCnpj">
+      <label>CNPJ *</label>
+      <input id="inCnpj" type="text" inputmode="numeric" placeholder="00.000.000/0000-00" maxlength="18">
+      <div class="err">CNPJ inválido — confira os dígitos</div>
+      <div class="okmsg">CNPJ válido ✓</div>
+    </div>
+    <div class="field"><label>Nome fantasia</label><input id="inFant" type="text"></div>
+    <div class="field"><label>Tipo de contrato</label>
+      <select id="inTipo"><option>Gestão</option><option>Só treinamentos</option><option>Via link</option></select></div>
+    <div class="field"><label>Situação</label>
+      <select id="inSit"><option value="liberado">Liberado</option><option value="bloqueado">Bloqueado</option></select></div>
+    <div class="acts">
+      <button class="btn2" id="btnCancelar">Cancelar</button>
+      <button class="btn" id="btnSalvar">Salvar</button>
+    </div>
+    <p style="font-size:.7rem;color:var(--text3);margin-top:10px">Protótipo: a empresa entra na lista desta sessão do navegador, mas ainda não é gravada em banco — a gravação de verdade chega com o Supabase (etapa B do plano).</p>
+  </div>
 </div>
 
 <script>
@@ -422,19 +542,165 @@ wrap.addEventListener('mousemove',e=>showTip(e.clientX,e.clientY));
 wrap.addEventListener('mouseleave',()=>{tip.style.display='none';xh.setAttribute('visibility','hidden');});
 wrap.addEventListener('touchstart',e=>{const t=e.touches[0];showTip(t.clientX,t.clientY);},{passive:true});
 
+/* ============ módulo Empresas (dados de demonstração) ============ */
+function cnpjDV(nums){ // dígitos verificadores oficiais do CNPJ
+  const calc=a=>{let p=a.length-7,s=0;for(const n of a){s+=n*p;p--;if(p<2)p=9}const r=s%11;return r<2?0:11-r};
+  const d1=calc(nums); const d2=calc([...nums,d1]); return [d1,d2];
+}
+function cnpjValido(d){
+  if(d.length!==14||/^(\d)\1{13}$/.test(d))return false;
+  const n=d.split('').map(Number); const [d1,d2]=cnpjDV(n.slice(0,12));
+  return n[12]===d1&&n[13]===d2;
+}
+function cnpjDemo(i){ // CNPJ fictício com dígitos válidos (raiz 99…)
+  const base=('99'+String(880000+i*7)).slice(0,8);
+  const [d1,d2]=cnpjDV((base+'0001').split('').map(Number));
+  return (base+'0001'+d1+d2).replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,'$1.$2.$3/$4-$5');
+}
+let EMPRESAS=Array.from({length:60},(_,k)=>{
+  const i=k+1;
+  return {id:100+i,
+    nome:`Empresa Demonstração ${String(i).padStart(2,'0')} LTDA`,
+    fantasia:`Demo ${String(i).padStart(2,'0')}`,
+    cnpj:cnpjDemo(i),
+    emp:(i*13)%60+2,
+    inclusao:`${String((i%28)+1).padStart(2,'0')}/${String((i%12)+1).padStart(2,'0')}/202${4+(i%3)}`,
+    tipo: i%11===0?'Via link':(i%7===0?'Só treinamentos':'Gestão'),
+    sit: i%9===0?'bloqueado':'liberado'};
+});
+let empPage=1; const PAGE=10;
+function empFiltradas(){
+  const q=document.getElementById('empBusca').value.trim().toLowerCase();
+  const qd=q.replace(/\D/g,'');
+  const s=document.getElementById('fSit').value, t=document.getElementById('fTipo').value;
+  return EMPRESAS.filter(e=>{
+    if(s&&e.sit!==s)return false;
+    if(t&&e.tipo!==t)return false;
+    if(!q)return true;
+    return e.nome.toLowerCase().includes(q)
+      || e.fantasia.toLowerCase().includes(q)
+      || (qd.length>=3&&e.cnpj.replace(/\D/g,'').includes(qd))
+      || String(e.id)===q;
+  });
+}
+function renderEmp(){
+  const list=empFiltradas();
+  const pages=Math.max(1,Math.ceil(list.length/PAGE));
+  if(empPage>pages)empPage=pages;
+  const rows=list.slice((empPage-1)*PAGE,empPage*PAGE);
+  document.getElementById('empTbody').innerHTML=rows.length?rows.map(e=>`
+    <tr>
+      <td>${e.id}</td>
+      <td class="emp">${e.nome}<br><small style="color:var(--text3);font-weight:400">${e.fantasia}</small></td>
+      <td>${e.cnpj}</td>
+      <td>${e.emp}</td>
+      <td>${e.inclusao}</td>
+      <td><span class="chip2 tipo">${e.tipo}</span></td>
+      <td><span class="chip2 ${e.sit==='liberado'?'lib':'blo'}">${e.sit==='liberado'?'Liberado':'Bloqueado'}</span></td>
+      <td><a class="link-acessar" href="#/empresas/${e.id}">Acessar →</a></td>
+    </tr>`).join(''):
+    `<tr><td colspan="8"><div class="empty">Nenhuma empresa encontrada com esses filtros.</div></td></tr>`;
+  document.getElementById('empPager').innerHTML=`
+    <span>${list.length} empresa(s)</span>
+    <button id="pgPrev" ${empPage<=1?'disabled':''}>‹ Anterior</button>
+    <span>página ${empPage} de ${pages}</span>
+    <button id="pgNext" ${empPage>=pages?'disabled':''}>Próxima ›</button>`;
+  document.getElementById('pgPrev').onclick=()=>{empPage--;renderEmp()};
+  document.getElementById('pgNext').onclick=()=>{empPage++;renderEmp()};
+}
+['empBusca','fSit','fTipo'].forEach(id=>
+  document.getElementById(id).addEventListener('input',()=>{empPage=1;renderEmp()}));
+document.getElementById('btnExport').addEventListener('click',()=>{
+  const esc=v=>'"'+String(v).replace(/"/g,'""')+'"';
+  const csv=['ID;Razão Social;Nome Fantasia;CNPJ;Empregados;Inclusão;Tipo;Situação',
+    ...empFiltradas().map(e=>[e.id,e.nome,e.fantasia,e.cnpj,e.emp,e.inclusao,e.tipo,e.sit].map(esc).join(';'))].join('\r\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}));
+  a.download='empresas.csv'; a.click(); URL.revokeObjectURL(a.href);
+});
+document.getElementById('btnImport').addEventListener('click',()=>
+  alert('A importação por planilha (Excel) entra quando o banco de dados for ligado — etapa B do plano.'));
+
+/* modal nova empresa + validação de CNPJ */
+const modalBg=document.getElementById('modalBg'), inCnpj=document.getElementById('inCnpj');
+document.getElementById('btnNova').addEventListener('click',()=>{modalBg.classList.add('open');document.getElementById('inRazao').focus()});
+document.getElementById('btnCancelar').addEventListener('click',()=>modalBg.classList.remove('open'));
+modalBg.addEventListener('click',e=>{if(e.target===modalBg)modalBg.classList.remove('open')});
+inCnpj.addEventListener('input',()=>{
+  const d=inCnpj.value.replace(/\D/g,'').slice(0,14);
+  inCnpj.value=d.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3')
+    .replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\/\d{4})(\d)/,'$1-$2');
+  const f=document.getElementById('fCnpj');
+  f.classList.remove('invalid','valid');
+  if(d.length===14) f.classList.add(cnpjValido(d)?'valid':'invalid');
+});
+document.getElementById('btnSalvar').addEventListener('click',()=>{
+  const razao=document.getElementById('inRazao').value.trim();
+  const d=inCnpj.value.replace(/\D/g,'');
+  const okC=cnpjValido(d);
+  document.getElementById('fRazao').classList.toggle('invalid',!razao);
+  document.getElementById('fCnpj').classList.toggle('invalid',!okC);
+  if(!razao||!okC)return;
+  EMPRESAS.unshift({id:Math.max(...EMPRESAS.map(e=>e.id))+1,
+    nome:razao.toUpperCase(),
+    fantasia:document.getElementById('inFant').value.trim()||'—',
+    cnpj:inCnpj.value, emp:0,
+    inclusao:new Date().toLocaleDateString('pt-BR'),
+    tipo:document.getElementById('inTipo').value,
+    sit:document.getElementById('inSit').value});
+  modalBg.classList.remove('open');
+  ['inRazao','inCnpj','inFant'].forEach(i=>document.getElementById(i).value='');
+  document.getElementById('fCnpj').classList.remove('valid');
+  empPage=1; location.hash='#/empresas'; renderEmp();
+});
+
+/* detalhe da empresa (Acessar) */
+function renderDet(id){
+  const e=EMPRESAS.find(x=>String(x.id)===String(id));
+  if(!e){location.hash='#/empresas';return}
+  document.getElementById('detNome').textContent=e.nome;
+  document.getElementById('detGrid').innerHTML=`
+    <div class="det-item"><div class="k">CNPJ</div><div class="v">${e.cnpj}</div></div>
+    <div class="det-item"><div class="k">Empregados</div><div class="v">${e.emp}</div></div>
+    <div class="det-item"><div class="k">Situação</div><div class="v">${e.sit==='liberado'?'Liberado':'Bloqueado'}</div></div>
+    <div class="det-item"><div class="k">Tipo de contrato</div><div class="v">${e.tipo}</div></div>
+    <div class="det-item"><div class="k">Data de inclusão</div><div class="v">${e.inclusao}</div></div>
+    <div class="det-item"><div class="k">ID</div><div class="v">${e.id}</div></div>`;
+  setTab('estab');
+}
+function setTab(t){
+  document.querySelectorAll('#detTabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  const m={
+    estab:'Estabelecimentos da empresa — matriz e filiais, com CNPJ próprio, CAEPF ou CNO (leiaute S-1005).',
+    setores:'Setores / lotações da empresa (base para o inventário de riscos).',
+    cargos:'Cargos com código CBO de 6 dígitos validado (leiaute S-2200).',
+    ghe:'Grupos Homogêneos de Exposição — ligam empregados aos riscos do PGR e ao S-2240.',
+    empregados:'Empregados com CPF validado, matrícula, categoria (Tabela 01), cargo, setor e situação.'};
+  document.getElementById('detTabBody').innerHTML=
+    `${m[t]}<br><br><span style="display:inline-block;background:var(--st-warn-bg);color:var(--st-warn);font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:999px">PRÓXIMO MÓDULO — entra junto com o banco de dados (etapa B)</span>`;
+}
+document.querySelectorAll('#detTabs button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
+
 /* ============ navegação (hash router) ============ */
-const dash=document.getElementById('mod-dashboard'), ph=document.getElementById('mod-placeholder');
+const SECS={dash:document.getElementById('mod-dashboard'),
+  ph:document.getElementById('mod-placeholder'),
+  emp:document.getElementById('mod-empresas'),
+  det:document.getElementById('mod-empresa-det')};
 function route(){
-  const r=(location.hash.replace('#/','')||'dashboard');
+  const h=(location.hash.replace('#/','')||'dashboard');
+  const [r,arg]=h.split('/');
   document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===r));
-  if(r==='dashboard'){ dash.hidden=false; ph.hidden=true; }
+  Object.values(SECS).forEach(s=>s.hidden=true);
+  if(r==='dashboard'){ SECS.dash.hidden=false; }
+  else if(r==='empresas'&&arg){ SECS.det.hidden=false; renderDet(arg); }
+  else if(r==='empresas'){ SECS.emp.hidden=false; renderEmp(); }
   else{
     const m=MODULOS[r]||['🧩',r,'Módulo planejado.'];
     document.getElementById('phTitle').textContent=m[1];
     document.getElementById('phIco').textContent=m[0];
     document.getElementById('phName').textContent=m[1];
     document.getElementById('phDesc').textContent=m[2];
-    dash.hidden=true; ph.hidden=false;
+    SECS.ph.hidden=false;
   }
   document.getElementById('sidebar').classList.remove('open');
   window.scrollTo(0,0);
