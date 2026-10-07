@@ -550,6 +550,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
           <button type="button" data-g="3">3</button>
           <button type="button" data-g="4">4</button>
         </div>
+        <div class="rf-note" id="grInfo"></div>
       </div>
 
       <div class="fsec">Endereço</div>
@@ -863,6 +864,9 @@ document.querySelectorAll('#radMod label').forEach(l=>l.addEventListener('click'
 document.querySelectorAll('#graus button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('#graus button').forEach(x=>x.classList.remove('sel'));
   b.classList.add('sel'); grauSel=+b.dataset.g;
+  // Se havia sugestão automática pela NR-4, registra que o usuário ajustou
+  if(grInfo.classList.contains('show'))
+    grMsg('ok','Grau de risco '+grauSel+' selecionado manualmente.');
 }));
 const inTp=document.getElementById('inTpInsc'), inInsc=document.getElementById('inInsc');
 const PLACE={CNPJ:'00.000.000/0000-00',CPF:'000.000.000-00',CAEPF:'000.000.000/000-00',CNO:'00.000.00000-0 (12 dígitos)'};
@@ -886,25 +890,34 @@ inInsc.addEventListener('input',()=>{
 
 /* ---- Receita Federal: CNPJ válido preenche os demais campos (editáveis) ---- */
 const rfInfo=document.getElementById('rfInfo');
-let rfUltimo='', rfBusy=false;
+let rfUltimo='', rfGen=0;
 const tt=s=>String(s||'').trim().toLowerCase().replace(/(^|\s)\S/g,c=>c.toUpperCase());
 function rfMsg(cls,txt){rfInfo.className='rf-note show '+cls;rfInfo.textContent=txt;}
 function rfLimpa(){rfInfo.className='rf-note';rfInfo.textContent='';}
 async function receitaAuto(d){
-  if(d===rfUltimo||rfBusy)return;
-  rfBusy=true; rfUltimo=d;
+  if(d===rfUltimo)return;
+  rfUltimo=d;
+  const gen=++rfGen; // invalida qualquer consulta anterior ainda em voo
+  // A resposta só pode mexer no formulário se ESTE CNPJ continuar no campo
+  const valeAinda=()=>gen===rfGen&&inTp.value==='CNPJ'&&inInsc.value.replace(/\D/g,'')===d;
+  // Descarta resposta velha; se nada mais novo assumiu, libera reconsultar o mesmo CNPJ
+  const descarta=()=>{if(gen===rfGen&&rfUltimo===d)rfUltimo='';};
   rfMsg('busca','Buscando dados na Receita Federal…');
   try{
     const r=await fetch('https://brasilapi.com.br/api/cnpj/v1/'+d);
+    if(!valeAinda()){descarta();return}
     if(r.status===404){rfMsg('err','CNPJ não encontrado na base da Receita Federal.');return}
     if(!r.ok)throw 0;
     const b=await r.json();
+    if(!valeAinda()){descarta();return}
     const set=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
     set('inRazao',b.razao_social);
     set('inFant',tt(b.nome_fantasia));
     const cn=String(b.cnae_fiscal||'').replace(/\D/g,'').padStart(7,'0');
-    if(cn.length===7&&cn!=='0000000')
+    if(cn.length===7&&cn!=='0000000'){
       set('inCnae',cn.slice(0,4)+'-'+cn.slice(4,5)+'/'+cn.slice(5,7));
+      grPorCnae(); // CNAE da Receita -> grau de risco (NR-4 Quadro I)
+    }
     set('inEmail',String(b.email||'').toLowerCase());
     const tel=String(b.ddd_telefone_1||'').replace(/\D/g,'');
     if(tel)set('inTel',tel.length>=10?`(${tel.slice(0,2)}) ${tel.slice(2,-4)}-${tel.slice(-4)}`:tel);
@@ -919,10 +932,47 @@ async function receitaAuto(d){
     document.getElementById('fRazao').classList.remove('invalid');
     rfMsg('ok','Dados preenchidos pela Receita Federal — confira e ajuste o que precisar.');
   }catch(_){
+    if(!valeAinda()){descarta();return}
     rfUltimo=''; // permite tentar de novo ao editar
     rfMsg('err','Não foi possível consultar a Receita agora — preencha manualmente.');
-  }finally{rfBusy=false;}
+  }
 }
+
+/* ---- NR-4 (Quadro I): grau de risco a partir da classe CNAE (5 primeiros dígitos) ---- */
+const grInfo=document.getElementById('grInfo');
+let nr4Tab=null, nr4Busca=null, grGen=0;
+function grMsg(cls,txt){grInfo.className='rf-note show '+cls;grInfo.textContent=txt;}
+function grLimpa(){grInfo.className='rf-note';grInfo.textContent='';}
+function grMarca(g){
+  document.querySelectorAll('#graus button').forEach(x=>x.classList.toggle('sel',+x.dataset.g===g));
+  grauSel=g;
+}
+function nr4Carrega(){
+  if(nr4Tab)return Promise.resolve(nr4Tab);
+  // Caminho absoluto (o rewrite /* -> /index.html devolveria HTML com 200 em
+  // rotas aninhadas); o content-type pega o caso de o arquivo faltar no deploy.
+  nr4Busca=nr4Busca||fetch('/nr4_cnae_gr.json')
+    .then(r=>{if(!r.ok||!((r.headers.get('content-type')||'').includes('json')))throw 0;return r.json()})
+    .then(j=>(nr4Tab=j.classes||{}))
+    .catch(e=>{nr4Busca=null;throw e});
+  return nr4Busca;
+}
+async function grPorCnae(){
+  const gen=++grGen; // qualquer lookup anterior ainda pendente fica obsoleto
+  const d=document.getElementById('inCnae').value.replace(/\D/g,'');
+  if(d.length<5){grLimpa();return}
+  try{
+    const e=(await nr4Carrega())[d.slice(0,5)];
+    if(gen!==grGen)return; // o campo mudou (ou houve reset) durante o download
+    if(e){
+      grMarca(e.gr);
+      grMsg('ok','Grau de risco '+e.gr+' (NR-4) — classe '+e.codigo+' · '+e.denominacao+'. Ajuste se precisar.');
+    }else grMsg('err','Classe CNAE fora do Quadro I da NR-4 — selecione o grau manualmente.');
+  }catch(_){
+    if(gen===grGen)grMsg('err','Não foi possível carregar a tabela da NR-4 — selecione o grau manualmente.');
+  }
+}
+document.getElementById('inCnae').addEventListener('input',grPorCnae);
 const inCpfResp=document.getElementById('inCpfResp');
 inCpfResp.addEventListener('input',()=>{
   const d=inCpfResp.value.replace(/\D/g,'').slice(0,11);
@@ -943,11 +993,13 @@ document.getElementById('btnSalvar').addEventListener('click',()=>{
   const cpfR=inCpfResp.value.replace(/\D/g,'');
   const okCpfR=cpfR.length===0||cpfValido(cpfR);
   const termos=document.getElementById('inTermos').checked;
+  const okGrau=grauSel>=1; // label marca como obrigatório (NR-4)
   document.getElementById('fRazao').classList.toggle('invalid',!razao);
   document.getElementById('fInsc').classList.toggle('invalid',!okI);
   document.getElementById('fCpfResp').classList.toggle('invalid',!okCpfR);
   document.getElementById('errTermos').style.display=termos?'none':'block';
-  if(!razao||!okI||!okCpfR||!termos)return;
+  if(!okGrau)grMsg('err','Selecione o grau de risco (NR-4) — campo obrigatório.');
+  if(!razao||!okI||!okCpfR||!termos||!okGrau)return;
   const mod=document.querySelector('#radMod input:checked').value;
   EMPRESAS.unshift({id:Math.max(...EMPRESAS.map(e=>e.id))+1,
     razao:razao.toUpperCase(),
@@ -963,6 +1015,11 @@ document.getElementById('btnSalvar').addEventListener('click',()=>{
   document.getElementById('inTermos').checked=false;
   document.getElementById('fInsc').classList.remove('valid');
   document.getElementById('fCpfResp').classList.remove('valid');
+  document.querySelectorAll('#graus button').forEach(x=>x.classList.remove('sel'));
+  grauSel=0; grLimpa(); rfLimpa();
+  rfUltimo=''; rfGen++; grGen++; // invalida consultas ainda em voo
+  document.getElementById('inCidade').value='Boa Vista';
+  document.getElementById('inUF').value='RR';
   empPage=1; location.hash='#/empresas'; renderEmp();
   alert('Empresa cadastrada! Ela nasce BLOQUEADA (instalação 1/5). As etapas Ambientes → Riscos → Empregados → Faturamento são concluídas dentro da empresa (botão Acessar) — e ganham vida nos próximos módulos.');
 });

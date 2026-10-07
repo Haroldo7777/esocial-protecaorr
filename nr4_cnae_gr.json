@@ -1,0 +1,3371 @@
+{
+ "fonte": "NR-04 (Portaria MTP n. 4.219/2022) - Anexo I - CNAE 2.0 x Grau de Risco (GR)",
+ "observacao": "Chave = classe CNAE com 5 digitos (sem pontuacao). GR de 1 a 4.",
+ "classes": {
+  "01113": {
+   "codigo": "01.11-3",
+   "gr": 3,
+   "denominacao": "Cultivo de cereais"
+  },
+  "01121": {
+   "codigo": "01.12-1",
+   "gr": 3,
+   "denominacao": "Cultivo de algodão herbáceo e de outras fibras de lavoura temporária"
+  },
+  "01130": {
+   "codigo": "01.13-0",
+   "gr": 3,
+   "denominacao": "Cultivo de cana-de-açúcar"
+  },
+  "01148": {
+   "codigo": "01.14-8",
+   "gr": 3,
+   "denominacao": "Cultivo de fumo"
+  },
+  "01156": {
+   "codigo": "01.15-6",
+   "gr": 3,
+   "denominacao": "Cultivo de soja"
+  },
+  "01164": {
+   "codigo": "01.16-4",
+   "gr": 3,
+   "denominacao": "Cultivo de oleaginosas de lavoura temporária, exceto soja"
+  },
+  "01199": {
+   "codigo": "01.19-9",
+   "gr": 3,
+   "denominacao": "Cultivo de plantas de lavoura temporária não especificadas anteriormente"
+  },
+  "01211": {
+   "codigo": "01.21-1",
+   "gr": 3,
+   "denominacao": "Horticultura"
+  },
+  "01229": {
+   "codigo": "01.22-9",
+   "gr": 3,
+   "denominacao": "Cultivo de flores e plantas ornamentais"
+  },
+  "01318": {
+   "codigo": "01.31-8",
+   "gr": 3,
+   "denominacao": "Cultivo de laranja"
+  },
+  "01326": {
+   "codigo": "01.32-6",
+   "gr": 3,
+   "denominacao": "Cultivo de uva"
+  },
+  "01334": {
+   "codigo": "01.33-4",
+   "gr": 3,
+   "denominacao": "Cultivo de frutas de lavoura permanente, exceto laranja e uva"
+  },
+  "01342": {
+   "codigo": "01.34-2",
+   "gr": 3,
+   "denominacao": "Cultivo de café"
+  },
+  "01351": {
+   "codigo": "01.35-1",
+   "gr": 3,
+   "denominacao": "Cultivo de cacau"
+  },
+  "01393": {
+   "codigo": "01.39-3",
+   "gr": 3,
+   "denominacao": "Cultivo de plantas de lavoura permanente não especificadas anteriormente"
+  },
+  "01415": {
+   "codigo": "01.41-5",
+   "gr": 3,
+   "denominacao": "Produção de sementes certificadas"
+  },
+  "01423": {
+   "codigo": "01.42-3",
+   "gr": 3,
+   "denominacao": "Produção de mudas e outras formas de propagação vegetal, certificadas"
+  },
+  "01512": {
+   "codigo": "01.51-2",
+   "gr": 3,
+   "denominacao": "Criação de bovinos"
+  },
+  "01521": {
+   "codigo": "01.52-1",
+   "gr": 3,
+   "denominacao": "Criação de outros animais de grande porte"
+  },
+  "01539": {
+   "codigo": "01.53-9",
+   "gr": 3,
+   "denominacao": "Criação de caprinos e ovinos"
+  },
+  "01547": {
+   "codigo": "01.54-7",
+   "gr": 3,
+   "denominacao": "Criação de suínos"
+  },
+  "01555": {
+   "codigo": "01.55-5",
+   "gr": 3,
+   "denominacao": "Criação de aves"
+  },
+  "01598": {
+   "codigo": "01.59-8",
+   "gr": 3,
+   "denominacao": "Criação de animais não especificados anteriormente"
+  },
+  "01610": {
+   "codigo": "01.61-0",
+   "gr": 3,
+   "denominacao": "Atividades de apoio à agricultura"
+  },
+  "01628": {
+   "codigo": "01.62-8",
+   "gr": 3,
+   "denominacao": "Atividades de apoio à pecuária"
+  },
+  "01636": {
+   "codigo": "01.63-6",
+   "gr": 3,
+   "denominacao": "Atividades de pós-colheita"
+  },
+  "01709": {
+   "codigo": "01.70-9",
+   "gr": 3,
+   "denominacao": "Caça e serviços relacionados"
+  },
+  "02101": {
+   "codigo": "02.10-1",
+   "gr": 3,
+   "denominacao": "Produção florestal - florestas plantadas"
+  },
+  "02209": {
+   "codigo": "02.20-9",
+   "gr": 4,
+   "denominacao": "Produção florestal - florestas nativas"
+  },
+  "02306": {
+   "codigo": "02.30-6",
+   "gr": 3,
+   "denominacao": "Atividades de apoio à produção florestal"
+  },
+  "03116": {
+   "codigo": "03.11-6",
+   "gr": 3,
+   "denominacao": "Pesca em água salgada"
+  },
+  "03124": {
+   "codigo": "03.12-4",
+   "gr": 3,
+   "denominacao": "Pesca em água doce"
+  },
+  "03213": {
+   "codigo": "03.21-3",
+   "gr": 3,
+   "denominacao": "Aqüicultura em água salgada e salobra"
+  },
+  "03221": {
+   "codigo": "03.22-1",
+   "gr": 3,
+   "denominacao": "Aqüicultura em água doce B INDÚSTRIAS EXTRATIVAS"
+  },
+  "05003": {
+   "codigo": "05.00-3",
+   "gr": 4,
+   "denominacao": "Extração de carvão mineral"
+  },
+  "06000": {
+   "codigo": "06.00-0",
+   "gr": 4,
+   "denominacao": "Extração de petróleo e gás natural"
+  },
+  "07103": {
+   "codigo": "07.10-3",
+   "gr": 4,
+   "denominacao": "Extração de minério de ferro"
+  },
+  "07219": {
+   "codigo": "07.21-9",
+   "gr": 4,
+   "denominacao": "Extração de minério de alumínio"
+  },
+  "07227": {
+   "codigo": "07.22-7",
+   "gr": 4,
+   "denominacao": "Extração de minério de estanho"
+  },
+  "07235": {
+   "codigo": "07.23-5",
+   "gr": 4,
+   "denominacao": "Extração de minério de manganês"
+  },
+  "07243": {
+   "codigo": "07.24-3",
+   "gr": 4,
+   "denominacao": "Extração de minério de metais preciosos"
+  },
+  "07251": {
+   "codigo": "07.25-1",
+   "gr": 4,
+   "denominacao": "Extração de minerais radioativos"
+  },
+  "07294": {
+   "codigo": "07.29-4",
+   "gr": 4,
+   "denominacao": "Extração de minerais metálicos não-ferrosos não especificados anteriormente"
+  },
+  "08100": {
+   "codigo": "08.10-0",
+   "gr": 4,
+   "denominacao": "Extração de pedra, areia e argila"
+  },
+  "08916": {
+   "codigo": "08.91-6",
+   "gr": 4,
+   "denominacao": "Extração de minerais para fabricação de adubos, fertilizantes e outros produtos químicos"
+  },
+  "08924": {
+   "codigo": "08.92-4",
+   "gr": 4,
+   "denominacao": "Extração e refino de sal marinho e sal-gema"
+  },
+  "08932": {
+   "codigo": "08.93-2",
+   "gr": 4,
+   "denominacao": "Extração de gemas (pedras preciosas e semipreciosas)"
+  },
+  "08991": {
+   "codigo": "08.99-1",
+   "gr": 4,
+   "denominacao": "Extração de minerais não-metálicos não especificados anteriormente"
+  },
+  "09106": {
+   "codigo": "09.10-6",
+   "gr": 4,
+   "denominacao": "Atividades de apoio à extração de petróleo e gás natural"
+  },
+  "09904": {
+   "codigo": "09.90-4",
+   "gr": 4,
+   "denominacao": "Atividades de apoio à extração de minerais, exceto petróleo e gás natural C INDÚSTRIAS DE TRANSFORMAÇÃO"
+  },
+  "10112": {
+   "codigo": "10.11-2",
+   "gr": 3,
+   "denominacao": "Abate de reses, exceto suínos"
+  },
+  "10121": {
+   "codigo": "10.12-1",
+   "gr": 3,
+   "denominacao": "Abate de suínos, aves e outros pequenos animais"
+  },
+  "10139": {
+   "codigo": "10.13-9",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos de carne"
+  },
+  "10201": {
+   "codigo": "10.20-1",
+   "gr": 3,
+   "denominacao": "Preservação do pescado e fabricação de produtos do pescado"
+  },
+  "10317": {
+   "codigo": "10.31-7",
+   "gr": 3,
+   "denominacao": "Fabricação de conservas de frutas"
+  },
+  "10325": {
+   "codigo": "10.32-5",
+   "gr": 3,
+   "denominacao": "Fabricação de conservas de legumes e outros vegetais"
+  },
+  "10333": {
+   "codigo": "10.33-3",
+   "gr": 3,
+   "denominacao": "Fabricação de sucos de frutas, hortaliças e legumes"
+  },
+  "10414": {
+   "codigo": "10.41-4",
+   "gr": 3,
+   "denominacao": "Fabricação de óleos vegetais em bruto, exceto óleo de milho"
+  },
+  "10422": {
+   "codigo": "10.42-2",
+   "gr": 3,
+   "denominacao": "Fabricação de óleos vegetais refinados, exceto óleo de milho"
+  },
+  "10431": {
+   "codigo": "10.43-1",
+   "gr": 3,
+   "denominacao": "Fabricação de margarina e outras gorduras vegetais e de óleos não-comestíveis de animais"
+  },
+  "10511": {
+   "codigo": "10.51-1",
+   "gr": 3,
+   "denominacao": "Preparação do leite"
+  },
+  "10520": {
+   "codigo": "10.52-0",
+   "gr": 3,
+   "denominacao": "Fabricação de laticínios"
+  },
+  "10538": {
+   "codigo": "10.53-8",
+   "gr": 3,
+   "denominacao": "Fabricação de sorvetes e outros gelados comestíveis"
+  },
+  "10619": {
+   "codigo": "10.61-9",
+   "gr": 3,
+   "denominacao": "Beneficiamento de arroz e fabricação de produtos do arroz"
+  },
+  "10627": {
+   "codigo": "10.62-7",
+   "gr": 3,
+   "denominacao": "Moagem de trigo e fabricação de derivados"
+  },
+  "10635": {
+   "codigo": "10.63-5",
+   "gr": 3,
+   "denominacao": "Fabricação de farinha de mandioca e derivados"
+  },
+  "10643": {
+   "codigo": "10.64-3",
+   "gr": 3,
+   "denominacao": "Fabricação de farinha de milho e derivados, exceto óleos de milho"
+  },
+  "10651": {
+   "codigo": "10.65-1",
+   "gr": 3,
+   "denominacao": "Fabricação de amidos e féculas de vegetais e de óleos de milho"
+  },
+  "10660": {
+   "codigo": "10.66-0",
+   "gr": 3,
+   "denominacao": "Fabricação de alimentos para animais"
+  },
+  "10694": {
+   "codigo": "10.69-4",
+   "gr": 3,
+   "denominacao": "Moagem e fabricação de produtos de origem vegetal não especificados anteriormente"
+  },
+  "10716": {
+   "codigo": "10.71-6",
+   "gr": 3,
+   "denominacao": "Fabricação de açúcar em bruto"
+  },
+  "10724": {
+   "codigo": "10.72-4",
+   "gr": 3,
+   "denominacao": "Fabricação de açúcar refinado"
+  },
+  "10813": {
+   "codigo": "10.81-3",
+   "gr": 3,
+   "denominacao": "Torrefação e moagem de café"
+  },
+  "10821": {
+   "codigo": "10.82-1",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos à base de café"
+  },
+  "10911": {
+   "codigo": "10.91-1",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos de panificação"
+  },
+  "10929": {
+   "codigo": "10.92-9",
+   "gr": 3,
+   "denominacao": "Fabricação de biscoitos e bolachas"
+  },
+  "10937": {
+   "codigo": "10.93-7",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos derivados do cacau, de chocolates e confeitos"
+  },
+  "10945": {
+   "codigo": "10.94-5",
+   "gr": 3,
+   "denominacao": "Fabricação de massas alimentícias"
+  },
+  "10953": {
+   "codigo": "10.95-3",
+   "gr": 3,
+   "denominacao": "Fabricação de especiarias, molhos, temperos e condimentos"
+  },
+  "10961": {
+   "codigo": "10.96-1",
+   "gr": 3,
+   "denominacao": "Fabricação de alimentos e pratos prontos"
+  },
+  "10996": {
+   "codigo": "10.99-6",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos alimentícios não especificados anteriormente"
+  },
+  "11119": {
+   "codigo": "11.11-9",
+   "gr": 3,
+   "denominacao": "Fabricação de aguardentes e outras bebidas destiladas"
+  },
+  "11127": {
+   "codigo": "11.12-7",
+   "gr": 3,
+   "denominacao": "Fabricação de vinho"
+  },
+  "11135": {
+   "codigo": "11.13-5",
+   "gr": 3,
+   "denominacao": "Fabricação de malte, cervejas e chopes"
+  },
+  "11216": {
+   "codigo": "11.21-6",
+   "gr": 3,
+   "denominacao": "Fabricação de águas envasadas"
+  },
+  "11224": {
+   "codigo": "11.22-4",
+   "gr": 3,
+   "denominacao": "Fabricação de refrigerantes e de outras bebidas não-alcoólicas"
+  },
+  "12107": {
+   "codigo": "12.10-7",
+   "gr": 3,
+   "denominacao": "Processamento industrial do fumo"
+  },
+  "12204": {
+   "codigo": "12.20-4",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos do fumo"
+  },
+  "13111": {
+   "codigo": "13.11-1",
+   "gr": 3,
+   "denominacao": "Preparação e fiação de fibras de algodão"
+  },
+  "13120": {
+   "codigo": "13.12-0",
+   "gr": 3,
+   "denominacao": "Preparação e fiação de fibras têxteis naturais, exceto algodão"
+  },
+  "13138": {
+   "codigo": "13.13-8",
+   "gr": 3,
+   "denominacao": "Fiação de fibras artificiais e sintéticas"
+  },
+  "13146": {
+   "codigo": "13.14-6",
+   "gr": 3,
+   "denominacao": "Fabricação de linhas para costurar e bordar"
+  },
+  "13219": {
+   "codigo": "13.21-9",
+   "gr": 3,
+   "denominacao": "Tecelagem de fios de algodão"
+  },
+  "13227": {
+   "codigo": "13.22-7",
+   "gr": 3,
+   "denominacao": "Tecelagem de fios de fibras têxteis naturais, exceto algodão"
+  },
+  "13235": {
+   "codigo": "13.23-5",
+   "gr": 3,
+   "denominacao": "Tecelagem de fios de fibras artificiais e sintéticas"
+  },
+  "13308": {
+   "codigo": "13.30-8",
+   "gr": 3,
+   "denominacao": "Fabricação de tecidos de malha"
+  },
+  "13405": {
+   "codigo": "13.40-5",
+   "gr": 3,
+   "denominacao": "Acabamentos em fios, tecidos e artefatos têxteis"
+  },
+  "13511": {
+   "codigo": "13.51-1",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos têxteis para uso doméstico"
+  },
+  "13529": {
+   "codigo": "13.52-9",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos de tapeçaria"
+  },
+  "13537": {
+   "codigo": "13.53-7",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos de cordoaria"
+  },
+  "13545": {
+   "codigo": "13.54-5",
+   "gr": 3,
+   "denominacao": "Fabricação de tecidos especiais, inclusive artefatos"
+  },
+  "13596": {
+   "codigo": "13.59-6",
+   "gr": 3,
+   "denominacao": "Fabricação de outros produtos têxteis não especificados anteriormente"
+  },
+  "14118": {
+   "codigo": "14.11-8",
+   "gr": 2,
+   "denominacao": "Confecção de roupas íntimas"
+  },
+  "14126": {
+   "codigo": "14.12-6",
+   "gr": 2,
+   "denominacao": "Confecção de peças do vestuário, exceto roupas íntimas"
+  },
+  "14134": {
+   "codigo": "14.13-4",
+   "gr": 2,
+   "denominacao": "Confecção de roupas profissionais"
+  },
+  "14142": {
+   "codigo": "14.14-2",
+   "gr": 2,
+   "denominacao": "Fabricação de acessórios do vestuário, exceto para segurança e proteção"
+  },
+  "14215": {
+   "codigo": "14.21-5",
+   "gr": 2,
+   "denominacao": "Fabricação de meias"
+  },
+  "14223": {
+   "codigo": "14.22-3",
+   "gr": 2,
+   "denominacao": "Fabricação de artigos do vestuário, produzidos em malharias e tricotagens, exceto meias PREPARAÇÃO DE COUROS E FABRICAÇÃO DE ARTEFATOS DE COURO, ARTIGOS PARA"
+  },
+  "15106": {
+   "codigo": "15.10-6",
+   "gr": 3,
+   "denominacao": "Curtimento e outras preparações de couro"
+  },
+  "15211": {
+   "codigo": "15.21-1",
+   "gr": 2,
+   "denominacao": "Fabricação de artigos para viagem, bolsas e semelhantes de qualquer material"
+  },
+  "15297": {
+   "codigo": "15.29-7",
+   "gr": 2,
+   "denominacao": "Fabricação de artefatos de couro não especificados anteriormente"
+  },
+  "15319": {
+   "codigo": "15.31-9",
+   "gr": 3,
+   "denominacao": "Fabricação de calçados de couro"
+  },
+  "15327": {
+   "codigo": "15.32-7",
+   "gr": 3,
+   "denominacao": "Fabricação de tênis de qualquer material"
+  },
+  "15335": {
+   "codigo": "15.33-5",
+   "gr": 3,
+   "denominacao": "Fabricação de calçados de material sintético"
+  },
+  "15394": {
+   "codigo": "15.39-4",
+   "gr": 3,
+   "denominacao": "Fabricação de calçados de materiais não especificados anteriormente"
+  },
+  "15408": {
+   "codigo": "15.40-8",
+   "gr": 3,
+   "denominacao": "Fabricação de partes para calçados, de qualquer material"
+  },
+  "16102": {
+   "codigo": "16.10-2",
+   "gr": 3,
+   "denominacao": "Desdobramento de madeira"
+  },
+  "16218": {
+   "codigo": "16.21-8",
+   "gr": 3,
+   "denominacao": "aglomerada"
+  },
+  "16226": {
+   "codigo": "16.22-6",
+   "gr": 3,
+   "denominacao": "Fabricação de estruturas de madeira e de artigos de carpintaria para construção"
+  },
+  "16234": {
+   "codigo": "16.23-4",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos de tanoaria e de embalagens de madeira Fabricação de artefatos de madeira, palha, cortiça, vime e material trançado não"
+  },
+  "16293": {
+   "codigo": "16.29-3",
+   "gr": 3,
+   "denominacao": "especificados anteriormente, exceto móveis"
+  },
+  "17109": {
+   "codigo": "17.10-9",
+   "gr": 3,
+   "denominacao": "Fabricação de celulose e outras pastas para a fabricação de papel"
+  },
+  "17214": {
+   "codigo": "17.21-4",
+   "gr": 3,
+   "denominacao": "Fabricação de papel"
+  },
+  "17222": {
+   "codigo": "17.22-2",
+   "gr": 3,
+   "denominacao": "Fabricação de cartolina e papel-cartão"
+  },
+  "17311": {
+   "codigo": "17.31-1",
+   "gr": 2,
+   "denominacao": "Fabricação de embalagens de papel"
+  },
+  "17320": {
+   "codigo": "17.32-0",
+   "gr": 2,
+   "denominacao": "Fabricação de embalagens de cartolina e papel-cartão"
+  },
+  "17338": {
+   "codigo": "17.33-8",
+   "gr": 2,
+   "denominacao": "Fabricação de chapas e de embalagens de papelão ondulado"
+  },
+  "17419": {
+   "codigo": "17.41-9",
+   "gr": 2,
+   "denominacao": "uso comercial e de escritório"
+  },
+  "17427": {
+   "codigo": "17.42-7",
+   "gr": 2,
+   "denominacao": "Fabricação de produtos de papel para usos doméstico e higiênico-sanitário Fabricação de produtos de pastas celulósicas, papel, cartolina, papel-cartão e"
+  },
+  "17494": {
+   "codigo": "17.49-4",
+   "gr": 2,
+   "denominacao": "papelão ondulado não especificados anteriormente"
+  },
+  "18113": {
+   "codigo": "18.11-3",
+   "gr": 3,
+   "denominacao": "Impressão de jornais, livros, revistas e outras publicações periódicas"
+  },
+  "18121": {
+   "codigo": "18.12-1",
+   "gr": 3,
+   "denominacao": "Impressão de material de segurança"
+  },
+  "18130": {
+   "codigo": "18.13-0",
+   "gr": 3,
+   "denominacao": "Impressão de materiais para outros usos"
+  },
+  "18211": {
+   "codigo": "18.21-1",
+   "gr": 3,
+   "denominacao": "Serviços de pré-impressão"
+  },
+  "18229": {
+   "codigo": "18.22-9",
+   "gr": 3,
+   "denominacao": "Serviços de acabamentos gráficos"
+  },
+  "18300": {
+   "codigo": "18.30-0",
+   "gr": 3,
+   "denominacao": "Reprodução de materiais gravados em qualquer suporte"
+  },
+  "19101": {
+   "codigo": "19.10-1",
+   "gr": 3,
+   "denominacao": "Coquerias"
+  },
+  "19217": {
+   "codigo": "19.21-7",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos do refino de petróleo"
+  },
+  "19225": {
+   "codigo": "19.22-5",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos derivados do petróleo, exceto produtos do refino"
+  },
+  "19314": {
+   "codigo": "19.31-4",
+   "gr": 3,
+   "denominacao": "Fabricação de álcool"
+  },
+  "19322": {
+   "codigo": "19.32-2",
+   "gr": 3,
+   "denominacao": "Fabricação de biocombustíveis, exceto álcool"
+  },
+  "20118": {
+   "codigo": "20.11-8",
+   "gr": 3,
+   "denominacao": "Fabricação de cloro e álcalis"
+  },
+  "20126": {
+   "codigo": "20.12-6",
+   "gr": 3,
+   "denominacao": "Fabricação de intermediários para fertilizantes"
+  },
+  "20134": {
+   "codigo": "20.13-4",
+   "gr": 3,
+   "denominacao": "Fabricação de adubos e fertilizantes"
+  },
+  "20142": {
+   "codigo": "20.14-2",
+   "gr": 3,
+   "denominacao": "Fabricação de gases industriais"
+  },
+  "20193": {
+   "codigo": "20.19-3",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos químicos inorgânicos não especificados anteriormente"
+  },
+  "20215": {
+   "codigo": "20.21-5",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos petroquímicos básicos"
+  },
+  "20223": {
+   "codigo": "20.22-3",
+   "gr": 3,
+   "denominacao": "Fabricação de intermediários para plastificantes, resinas e fibras"
+  },
+  "20291": {
+   "codigo": "20.29-1",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos químicos orgânicos não especificados anteriormente"
+  },
+  "20312": {
+   "codigo": "20.31-2",
+   "gr": 3,
+   "denominacao": "Fabricação de resinas termoplásticas"
+  },
+  "20321": {
+   "codigo": "20.32-1",
+   "gr": 3,
+   "denominacao": "Fabricação de resinas termofixas"
+  },
+  "20339": {
+   "codigo": "20.33-9",
+   "gr": 3,
+   "denominacao": "Fabricação de elastômeros"
+  },
+  "20401": {
+   "codigo": "20.40-1",
+   "gr": 3,
+   "denominacao": "Fabricação de fibras artificiais e sintéticas"
+  },
+  "20517": {
+   "codigo": "20.51-7",
+   "gr": 3,
+   "denominacao": "Fabricação de defensivos agrícolas"
+  },
+  "20525": {
+   "codigo": "20.52-5",
+   "gr": 3,
+   "denominacao": "Fabricação de desinfetantes domissanitários Fabricação de sabões, detergentes, produtos de limpeza, cosméticos, produtos de 20.6 perfumaria e de higiene pessoal"
+  },
+  "20614": {
+   "codigo": "20.61-4",
+   "gr": 3,
+   "denominacao": "Fabricação de sabões e detergentes sintéticos"
+  },
+  "20622": {
+   "codigo": "20.62-2",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos de limpeza e polimento"
+  },
+  "20631": {
+   "codigo": "20.63-1",
+   "gr": 2,
+   "denominacao": "Fabricação de cosméticos, produtos de perfumaria e de higiene pessoal"
+  },
+  "20711": {
+   "codigo": "20.71-1",
+   "gr": 3,
+   "denominacao": "Fabricação de tintas, vernizes, esmaltes e lacas"
+  },
+  "20720": {
+   "codigo": "20.72-0",
+   "gr": 3,
+   "denominacao": "Fabricação de tintas de impressão"
+  },
+  "20738": {
+   "codigo": "20.73-8",
+   "gr": 3,
+   "denominacao": "Fabricação de impermeabilizantes, solventes e produtos afins"
+  },
+  "20916": {
+   "codigo": "20.91-6",
+   "gr": 3,
+   "denominacao": "Fabricação de adesivos e selantes"
+  },
+  "20924": {
+   "codigo": "20.92-4",
+   "gr": 4,
+   "denominacao": "Fabricação de explosivos"
+  },
+  "20932": {
+   "codigo": "20.93-2",
+   "gr": 3,
+   "denominacao": "Fabricação de aditivos de uso industrial"
+  },
+  "20941": {
+   "codigo": "20.94-1",
+   "gr": 3,
+   "denominacao": "Fabricação de catalisadores"
+  },
+  "20991": {
+   "codigo": "20.99-1",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos químicos não especificados anteriormente"
+  },
+  "21106": {
+   "codigo": "21.10-6",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos farmoquímicos"
+  },
+  "21211": {
+   "codigo": "21.21-1",
+   "gr": 3,
+   "denominacao": "Fabricação de medicamentos para uso humano"
+  },
+  "21220": {
+   "codigo": "21.22-0",
+   "gr": 3,
+   "denominacao": "Fabricação de medicamentos para uso veterinário"
+  },
+  "21238": {
+   "codigo": "21.23-8",
+   "gr": 3,
+   "denominacao": "Fabricação de preparações farmacêuticas"
+  },
+  "22111": {
+   "codigo": "22.11-1",
+   "gr": 3,
+   "denominacao": "Fabricação de pneumáticos e de câmaras-de-ar"
+  },
+  "22129": {
+   "codigo": "22.12-9",
+   "gr": 3,
+   "denominacao": "Reforma de pneumáticos usados"
+  },
+  "22196": {
+   "codigo": "22.19-6",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos de borracha não especificados anteriormente"
+  },
+  "22218": {
+   "codigo": "22.21-8",
+   "gr": 3,
+   "denominacao": "Fabricação de laminados planos e tubulares de material plástico"
+  },
+  "22226": {
+   "codigo": "22.22-6",
+   "gr": 3,
+   "denominacao": "Fabricação de embalagens de material plástico"
+  },
+  "22234": {
+   "codigo": "22.23-4",
+   "gr": 3,
+   "denominacao": "Fabricação de tubos e acessórios de material plástico para uso na construção"
+  },
+  "22293": {
+   "codigo": "22.29-3",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos de material plástico não especificados anteriormente"
+  },
+  "23117": {
+   "codigo": "23.11-7",
+   "gr": 3,
+   "denominacao": "Fabricação de vidro plano e de segurança"
+  },
+  "23125": {
+   "codigo": "23.12-5",
+   "gr": 3,
+   "denominacao": "Fabricação de embalagens de vidro"
+  },
+  "23192": {
+   "codigo": "23.19-2",
+   "gr": 3,
+   "denominacao": "Fabricação de artigos de vidro"
+  },
+  "23206": {
+   "codigo": "23.20-6",
+   "gr": 4,
+   "denominacao": "Fabricação de cimento"
+  },
+  "23303": {
+   "codigo": "23.30-3",
+   "gr": 4,
+   "denominacao": "Fabricação de artefatos de concreto, cimento, fibrocimento, gesso e materiais semelhantes"
+  },
+  "23419": {
+   "codigo": "23.41-9",
+   "gr": 4,
+   "denominacao": "Fabricação de produtos cerâmicos refratários"
+  },
+  "23427": {
+   "codigo": "23.42-7",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos cerâmicos não-refratários para uso estrutural na construção (Grau de Risco alterado pela Portaria SIT nº 128, de 11 de dezembro de 2009)"
+  },
+  "23494": {
+   "codigo": "23.49-4",
+   "gr": 4,
+   "denominacao": "Fabricação de produtos cerâmicos não-refratários não especificados anteriormente"
+  },
+  "23915": {
+   "codigo": "23.91-5",
+   "gr": 3,
+   "denominacao": "Aparelhamento e outros trabalhos em pedras"
+  },
+  "23923": {
+   "codigo": "23.92-3",
+   "gr": 4,
+   "denominacao": "Fabricação de cal e gesso"
+  },
+  "23991": {
+   "codigo": "23.99-1",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos de minerais não-metálicos não especificados anteriormente"
+  },
+  "24113": {
+   "codigo": "24.11-3",
+   "gr": 4,
+   "denominacao": "Produção de ferro-gusa"
+  },
+  "24121": {
+   "codigo": "24.12-1",
+   "gr": 4,
+   "denominacao": "Produção de ferroligas"
+  },
+  "24211": {
+   "codigo": "24.21-1",
+   "gr": 4,
+   "denominacao": "Produção de semi-acabados de aço"
+  },
+  "24229": {
+   "codigo": "24.22-9",
+   "gr": 4,
+   "denominacao": "Produção de laminados planos de aço"
+  },
+  "24237": {
+   "codigo": "24.23-7",
+   "gr": 4,
+   "denominacao": "Produção de laminados longos de aço"
+  },
+  "24245": {
+   "codigo": "24.24-5",
+   "gr": 4,
+   "denominacao": "Produção de relaminados, trefilados e perfilados de aço"
+  },
+  "24318": {
+   "codigo": "24.31-8",
+   "gr": 4,
+   "denominacao": "Produção de tubos de aço com costura"
+  },
+  "24393": {
+   "codigo": "24.39-3",
+   "gr": 4,
+   "denominacao": "Produção de outros tubos de ferro e aço"
+  },
+  "24415": {
+   "codigo": "24.41-5",
+   "gr": 4,
+   "denominacao": "Metalurgia do alumínio e suas ligas"
+  },
+  "24423": {
+   "codigo": "24.42-3",
+   "gr": 4,
+   "denominacao": "Metalurgia dos metais preciosos"
+  },
+  "24431": {
+   "codigo": "24.43-1",
+   "gr": 4,
+   "denominacao": "Metalurgia do cobre"
+  },
+  "24491": {
+   "codigo": "24.49-1",
+   "gr": 4,
+   "denominacao": "Metalurgia dos metais não-ferrosos e suas ligas não especificados anteriormente"
+  },
+  "24512": {
+   "codigo": "24.51-2",
+   "gr": 4,
+   "denominacao": "Fundição de ferro e aço"
+  },
+  "24521": {
+   "codigo": "24.52-1",
+   "gr": 4,
+   "denominacao": "Fundição de metais não-ferrosos e suas ligas"
+  },
+  "25110": {
+   "codigo": "25.11-0",
+   "gr": 4,
+   "denominacao": "Fabricação de estruturas metálicas"
+  },
+  "25128": {
+   "codigo": "25.12-8",
+   "gr": 3,
+   "denominacao": "Fabricação de esquadrias de metal"
+  },
+  "25136": {
+   "codigo": "25.13-6",
+   "gr": 3,
+   "denominacao": "Fabricação de obras de caldeiraria pesada"
+  },
+  "25217": {
+   "codigo": "25.21-7",
+   "gr": 3,
+   "denominacao": "Fabricação de tanques, reservatórios metálicos e caldeiras para aquecimento central Fabricação de caldeiras geradoras de vapor, exceto para aquecimento central e para"
+  },
+  "25225": {
+   "codigo": "25.22-5",
+   "gr": 3,
+   "denominacao": "veículos"
+  },
+  "25314": {
+   "codigo": "25.31-4",
+   "gr": 4,
+   "denominacao": "Produção de forjados de aço e de metais não-ferrosos e suas ligas"
+  },
+  "25322": {
+   "codigo": "25.32-2",
+   "gr": 4,
+   "denominacao": "Produção de artefatos estampados de metal; metalurgia do pó"
+  },
+  "25390": {
+   "codigo": "25.39-0",
+   "gr": 4,
+   "denominacao": "Serviços de usinagem, solda, tratamento e revestimento em metais"
+  },
+  "25411": {
+   "codigo": "25.41-1",
+   "gr": 3,
+   "denominacao": "Fabricação de artigos de cutelaria"
+  },
+  "25420": {
+   "codigo": "25.42-0",
+   "gr": 3,
+   "denominacao": "Fabricação de artigos de serralheria, exceto esquadrias"
+  },
+  "25438": {
+   "codigo": "25.43-8",
+   "gr": 3,
+   "denominacao": "Fabricação de ferramentas"
+  },
+  "25501": {
+   "codigo": "25.50-1",
+   "gr": 4,
+   "denominacao": "Fabricação de equipamento bélico pesado, armas de fogo e munições"
+  },
+  "25918": {
+   "codigo": "25.91-8",
+   "gr": 3,
+   "denominacao": "Fabricação de embalagens metálicas"
+  },
+  "25926": {
+   "codigo": "25.92-6",
+   "gr": 4,
+   "denominacao": "Fabricação de produtos de trefilados de metal"
+  },
+  "25934": {
+   "codigo": "25.93-4",
+   "gr": 3,
+   "denominacao": "Fabricação de artigos de metal para uso doméstico e pessoal"
+  },
+  "25993": {
+   "codigo": "25.99-3",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos de metal não especificados anteriormente"
+  },
+  "26108": {
+   "codigo": "26.10-8",
+   "gr": 3,
+   "denominacao": "Fabricação de componentes eletrônicos"
+  },
+  "26213": {
+   "codigo": "26.21-3",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos de informática"
+  },
+  "26221": {
+   "codigo": "26.22-1",
+   "gr": 3,
+   "denominacao": "Fabricação de periféricos para equipamentos de informática"
+  },
+  "26311": {
+   "codigo": "26.31-1",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos transmissores de comunicação"
+  },
+  "26329": {
+   "codigo": "26.32-9",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos telefônicos e de outros equipamentos de comunicação"
+  },
+  "26400": {
+   "codigo": "26.40-0",
+   "gr": 3,
+   "denominacao": "e vídeo"
+  },
+  "26515": {
+   "codigo": "26.51-5",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos e equipamentos de medida, teste e controle"
+  },
+  "26523": {
+   "codigo": "26.52-3",
+   "gr": 3,
+   "denominacao": "Fabricação de cronômetros e relógios"
+  },
+  "26604": {
+   "codigo": "26.60-4",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos eletromédicos e eletroterapêuticos e equipamentos de irradiação"
+  },
+  "26701": {
+   "codigo": "26.70-1",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos e instrumentos ópticos, fotográficos e cinematográficos"
+  },
+  "26809": {
+   "codigo": "26.80-9",
+   "gr": 3,
+   "denominacao": "Fabricação de mídias virgens, magnéticas e ópticas"
+  },
+  "27104": {
+   "codigo": "27.10-4",
+   "gr": 3,
+   "denominacao": "Fabricação de geradores, transformadores e motores elétricos"
+  },
+  "27210": {
+   "codigo": "27.21-0",
+   "gr": 3,
+   "denominacao": "Fabricação de pilhas, baterias e acumuladores elétricos, exceto para veículos automotores"
+  },
+  "27228": {
+   "codigo": "27.22-8",
+   "gr": 3,
+   "denominacao": "Fabricação de baterias e acumuladores para veículos automotores"
+  },
+  "27317": {
+   "codigo": "27.31-7",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos e equipamentos para distribuição e controle de energia elétrica"
+  },
+  "27325": {
+   "codigo": "27.32-5",
+   "gr": 3,
+   "denominacao": "Fabricação de material elétrico para instalações em circuito de consumo"
+  },
+  "27333": {
+   "codigo": "27.33-3",
+   "gr": 3,
+   "denominacao": "Fabricação de fios, cabos e condutores elétricos isolados"
+  },
+  "27406": {
+   "codigo": "27.40-6",
+   "gr": 3,
+   "denominacao": "Fabricação de lâmpadas e outros equipamentos de iluminação"
+  },
+  "27511": {
+   "codigo": "27.51-1",
+   "gr": 3,
+   "denominacao": "Fabricação de fogões, refrigeradores e máquinas de lavar e secar para uso doméstico"
+  },
+  "27597": {
+   "codigo": "27.59-7",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos eletrodomésticos não especificados anteriormente"
+  },
+  "27902": {
+   "codigo": "27.90-2",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos e aparelhos elétricos não especificados anteriormente"
+  },
+  "28119": {
+   "codigo": "28.11-9",
+   "gr": 3,
+   "denominacao": "Fabricação de motores e turbinas, exceto para aviões e veículos rodoviários"
+  },
+  "28127": {
+   "codigo": "28.12-7",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos hidráulicos e pneumáticos, exceto válvulas"
+  },
+  "28135": {
+   "codigo": "28.13-5",
+   "gr": 3,
+   "denominacao": "Fabricação de válvulas, registros e dispositivos semelhantes"
+  },
+  "28143": {
+   "codigo": "28.14-3",
+   "gr": 3,
+   "denominacao": "Fabricação de compressores"
+  },
+  "28151": {
+   "codigo": "28.15-1",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos de transmissão para fins industriais"
+  },
+  "28216": {
+   "codigo": "28.21-6",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos e equipamentos para instalações térmicas Fabricação de máquinas, equipamentos e aparelhos para transporte e elevação de"
+  },
+  "28224": {
+   "codigo": "28.22-4",
+   "gr": 3,
+   "denominacao": "cargas e pessoas Fabricação de máquinas e aparelhos de refrigeração e ventilação para uso industrial"
+  },
+  "28232": {
+   "codigo": "28.23-2",
+   "gr": 3,
+   "denominacao": "e comercial"
+  },
+  "28241": {
+   "codigo": "28.24-1",
+   "gr": 3,
+   "denominacao": "Fabricação de aparelhos e equipamentos de ar-condicionado"
+  },
+  "28259": {
+   "codigo": "28.25-9",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas e equipamentos para saneamento básico e ambiental"
+  },
+  "28291": {
+   "codigo": "28.29-1",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas e equipamentos de uso geral não especificados anteriormente"
+  },
+  "28313": {
+   "codigo": "28.31-3",
+   "gr": 3,
+   "denominacao": "Fabricação de tratores agrícolas"
+  },
+  "28321": {
+   "codigo": "28.32-1",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos para irrigação agrícola Fabricação de máquinas e equipamentos para a agricultura e pecuária, exceto para"
+  },
+  "28330": {
+   "codigo": "28.33-0",
+   "gr": 3,
+   "denominacao": "irrigação"
+  },
+  "28402": {
+   "codigo": "28.40-2",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas-ferramenta"
+  },
+  "28518": {
+   "codigo": "28.51-8",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas e equipamentos para a prospecção e extração de petróleo Fabricação de outras máquinas e equipamentos para uso na extração mineral, exceto"
+  },
+  "28526": {
+   "codigo": "28.52-6",
+   "gr": 3,
+   "denominacao": "na extração de petróleo"
+  },
+  "28534": {
+   "codigo": "28.53-4",
+   "gr": 3,
+   "denominacao": "Fabricação de tratores, exceto agrícolas Fabricação de máquinas e equipamentos para terraplenagem, pavimentação e"
+  },
+  "28542": {
+   "codigo": "28.54-2",
+   "gr": 3,
+   "denominacao": "construção, exceto tratores"
+  },
+  "28615": {
+   "codigo": "28.61-5",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas para a indústria metalúrgica, exceto máquinas-ferramenta"
+  },
+  "28623": {
+   "codigo": "28.62-3",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas e equipamentos para as indústrias de alimentos, bebidas e fumo"
+  },
+  "28631": {
+   "codigo": "28.63-1",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas e equipamentos para a indústria têxtil Fabricação de máquinas e equipamentos para as indústrias do vestuário, do couro e"
+  },
+  "28640": {
+   "codigo": "28.64-0",
+   "gr": 3,
+   "denominacao": "de calçados Fabricação de máquinas e equipamentos para as indústrias de celulose, papel e"
+  },
+  "28658": {
+   "codigo": "28.65-8",
+   "gr": 3,
+   "denominacao": "papelão e artefatos"
+  },
+  "28666": {
+   "codigo": "28.66-6",
+   "gr": 3,
+   "denominacao": "Fabricação de máquinas e equipamentos para a indústria do plástico Fabricação de máquinas e equipamentos para uso industrial específico não"
+  },
+  "28691": {
+   "codigo": "28.69-1",
+   "gr": 3,
+   "denominacao": "especificados anteriormente"
+  },
+  "29107": {
+   "codigo": "29.10-7",
+   "gr": 3,
+   "denominacao": "Fabricação de automóveis, camionetas e utilitários"
+  },
+  "29204": {
+   "codigo": "29.20-4",
+   "gr": 3,
+   "denominacao": "Fabricação de caminhões e ônibus"
+  },
+  "29301": {
+   "codigo": "29.30-1",
+   "gr": 3,
+   "denominacao": "Fabricação de cabines, carrocerias e reboques para veículos automotores"
+  },
+  "29417": {
+   "codigo": "29.41-7",
+   "gr": 3,
+   "denominacao": "Fabricação de peças e acessórios para o sistema motor de veículos automotores Fabricação de peças e acessórios para os sistemas de marcha e transmissão de"
+  },
+  "29425": {
+   "codigo": "29.42-5",
+   "gr": 3,
+   "denominacao": "veículos automotores"
+  },
+  "29433": {
+   "codigo": "29.43-3",
+   "gr": 3,
+   "denominacao": "Fabricação de peças e acessórios para o sistema de freios de veículos automotores Fabricação de peças e acessórios para o sistema de direção e suspensão de veículos"
+  },
+  "29441": {
+   "codigo": "29.44-1",
+   "gr": 3,
+   "denominacao": "automotores"
+  },
+  "29450": {
+   "codigo": "29.45-0",
+   "gr": 3,
+   "denominacao": "Fabricação de material elétrico e eletrônico para veículos automotores, exceto baterias Fabricação de peças e acessórios para veículos automotores não especificados"
+  },
+  "29492": {
+   "codigo": "29.49-2",
+   "gr": 3,
+   "denominacao": "anteriormente"
+  },
+  "29506": {
+   "codigo": "29.50-6",
+   "gr": 3,
+   "denominacao": "Recondicionamento e recuperação de motores para veículos automotores"
+  },
+  "30113": {
+   "codigo": "30.11-3",
+   "gr": 3,
+   "denominacao": "Construção de embarcações e estruturas flutuantes"
+  },
+  "30121": {
+   "codigo": "30.12-1",
+   "gr": 3,
+   "denominacao": "Construção de embarcações para esporte e lazer"
+  },
+  "30318": {
+   "codigo": "30.31-8",
+   "gr": 3,
+   "denominacao": "Fabricação de locomotivas, vagões e outros materiais rodantes"
+  },
+  "30326": {
+   "codigo": "30.32-6",
+   "gr": 3,
+   "denominacao": "Fabricação de peças e acessórios para veículos ferroviários"
+  },
+  "30415": {
+   "codigo": "30.41-5",
+   "gr": 3,
+   "denominacao": "Fabricação de aeronaves"
+  },
+  "30423": {
+   "codigo": "30.42-3",
+   "gr": 3,
+   "denominacao": "Fabricação de turbinas, motores e outros componentes e peças para aeronaves"
+  },
+  "30504": {
+   "codigo": "30.50-4",
+   "gr": 3,
+   "denominacao": "Fabricação de veículos militares de combate"
+  },
+  "30911": {
+   "codigo": "30.91-1",
+   "gr": 3,
+   "denominacao": "Fabricação de motocicletas"
+  },
+  "30920": {
+   "codigo": "30.92-0",
+   "gr": 3,
+   "denominacao": "Fabricação de bicicletas e triciclos não-motorizados"
+  },
+  "30997": {
+   "codigo": "30.99-7",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos de transporte não especificados anteriormente"
+  },
+  "31012": {
+   "codigo": "31.01-2",
+   "gr": 3,
+   "denominacao": "Fabricação de móveis com predominância de madeira"
+  },
+  "31021": {
+   "codigo": "31.02-1",
+   "gr": 3,
+   "denominacao": "Fabricação de móveis com predominância de metal"
+  },
+  "31039": {
+   "codigo": "31.03-9",
+   "gr": 3,
+   "denominacao": "Fabricação de móveis de outros materiais, exceto madeira e metal"
+  },
+  "31047": {
+   "codigo": "31.04-7",
+   "gr": 2,
+   "denominacao": "Fabricação de colchões"
+  },
+  "32116": {
+   "codigo": "32.11-6",
+   "gr": 3,
+   "denominacao": "Lapidação de gemas e fabricação de artefatos de ourivesaria e joalheria"
+  },
+  "32124": {
+   "codigo": "32.12-4",
+   "gr": 3,
+   "denominacao": "Fabricação de bijuterias e artefatos semelhantes"
+  },
+  "32205": {
+   "codigo": "32.20-5",
+   "gr": 3,
+   "denominacao": "Fabricação de instrumentos musicais"
+  },
+  "32302": {
+   "codigo": "32.30-2",
+   "gr": 3,
+   "denominacao": "Fabricação de artefatos para pesca e esporte"
+  },
+  "32400": {
+   "codigo": "32.40-0",
+   "gr": 3,
+   "denominacao": "Fabricação de brinquedos e jogos recreativos"
+  },
+  "32507": {
+   "codigo": "32.50-7",
+   "gr": 3,
+   "denominacao": "ópticos"
+  },
+  "32914": {
+   "codigo": "32.91-4",
+   "gr": 3,
+   "denominacao": "Fabricação de escovas, pincéis e vassouras"
+  },
+  "32922": {
+   "codigo": "32.92-2",
+   "gr": 3,
+   "denominacao": "Fabricação de equipamentos e acessórios para segurança e proteção pessoal e profissional"
+  },
+  "32990": {
+   "codigo": "32.99-0",
+   "gr": 3,
+   "denominacao": "Fabricação de produtos diversos não especificados anteriormente"
+  },
+  "33112": {
+   "codigo": "33.11-2",
+   "gr": 3,
+   "denominacao": "veículos"
+  },
+  "33121": {
+   "codigo": "33.12-1",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de equipamentos eletrônicos e ópticos"
+  },
+  "33139": {
+   "codigo": "33.13-9",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de máquinas e equipamentos elétricos"
+  },
+  "33147": {
+   "codigo": "33.14-7",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de máquinas e equipamentos da indústria mecânica"
+  },
+  "33155": {
+   "codigo": "33.15-5",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de veículos ferroviários"
+  },
+  "33163": {
+   "codigo": "33.16-3",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de aeronaves"
+  },
+  "33171": {
+   "codigo": "33.17-1",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de embarcações"
+  },
+  "33198": {
+   "codigo": "33.19-8",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de equipamentos e produtos não especificados anteriormente"
+  },
+  "33210": {
+   "codigo": "33.21-0",
+   "gr": 3,
+   "denominacao": "Instalação de máquinas e equipamentos industriais"
+  },
+  "33295": {
+   "codigo": "33.29-5",
+   "gr": 3,
+   "denominacao": "Instalação de equipamentos não especificados anteriormente D ELETRICIDADE E GÁS"
+  },
+  "35115": {
+   "codigo": "35.11-5",
+   "gr": 3,
+   "denominacao": "Geração de energia elétrica"
+  },
+  "35123": {
+   "codigo": "35.12-3",
+   "gr": 3,
+   "denominacao": "Transmissão de energia elétrica"
+  },
+  "35131": {
+   "codigo": "35.13-1",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de energia elétrica"
+  },
+  "35140": {
+   "codigo": "35.14-0",
+   "gr": 3,
+   "denominacao": "Distribuição de energia elétrica"
+  },
+  "35204": {
+   "codigo": "35.20-4",
+   "gr": 3,
+   "denominacao": "gasosos por redes urbanas"
+  },
+  "35301": {
+   "codigo": "35.30-1",
+   "gr": 3,
+   "denominacao": "Produção e distribuição de vapor, água quente e ar-condicionado E ÁGUA, ESGOTO, ATIVIDADES DE GESTÃO DE RESÍDUOS E DESCONTAMINAÇÃO"
+  },
+  "36006": {
+   "codigo": "36.00-6",
+   "gr": 3,
+   "denominacao": "Captação, tratamento e distribuição de água"
+  },
+  "37011": {
+   "codigo": "37.01-1",
+   "gr": 3,
+   "denominacao": "Gestão de redes de esgoto"
+  },
+  "37029": {
+   "codigo": "37.02-9",
+   "gr": 3,
+   "denominacao": "Atividades relacionadas a esgoto, exceto a gestão de redes"
+  },
+  "38114": {
+   "codigo": "38.11-4",
+   "gr": 3,
+   "denominacao": "Coleta de resíduos não-perigosos"
+  },
+  "38122": {
+   "codigo": "38.12-2",
+   "gr": 3,
+   "denominacao": "Coleta de resíduos perigosos"
+  },
+  "38211": {
+   "codigo": "38.21-1",
+   "gr": 3,
+   "denominacao": "Tratamento e disposição de resíduos não-perigosos"
+  },
+  "38220": {
+   "codigo": "38.22-0",
+   "gr": 3,
+   "denominacao": "Tratamento e disposição de resíduos perigosos"
+  },
+  "38319": {
+   "codigo": "38.31-9",
+   "gr": 3,
+   "denominacao": "Recuperação de materiais metálicos"
+  },
+  "38327": {
+   "codigo": "38.32-7",
+   "gr": 3,
+   "denominacao": "Recuperação de materiais plásticos"
+  },
+  "38394": {
+   "codigo": "38.39-4",
+   "gr": 3,
+   "denominacao": "Recuperação de materiais não especificados anteriormente"
+  },
+  "39005": {
+   "codigo": "39.00-5",
+   "gr": 3,
+   "denominacao": "Descontaminação e outros serviços de gestão de resíduos F CONSTRUÇÃO"
+  },
+  "41107": {
+   "codigo": "41.10-7",
+   "gr": 1,
+   "denominacao": "Incorporação de empreendimentos imobiliários"
+  },
+  "41204": {
+   "codigo": "41.20-4",
+   "gr": 3,
+   "denominacao": "Construção de edifícios"
+  },
+  "42111": {
+   "codigo": "42.11-1",
+   "gr": 4,
+   "denominacao": "Construção de rodovias e ferrovias"
+  },
+  "42120": {
+   "codigo": "42.12-0",
+   "gr": 4,
+   "denominacao": "Construção de obras-de-arte especiais"
+  },
+  "42138": {
+   "codigo": "42.13-8",
+   "gr": 3,
+   "denominacao": "Obras de urbanização - ruas, praças e calçadas Obras de infraestrutura para energia elétrica, telecomunicações, água, esgoto e transporte 42.2 por dutos"
+  },
+  "42219": {
+   "codigo": "42.21-9",
+   "gr": 4,
+   "denominacao": "Obras para geração e distribuição de energia elétrica e para telecomunicações"
+  },
+  "42227": {
+   "codigo": "42.22-7",
+   "gr": 4,
+   "denominacao": "Construção de redes de abastecimento de água, coleta de esgoto e construções correlatas"
+  },
+  "42235": {
+   "codigo": "42.23-5",
+   "gr": 4,
+   "denominacao": "Construção de redes de transportes por dutos, exceto para água e esgoto"
+  },
+  "42910": {
+   "codigo": "42.91-0",
+   "gr": 4,
+   "denominacao": "Obras portuárias, marítimas e fluviais"
+  },
+  "42928": {
+   "codigo": "42.92-8",
+   "gr": 4,
+   "denominacao": "Montagem de instalações industriais e de estruturas metálicas"
+  },
+  "42995": {
+   "codigo": "42.99-5",
+   "gr": 3,
+   "denominacao": "Obras de engenharia civil não especificadas anteriormente"
+  },
+  "43118": {
+   "codigo": "43.11-8",
+   "gr": 4,
+   "denominacao": "Demolição e preparação de canteiros de obras"
+  },
+  "43126": {
+   "codigo": "43.12-6",
+   "gr": 4,
+   "denominacao": "Perfurações e sondagens"
+  },
+  "43134": {
+   "codigo": "43.13-4",
+   "gr": 3,
+   "denominacao": "Obras de terraplenagem"
+  },
+  "43193": {
+   "codigo": "43.19-3",
+   "gr": 3,
+   "denominacao": "Serviços de preparação do terreno não especificados anteriormente"
+  },
+  "43215": {
+   "codigo": "43.21-5",
+   "gr": 3,
+   "denominacao": "Instalações elétricas"
+  },
+  "43223": {
+   "codigo": "43.22-3",
+   "gr": 3,
+   "denominacao": "Instalações hidráulicas, de sistemas de ventilação e refrigeração"
+  },
+  "43291": {
+   "codigo": "43.29-1",
+   "gr": 3,
+   "denominacao": "Obras de instalações em construções não especificadas anteriormente"
+  },
+  "43304": {
+   "codigo": "43.30-4",
+   "gr": 3,
+   "denominacao": "Obras de acabamento"
+  },
+  "43916": {
+   "codigo": "43.91-6",
+   "gr": 4,
+   "denominacao": "Obras de fundações"
+  },
+  "43991": {
+   "codigo": "43.99-1",
+   "gr": 3,
+   "denominacao": "Serviços especializados para construção não especificados anteriormente G COMÉRCIO; REPARAÇÃO DE VEÍCULOS AUTOMOTORES E MOTOCICLETAS"
+  },
+  "45111": {
+   "codigo": "45.11-1",
+   "gr": 2,
+   "denominacao": "Comércio a varejo e por atacado de veículos automotores"
+  },
+  "45129": {
+   "codigo": "45.12-9",
+   "gr": 2,
+   "denominacao": "Representantes comerciais e agentes do comércio de veículos automotores"
+  },
+  "45200": {
+   "codigo": "45.20-0",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de veículos automotores"
+  },
+  "45307": {
+   "codigo": "45.30-7",
+   "gr": 2,
+   "denominacao": "Comércio de peças e acessórios para veículos automotores"
+  },
+  "45412": {
+   "codigo": "45.41-2",
+   "gr": 2,
+   "denominacao": "Comércio por atacado e a varejo de motocicletas, peças e acessórios"
+  },
+  "45421": {
+   "codigo": "45.42-1",
+   "gr": 2,
+   "denominacao": "Representantes comerciais e agentes do comércio de motocicletas, peças e acessórios"
+  },
+  "45439": {
+   "codigo": "45.43-9",
+   "gr": 3,
+   "denominacao": "Manutenção e reparação de motocicletas"
+  },
+  "46117": {
+   "codigo": "46.11-7",
+   "gr": 2,
+   "denominacao": "animais vivos Representantes comerciais e agentes do comércio de combustíveis, minerais,"
+  },
+  "46125": {
+   "codigo": "46.12-5",
+   "gr": 2,
+   "denominacao": "produtos siderúrgicos e químicos Representantes comerciais e agentes do comércio de madeira, material de"
+  },
+  "46133": {
+   "codigo": "46.13-3",
+   "gr": 2,
+   "denominacao": "construção e ferragens Representantes comerciais e agentes do comércio de máquinas, equipamentos,"
+  },
+  "46141": {
+   "codigo": "46.14-1",
+   "gr": 2,
+   "denominacao": "embarcações e aeronaves Representantes comerciais e agentes do comércio de eletrodomésticos, móveis e"
+  },
+  "46150": {
+   "codigo": "46.15-0",
+   "gr": 2,
+   "denominacao": "artigos de uso doméstico Representantes comerciais e agentes do comércio de têxteis, vestuário, calçados e"
+  },
+  "46168": {
+   "codigo": "46.16-8",
+   "gr": 2,
+   "denominacao": "artigos de viagem Representantes comerciais e agentes do comércio de produtos alimentícios, bebidas"
+  },
+  "46176": {
+   "codigo": "46.17-6",
+   "gr": 2,
+   "denominacao": "e fumo Representantes comerciais e agentes do comércio especializado em produtos não"
+  },
+  "46184": {
+   "codigo": "46.18-4",
+   "gr": 2,
+   "denominacao": "especificados anteriormente Representantes comerciais e agentes do comércio de mercadorias em geral não"
+  },
+  "46192": {
+   "codigo": "46.19-2",
+   "gr": 2,
+   "denominacao": "especializado"
+  },
+  "46214": {
+   "codigo": "46.21-4",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de café em grão"
+  },
+  "46222": {
+   "codigo": "46.22-2",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de soja Comércio atacadista de animais vivos, alimentos para animais e matérias-primas"
+  },
+  "46231": {
+   "codigo": "46.23-1",
+   "gr": 2,
+   "denominacao": "agrícolas, exceto café e soja"
+  },
+  "46311": {
+   "codigo": "46.31-1",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de leite e laticínios"
+  },
+  "46320": {
+   "codigo": "46.32-0",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de cereais e leguminosas beneficiados, farinhas, amidos e féculas"
+  },
+  "46338": {
+   "codigo": "46.33-8",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de hortifrutigranjeiros"
+  },
+  "46346": {
+   "codigo": "46.34-6",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de carnes, produtos da carne e pescado"
+  },
+  "46354": {
+   "codigo": "46.35-4",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de bebidas"
+  },
+  "46362": {
+   "codigo": "46.36-2",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de produtos do fumo Comércio atacadista especializado em produtos alimentícios não especificados"
+  },
+  "46371": {
+   "codigo": "46.37-1",
+   "gr": 2,
+   "denominacao": "anteriormente"
+  },
+  "46397": {
+   "codigo": "46.39-7",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de produtos alimentícios em geral"
+  },
+  "46419": {
+   "codigo": "46.41-9",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de tecidos, artefatos de tecidos e de armarinho"
+  },
+  "46427": {
+   "codigo": "46.42-7",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de artigos do vestuário e acessórios"
+  },
+  "46435": {
+   "codigo": "46.43-5",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de calçados e artigos de viagem"
+  },
+  "46443": {
+   "codigo": "46.44-3",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de produtos farmacêuticos para uso humano e veterinário Comércio atacadista de instrumentos e materiais para uso médico, cirúrgico,"
+  },
+  "46451": {
+   "codigo": "46.45-1",
+   "gr": 2,
+   "denominacao": "ortopédico e odontológico"
+  },
+  "46460": {
+   "codigo": "46.46-0",
+   "gr": 2,
+   "denominacao": "Comércio atacadista de cosméticos, produtos de perfumaria e de higiene pessoal Comércio atacadista de artigos de escritório e de papelaria; livros, jornais e outras"
+  },
+  "46478": {
+   "codigo": "46.47-8",
+   "gr": 2,
+   "denominacao": "publicações Comércio atacadista de equipamentos e artigos de uso pessoal e doméstico não"
+  },
+  "46494": {
+   "codigo": "46.49-4",
+   "gr": 2,
+   "denominacao": "especificados anteriormente"
+  },
+  "46516": {
+   "codigo": "46.51-6",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de computadores, periféricos e suprimentos de informática Comércio atacadista de componentes eletrônicos e equipamentos de telefonia e"
+  },
+  "46524": {
+   "codigo": "46.52-4",
+   "gr": 3,
+   "denominacao": "comunicação Comércio atacadista de máquinas, aparelhos e equipamentos, exceto de tecnologias de 46.6 informação e comunicação Comércio atacadista de máquinas, aparelhos e equipamentos para uso agropecuário;"
+  },
+  "46613": {
+   "codigo": "46.61-3",
+   "gr": 3,
+   "denominacao": "partes e peças Comércio atacadista de máquinas, equipamentos para terraplenagem, mineração e"
+  },
+  "46621": {
+   "codigo": "46.62-1",
+   "gr": 3,
+   "denominacao": "construção; partes e peças"
+  },
+  "46630": {
+   "codigo": "46.63-0",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de máquinas e equipamentos para uso industrial; partes e peças Comércio atacadista de máquinas, aparelhos e equipamentos para uso odonto-"
+  },
+  "46648": {
+   "codigo": "46.64-8",
+   "gr": 3,
+   "denominacao": "médico- hospitalar; partes e peças"
+  },
+  "46656": {
+   "codigo": "46.65-6",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de máquinas e equipamentos para uso comercial; partes e peças Comércio atacadista de máquinas, aparelhos e equipamentos não especificados"
+  },
+  "46699": {
+   "codigo": "46.69-9",
+   "gr": 3,
+   "denominacao": "anteriormente; partes e peças Comércio atacadista de madeira, ferragens, ferramentas, material elétrico e material de 46.7 construção"
+  },
+  "46711": {
+   "codigo": "46.71-1",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de madeira e produtos derivados"
+  },
+  "46729": {
+   "codigo": "46.72-9",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de ferragens e ferramentas"
+  },
+  "46737": {
+   "codigo": "46.73-7",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de material elétrico"
+  },
+  "46745": {
+   "codigo": "46.74-5",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de cimento Comércio atacadista especializado de materiais de construção não especificados"
+  },
+  "46796": {
+   "codigo": "46.79-6",
+   "gr": 3,
+   "denominacao": "anteriormente e de materiais de construção em geral"
+  },
+  "46818": {
+   "codigo": "46.81-8",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de combustíveis sólidos, líquidos e gasosos, exceto gás natural e GLP"
+  },
+  "46826": {
+   "codigo": "46.82-6",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de gás liqüefeito de petróleo (GLP)"
+  },
+  "46834": {
+   "codigo": "46.83-4",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de defensivos agrícolas, adubos, fertilizantes e corretivos do solo"
+  },
+  "46842": {
+   "codigo": "46.84-2",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de produtos químicos e petroquímicos, exceto agroquímicos"
+  },
+  "46851": {
+   "codigo": "46.85-1",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de produtos siderúrgicos e metalúrgicos, exceto para construção"
+  },
+  "46869": {
+   "codigo": "46.86-9",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de papel e papelão em bruto e de embalagens"
+  },
+  "46877": {
+   "codigo": "46.87-7",
+   "gr": 3,
+   "denominacao": "Comércio atacadista de resíduos e sucatas Comércio atacadista especializado de outros produtos intermediários não"
+  },
+  "46893": {
+   "codigo": "46.89-3",
+   "gr": 3,
+   "denominacao": "especificados anteriormente"
+  },
+  "46915": {
+   "codigo": "46.91-5",
+   "gr": 2,
+   "denominacao": "alimentícios Comércio atacadista de mercadorias em geral, com predominância de insumos"
+  },
+  "46923": {
+   "codigo": "46.92-3",
+   "gr": 2,
+   "denominacao": "agropecuários Comércio atacadista de mercadorias em geral, sem predominância de alimentos ou"
+  },
+  "46931": {
+   "codigo": "46.93-1",
+   "gr": 2,
+   "denominacao": "de insumos agropecuários"
+  },
+  "47113": {
+   "codigo": "47.11-3",
+   "gr": 2,
+   "denominacao": "alimentícios - hipermercados e supermercados Comércio varejista de mercadorias em geral, com predominância de produtos"
+  },
+  "47121": {
+   "codigo": "47.12-1",
+   "gr": 2,
+   "denominacao": "alimentícios - minimercados, mercearias e armazéns"
+  },
+  "47130": {
+   "codigo": "47.13-0",
+   "gr": 2,
+   "denominacao": "Comércio varejista de mercadorias em geral, sem predominância de produtos alimentícios"
+  },
+  "47211": {
+   "codigo": "47.21-1",
+   "gr": 2,
+   "denominacao": "Comércio varejista de produtos de padaria, laticínio, doces, balas e semelhantes"
+  },
+  "47229": {
+   "codigo": "47.22-9",
+   "gr": 3,
+   "denominacao": "Comércio varejista de carnes e pescados - açougues e peixarias"
+  },
+  "47237": {
+   "codigo": "47.23-7",
+   "gr": 2,
+   "denominacao": "Comércio varejista de bebidas"
+  },
+  "47245": {
+   "codigo": "47.24-5",
+   "gr": 2,
+   "denominacao": "Comércio varejista de hortifrutigranjeiros Comércio varejista de produtos alimentícios em geral ou especializado em produtos"
+  },
+  "47296": {
+   "codigo": "47.29-6",
+   "gr": 2,
+   "denominacao": "alimentícios não especificados anteriormente; produtos do fumo"
+  },
+  "47318": {
+   "codigo": "47.31-8",
+   "gr": 3,
+   "denominacao": "Comércio varejista de combustíveis para veículos automotores"
+  },
+  "47326": {
+   "codigo": "47.32-6",
+   "gr": 3,
+   "denominacao": "Comércio varejista de lubrificantes"
+  },
+  "47415": {
+   "codigo": "47.41-5",
+   "gr": 2,
+   "denominacao": "Comércio varejista de tintas e materiais para pintura"
+  },
+  "47423": {
+   "codigo": "47.42-3",
+   "gr": 1,
+   "denominacao": "Comércio varejista de material elétrico"
+  },
+  "47431": {
+   "codigo": "47.43-1",
+   "gr": 2,
+   "denominacao": "Comércio varejista de vidros"
+  },
+  "47440": {
+   "codigo": "47.44-0",
+   "gr": 2,
+   "denominacao": "Comércio varejista de ferragens, madeira e materiais de construção Comércio varejista de equipamentos de informática e comunicação; equipamentos e 47.5 artigos de uso doméstico"
+  },
+  "47512": {
+   "codigo": "47.51-2",
+   "gr": 1,
+   "denominacao": "Comércio varejista especializado de equipamentos e suprimentos de informática"
+  },
+  "47521": {
+   "codigo": "47.52-1",
+   "gr": 1,
+   "denominacao": "Comércio varejista especializado de equipamentos de telefonia e comunicação"
+  },
+  "47539": {
+   "codigo": "47.53-9",
+   "gr": 1,
+   "denominacao": "Comércio varejista especializado de eletrodomésticos e equipamentos de áudio e vídeo"
+  },
+  "47547": {
+   "codigo": "47.54-7",
+   "gr": 1,
+   "denominacao": "Comércio varejista especializado de móveis, colchoaria e artigos de iluminação"
+  },
+  "47555": {
+   "codigo": "47.55-5",
+   "gr": 1,
+   "denominacao": "Comércio varejista especializado de tecidos e artigos de cama, mesa e banho"
+  },
+  "47563": {
+   "codigo": "47.56-3",
+   "gr": 1,
+   "denominacao": "Comércio varejista especializado de instrumentos musicais e acessórios Comércio varejista especializado de peças e acessórios para aparelhos"
+  },
+  "47571": {
+   "codigo": "47.57-1",
+   "gr": 1,
+   "denominacao": "eletroeletrônicos para uso doméstico, exceto informática e comunicação"
+  },
+  "47598": {
+   "codigo": "47.59-8",
+   "gr": 1,
+   "denominacao": "Comércio varejista de artigos de uso doméstico não especificados anteriormente"
+  },
+  "47610": {
+   "codigo": "47.61-0",
+   "gr": 1,
+   "denominacao": "Comércio varejista de livros, jornais, revistas e papelaria"
+  },
+  "47628": {
+   "codigo": "47.62-8",
+   "gr": 1,
+   "denominacao": "Comércio varejista de discos, CDs, DVDs e fitas"
+  },
+  "47636": {
+   "codigo": "47.63-6",
+   "gr": 1,
+   "denominacao": "Comércio varejista de artigos recreativos e esportivos Comércio varejista de produtos farmacêuticos, perfumaria e cosméticos e artigos médicos, 47.7 ópticos e ortopédicos"
+  },
+  "47717": {
+   "codigo": "47.71-7",
+   "gr": 2,
+   "denominacao": "Comércio varejista de produtos farmacêuticos para uso humano e veterinário"
+  },
+  "47725": {
+   "codigo": "47.72-5",
+   "gr": 1,
+   "denominacao": "Comércio varejista de cosméticos, produtos de perfumaria e de higiene pessoal"
+  },
+  "47733": {
+   "codigo": "47.73-3",
+   "gr": 1,
+   "denominacao": "Comércio varejista de artigos médicos e ortopédicos"
+  },
+  "47741": {
+   "codigo": "47.74-1",
+   "gr": 1,
+   "denominacao": "Comércio varejista de artigos de óptica"
+  },
+  "47814": {
+   "codigo": "47.81-4",
+   "gr": 1,
+   "denominacao": "Comércio varejista de artigos do vestuário e acessórios"
+  },
+  "47822": {
+   "codigo": "47.82-2",
+   "gr": 1,
+   "denominacao": "Comércio varejista de calçados e artigos de viagem"
+  },
+  "47831": {
+   "codigo": "47.83-1",
+   "gr": 1,
+   "denominacao": "Comércio varejista de jóias e relógios"
+  },
+  "47849": {
+   "codigo": "47.84-9",
+   "gr": 3,
+   "denominacao": "Comércio varejista de gás liqüefeito de petróleo (GLP)"
+  },
+  "47857": {
+   "codigo": "47.85-7",
+   "gr": 2,
+   "denominacao": "Comércio varejista de artigos usados"
+  },
+  "47890": {
+   "codigo": "47.89-0",
+   "gr": 1,
+   "denominacao": "Comércio varejista de outros produtos novos não especificados anteriormente"
+  },
+  "47903": {
+   "codigo": "47.90-3",
+   "gr": 2,
+   "denominacao": "Comércio ambulante e outros tipos de comércio varejista H TRANSPORTE, ARMAZENAGEM E CORREIO"
+  },
+  "49116": {
+   "codigo": "49.11-6",
+   "gr": 3,
+   "denominacao": "Transporte ferroviário de carga"
+  },
+  "49124": {
+   "codigo": "49.12-4",
+   "gr": 3,
+   "denominacao": "Transporte metroferroviário de passageiros"
+  },
+  "49213": {
+   "codigo": "49.21-3",
+   "gr": 3,
+   "denominacao": "região metropolitana Transporte rodoviário coletivo de passageiros, com itinerário fixo, intermunicipal,"
+  },
+  "49221": {
+   "codigo": "49.22-1",
+   "gr": 3,
+   "denominacao": "interestadual e internacional"
+  },
+  "49230": {
+   "codigo": "49.23-0",
+   "gr": 3,
+   "denominacao": "Transporte rodoviário de táxi"
+  },
+  "49248": {
+   "codigo": "49.24-8",
+   "gr": 3,
+   "denominacao": "Transporte escolar Transporte rodoviário coletivo de passageiros, sob regime de fretamento, e outros"
+  },
+  "49299": {
+   "codigo": "49.29-9",
+   "gr": 3,
+   "denominacao": "transportes rodoviários não especificados anteriormente"
+  },
+  "49302": {
+   "codigo": "49.30-2",
+   "gr": 3,
+   "denominacao": "Transporte rodoviário de carga"
+  },
+  "49400": {
+   "codigo": "49.40-0",
+   "gr": 3,
+   "denominacao": "Transporte dutoviário"
+  },
+  "49507": {
+   "codigo": "49.50-7",
+   "gr": 3,
+   "denominacao": "Trens turísticos, teleféricos e similares"
+  },
+  "50114": {
+   "codigo": "50.11-4",
+   "gr": 3,
+   "denominacao": "Transporte marítimo de cabotagem"
+  },
+  "50122": {
+   "codigo": "50.12-2",
+   "gr": 3,
+   "denominacao": "Transporte marítimo de longo curso"
+  },
+  "50211": {
+   "codigo": "50.21-1",
+   "gr": 3,
+   "denominacao": "Transporte por navegação interior de carga"
+  },
+  "50220": {
+   "codigo": "50.22-0",
+   "gr": 3,
+   "denominacao": "Transporte por navegação interior de passageiros em linhas regulares"
+  },
+  "50301": {
+   "codigo": "50.30-1",
+   "gr": 3,
+   "denominacao": "Navegação de apoio"
+  },
+  "50912": {
+   "codigo": "50.91-2",
+   "gr": 3,
+   "denominacao": "Transporte por navegação de travessia"
+  },
+  "50998": {
+   "codigo": "50.99-8",
+   "gr": 3,
+   "denominacao": "Transportes aquaviários não especificados anteriormente"
+  },
+  "51111": {
+   "codigo": "51.11-1",
+   "gr": 3,
+   "denominacao": "Transporte aéreo de passageiros regular"
+  },
+  "51129": {
+   "codigo": "51.12-9",
+   "gr": 3,
+   "denominacao": "Transporte aéreo de passageiros não-regular"
+  },
+  "51200": {
+   "codigo": "51.20-0",
+   "gr": 3,
+   "denominacao": "Transporte aéreo de carga"
+  },
+  "51307": {
+   "codigo": "51.30-7",
+   "gr": 3,
+   "denominacao": "Transporte espacial"
+  },
+  "52117": {
+   "codigo": "52.11-7",
+   "gr": 3,
+   "denominacao": "Armazenamento"
+  },
+  "52125": {
+   "codigo": "52.12-5",
+   "gr": 3,
+   "denominacao": "Carga e descarga"
+  },
+  "52214": {
+   "codigo": "52.21-4",
+   "gr": 3,
+   "denominacao": "Concessionárias de rodovias, pontes, túneis e serviços relacionados"
+  },
+  "52222": {
+   "codigo": "52.22-2",
+   "gr": 3,
+   "denominacao": "Terminais rodoviários e ferroviários"
+  },
+  "52231": {
+   "codigo": "52.23-1",
+   "gr": 3,
+   "denominacao": "Estacionamento de veículos"
+  },
+  "52290": {
+   "codigo": "52.29-0",
+   "gr": 3,
+   "denominacao": "Atividades auxiliares dos transportes terrestres não especificadas anteriormente"
+  },
+  "52311": {
+   "codigo": "52.31-1",
+   "gr": 3,
+   "denominacao": "Gestão de portos e terminais"
+  },
+  "52320": {
+   "codigo": "52.32-0",
+   "gr": 3,
+   "denominacao": "Atividades de agenciamento marítimo"
+  },
+  "52397": {
+   "codigo": "52.39-7",
+   "gr": 3,
+   "denominacao": "Atividades auxiliares dos transportes aquaviários não especificadas anteriormente"
+  },
+  "52401": {
+   "codigo": "52.40-1",
+   "gr": 3,
+   "denominacao": "Atividades auxiliares dos transportes aéreos"
+  },
+  "52508": {
+   "codigo": "52.50-8",
+   "gr": 3,
+   "denominacao": "Atividades relacionadas à organização do transporte de carga"
+  },
+  "53105": {
+   "codigo": "53.10-5",
+   "gr": 2,
+   "denominacao": "Atividades de Correio"
+  },
+  "53202": {
+   "codigo": "53.20-2",
+   "gr": 2,
+   "denominacao": "Atividades de malote e de entrega I ALOJAMENTO E ALIMENTAÇÃO"
+  },
+  "55108": {
+   "codigo": "55.10-8",
+   "gr": 2,
+   "denominacao": "Hotéis e similares"
+  },
+  "55906": {
+   "codigo": "55.90-6",
+   "gr": 2,
+   "denominacao": "Outros tipos de alojamento não especificados anteriormente"
+  },
+  "56112": {
+   "codigo": "56.11-2",
+   "gr": 2,
+   "denominacao": "Restaurantes e outros estabelecimentos de serviços de alimentação e bebidas"
+  },
+  "56121": {
+   "codigo": "56.12-1",
+   "gr": 2,
+   "denominacao": "Serviços ambulantes de alimentação"
+  },
+  "56201": {
+   "codigo": "56.20-1",
+   "gr": 2,
+   "denominacao": "Serviços de catering, bufê e outros serviços de comida preparada J INFORMAÇÃO E COMUNICAÇÃO"
+  },
+  "58115": {
+   "codigo": "58.11-5",
+   "gr": 3,
+   "denominacao": "Edição de livros"
+  },
+  "58123": {
+   "codigo": "58.12-3",
+   "gr": 3,
+   "denominacao": "Edição de jornais"
+  },
+  "58131": {
+   "codigo": "58.13-1",
+   "gr": 3,
+   "denominacao": "Edição de revistas"
+  },
+  "58191": {
+   "codigo": "58.19-1",
+   "gr": 3,
+   "denominacao": "Edição de cadastros, listas e outros produtos gráficos"
+  },
+  "58212": {
+   "codigo": "58.21-2",
+   "gr": 3,
+   "denominacao": "Edição integrada à impressão de livros"
+  },
+  "58221": {
+   "codigo": "58.22-1",
+   "gr": 3,
+   "denominacao": "Edição integrada à impressão de jornais"
+  },
+  "58239": {
+   "codigo": "58.23-9",
+   "gr": 3,
+   "denominacao": "Edição integrada à impressão de revistas"
+  },
+  "58298": {
+   "codigo": "58.29-8",
+   "gr": 3,
+   "denominacao": "Edição integrada à impressão de cadastros, listas e outros produtos gráficos ATIVIDADES CINEMATOGRÁFICAS, PRODUÇÃO DE VÍDEOS E DE PROGRAMAS DE"
+  },
+  "59111": {
+   "codigo": "59.11-1",
+   "gr": 2,
+   "denominacao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão"
+  },
+  "59120": {
+   "codigo": "59.12-0",
+   "gr": 2,
+   "denominacao": "Atividades de pós-produção cinematográfica, de vídeos e de programas de televisão"
+  },
+  "59138": {
+   "codigo": "59.13-8",
+   "gr": 2,
+   "denominacao": "Distribuição cinematográfica, de vídeo e de programas de televisão"
+  },
+  "59146": {
+   "codigo": "59.14-6",
+   "gr": 2,
+   "denominacao": "Atividades de exibição cinematográfica"
+  },
+  "59201": {
+   "codigo": "59.20-1",
+   "gr": 2,
+   "denominacao": "Atividades de gravação de som e de edição de música"
+  },
+  "60101": {
+   "codigo": "60.10-1",
+   "gr": 2,
+   "denominacao": "Atividades de rádio"
+  },
+  "60217": {
+   "codigo": "60.21-7",
+   "gr": 2,
+   "denominacao": "Atividades de televisão aberta"
+  },
+  "60225": {
+   "codigo": "60.22-5",
+   "gr": 2,
+   "denominacao": "Programadoras e atividades relacionadas à televisão por assinatura"
+  },
+  "61108": {
+   "codigo": "61.10-8",
+   "gr": 2,
+   "denominacao": "Telecomunicações por fio"
+  },
+  "61205": {
+   "codigo": "61.20-5",
+   "gr": 2,
+   "denominacao": "Telecomunicações sem fio"
+  },
+  "61302": {
+   "codigo": "61.30-2",
+   "gr": 2,
+   "denominacao": "Telecomunicações por satélite"
+  },
+  "61418": {
+   "codigo": "61.41-8",
+   "gr": 2,
+   "denominacao": "Operadoras de televisão por assinatura por cabo"
+  },
+  "61426": {
+   "codigo": "61.42-6",
+   "gr": 2,
+   "denominacao": "Operadoras de televisão por assinatura por microondas"
+  },
+  "61434": {
+   "codigo": "61.43-4",
+   "gr": 2,
+   "denominacao": "Operadoras de televisão por assinatura por satélite"
+  },
+  "61906": {
+   "codigo": "61.90-6",
+   "gr": 2,
+   "denominacao": "Outras atividades de telecomunicações"
+  },
+  "62015": {
+   "codigo": "62.01-5",
+   "gr": 2,
+   "denominacao": "Desenvolvimento de programas de computador sob encomenda"
+  },
+  "62023": {
+   "codigo": "62.02-3",
+   "gr": 2,
+   "denominacao": "Desenvolvimento e licenciamento de programas de computador customizáveis"
+  },
+  "62031": {
+   "codigo": "62.03-1",
+   "gr": 2,
+   "denominacao": "Desenvolvimento e licenciamento de programas de computador não-customizáveis"
+  },
+  "62040": {
+   "codigo": "62.04-0",
+   "gr": 2,
+   "denominacao": "Consultoria em tecnologia da informação"
+  },
+  "62091": {
+   "codigo": "62.09-1",
+   "gr": 2,
+   "denominacao": "Suporte técnico, manutenção e outros serviços em tecnologia da informação"
+  },
+  "63119": {
+   "codigo": "63.11-9",
+   "gr": 2,
+   "denominacao": "Tratamento de dados, provedores de serviços de aplicação e serviços de hospedagem na internet"
+  },
+  "63194": {
+   "codigo": "63.19-4",
+   "gr": 2,
+   "denominacao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+  },
+  "63917": {
+   "codigo": "63.91-7",
+   "gr": 2,
+   "denominacao": "Agências de notícias"
+  },
+  "63992": {
+   "codigo": "63.99-2",
+   "gr": 2,
+   "denominacao": "Outras atividades de prestação de serviços de informação não especificadas anteriormente K ATIVIDADES FINANCEIRAS, DE SEGUROS E SERVIÇOS RELACIONADOS"
+  },
+  "64107": {
+   "codigo": "64.10-7",
+   "gr": 1,
+   "denominacao": "Banco Central"
+  },
+  "64212": {
+   "codigo": "64.21-2",
+   "gr": 1,
+   "denominacao": "Bancos comerciais"
+  },
+  "64221": {
+   "codigo": "64.22-1",
+   "gr": 1,
+   "denominacao": "Bancos múltiplos, com carteira comercial"
+  },
+  "64239": {
+   "codigo": "64.23-9",
+   "gr": 1,
+   "denominacao": "Caixas econômicas"
+  },
+  "64247": {
+   "codigo": "64.24-7",
+   "gr": 1,
+   "denominacao": "Crédito cooperativo"
+  },
+  "64310": {
+   "codigo": "64.31-0",
+   "gr": 1,
+   "denominacao": "Bancos múltiplos, sem carteira comercial"
+  },
+  "64328": {
+   "codigo": "64.32-8",
+   "gr": 1,
+   "denominacao": "Bancos de investimento"
+  },
+  "64336": {
+   "codigo": "64.33-6",
+   "gr": 1,
+   "denominacao": "Bancos de desenvolvimento"
+  },
+  "64344": {
+   "codigo": "64.34-4",
+   "gr": 1,
+   "denominacao": "Agências de fomento"
+  },
+  "64352": {
+   "codigo": "64.35-2",
+   "gr": 1,
+   "denominacao": "Crédito imobiliário"
+  },
+  "64361": {
+   "codigo": "64.36-1",
+   "gr": 1,
+   "denominacao": "Sociedades de crédito, financiamento e investimento - financeiras"
+  },
+  "64379": {
+   "codigo": "64.37-9",
+   "gr": 1,
+   "denominacao": "Sociedades de crédito ao microempreendedor"
+  },
+  "64387": {
+   "codigo": "64.38-7",
+   "gr": 1,
+   "denominacao": "Bancos de câmbio e outras instituições de intermediação não-monetária"
+  },
+  "64409": {
+   "codigo": "64.40-9",
+   "gr": 1,
+   "denominacao": "Arrendamento mercantil"
+  },
+  "64506": {
+   "codigo": "64.50-6",
+   "gr": 1,
+   "denominacao": "Sociedades de capitalização"
+  },
+  "64611": {
+   "codigo": "64.61-1",
+   "gr": 1,
+   "denominacao": "Holdings de instituições financeiras"
+  },
+  "64620": {
+   "codigo": "64.62-0",
+   "gr": 1,
+   "denominacao": "Holdings de instituições não-financeiras"
+  },
+  "64638": {
+   "codigo": "64.63-8",
+   "gr": 1,
+   "denominacao": "Outras sociedades de participação, exceto holdings"
+  },
+  "64701": {
+   "codigo": "64.70-1",
+   "gr": 1,
+   "denominacao": "Fundos de investimento"
+  },
+  "64913": {
+   "codigo": "64.91-3",
+   "gr": 1,
+   "denominacao": "Sociedades de fomento mercantil - factoring"
+  },
+  "64921": {
+   "codigo": "64.92-1",
+   "gr": 1,
+   "denominacao": "Securitização de créditos"
+  },
+  "64930": {
+   "codigo": "64.93-0",
+   "gr": 1,
+   "denominacao": "Administração de consórcios para aquisição de bens e direitos"
+  },
+  "64999": {
+   "codigo": "64.99-9",
+   "gr": 1,
+   "denominacao": "Outras atividades de serviços financeiros não especificadas anteriormente"
+  },
+  "65111": {
+   "codigo": "65.11-1",
+   "gr": 1,
+   "denominacao": "Seguros de vida"
+  },
+  "65120": {
+   "codigo": "65.12-0",
+   "gr": 1,
+   "denominacao": "Seguros não-vida"
+  },
+  "65201": {
+   "codigo": "65.20-1",
+   "gr": 1,
+   "denominacao": "Seguros-saúde"
+  },
+  "65308": {
+   "codigo": "65.30-8",
+   "gr": 1,
+   "denominacao": "Resseguros"
+  },
+  "65413": {
+   "codigo": "65.41-3",
+   "gr": 1,
+   "denominacao": "Previdência complementar fechada"
+  },
+  "65421": {
+   "codigo": "65.42-1",
+   "gr": 1,
+   "denominacao": "Previdência complementar aberta"
+  },
+  "65502": {
+   "codigo": "65.50-2",
+   "gr": 1,
+   "denominacao": "Planos de saúde ATIVIDADES AUXILIARES DOS SERVIÇOS FINANCEIROS, SEGUROS, PREVIDÊNCIA"
+  },
+  "66118": {
+   "codigo": "66.11-8",
+   "gr": 1,
+   "denominacao": "Administração de bolsas e mercados de balcão organizados"
+  },
+  "66126": {
+   "codigo": "66.12-6",
+   "gr": 1,
+   "denominacao": "Atividades de intermediários em transações de títulos, valores mobiliários e mercadorias"
+  },
+  "66134": {
+   "codigo": "66.13-4",
+   "gr": 1,
+   "denominacao": "Administração de cartões de crédito"
+  },
+  "66193": {
+   "codigo": "66.19-3",
+   "gr": 1,
+   "denominacao": "Atividades auxiliares dos serviços financeiros não especificadas anteriormente"
+  },
+  "66215": {
+   "codigo": "66.21-5",
+   "gr": 1,
+   "denominacao": "Avaliação de riscos e perdas"
+  },
+  "66223": {
+   "codigo": "66.22-3",
+   "gr": 1,
+   "denominacao": "Corretores e agentes de seguros, de planos de previdência complementar e de saúde Atividades auxiliares dos seguros, da previdência complementar e dos planos de"
+  },
+  "66291": {
+   "codigo": "66.29-1",
+   "gr": 1,
+   "denominacao": "saúde não especificadas anteriormente"
+  },
+  "66304": {
+   "codigo": "66.30-4",
+   "gr": 1,
+   "denominacao": "Atividades de administração de fundos por contrato ou comissão L ATIVIDADES IMOBILIÁRIAS"
+  },
+  "68102": {
+   "codigo": "68.10-2",
+   "gr": 1,
+   "denominacao": "Atividades imobiliárias de imóveis próprios"
+  },
+  "68218": {
+   "codigo": "68.21-8",
+   "gr": 1,
+   "denominacao": "Intermediação na compra, venda e aluguel de imóveis"
+  },
+  "68226": {
+   "codigo": "68.22-6",
+   "gr": 1,
+   "denominacao": "Gestão e administração da propriedade imobiliária M ATIVIDADES PROFISSIONAIS, CIENTÍFICAS E TÉCNICAS"
+  },
+  "69117": {
+   "codigo": "69.11-7",
+   "gr": 1,
+   "denominacao": "Atividades jurídicas, exceto cartórios"
+  },
+  "69125": {
+   "codigo": "69.12-5",
+   "gr": 1,
+   "denominacao": "Cartórios"
+  },
+  "69206": {
+   "codigo": "69.20-6",
+   "gr": 1,
+   "denominacao": "Atividades de contabilidade, consultoria e auditoria contábil e tributária"
+  },
+  "70107": {
+   "codigo": "70.10-7",
+   "gr": 1,
+   "denominacao": "Sedes de empresas e unidades administrativas locais"
+  },
+  "70204": {
+   "codigo": "70.20-4",
+   "gr": 1,
+   "denominacao": "Atividades de consultoria em gestão empresarial"
+  },
+  "71111": {
+   "codigo": "71.11-1",
+   "gr": 1,
+   "denominacao": "Serviços de arquitetura"
+  },
+  "71120": {
+   "codigo": "71.12-0",
+   "gr": 1,
+   "denominacao": "Serviços de engenharia"
+  },
+  "71197": {
+   "codigo": "71.19-7",
+   "gr": 1,
+   "denominacao": "Atividades técnicas relacionadas à arquitetura e engenharia"
+  },
+  "71201": {
+   "codigo": "71.20-1",
+   "gr": 2,
+   "denominacao": "Testes e análises técnicas"
+  },
+  "72100": {
+   "codigo": "72.10-0",
+   "gr": 2,
+   "denominacao": "Pesquisa e desenvolvimento experimental em ciências físicas e naturais"
+  },
+  "72207": {
+   "codigo": "72.20-7",
+   "gr": 2,
+   "denominacao": "Pesquisa e desenvolvimento experimental em ciências sociais e humanas"
+  },
+  "73114": {
+   "codigo": "73.11-4",
+   "gr": 1,
+   "denominacao": "Agências de publicidade"
+  },
+  "73122": {
+   "codigo": "73.12-2",
+   "gr": 1,
+   "denominacao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+  },
+  "73190": {
+   "codigo": "73.19-0",
+   "gr": 1,
+   "denominacao": "Atividades de publicidade não especificadas anteriormente"
+  },
+  "73203": {
+   "codigo": "73.20-3",
+   "gr": 1,
+   "denominacao": "Pesquisas de mercado e de opinião pública"
+  },
+  "74102": {
+   "codigo": "74.10-2",
+   "gr": 1,
+   "denominacao": "Design e decoração de interiores"
+  },
+  "74200": {
+   "codigo": "74.20-0",
+   "gr": 2,
+   "denominacao": "Atividades fotográficas e similares"
+  },
+  "74901": {
+   "codigo": "74.90-1",
+   "gr": 1,
+   "denominacao": "Atividades profissionais, científicas e técnicas não especificadas anteriormente"
+  },
+  "75001": {
+   "codigo": "75.00-1",
+   "gr": 3,
+   "denominacao": "Atividades veterinárias N ATIVIDADES ADMINISTRATIVAS E SERVIÇOS COMPLEMENTARES"
+  },
+  "77110": {
+   "codigo": "77.11-0",
+   "gr": 1,
+   "denominacao": "Locação de automóveis sem condutor"
+  },
+  "77195": {
+   "codigo": "77.19-5",
+   "gr": 1,
+   "denominacao": "Locação de meios de transporte, exceto automóveis, sem condutor"
+  },
+  "77217": {
+   "codigo": "77.21-7",
+   "gr": 1,
+   "denominacao": "Aluguel de equipamentos recreativos e esportivos"
+  },
+  "77225": {
+   "codigo": "77.22-5",
+   "gr": 1,
+   "denominacao": "Aluguel de fitas de vídeo, DVDs e similares"
+  },
+  "77233": {
+   "codigo": "77.23-3",
+   "gr": 1,
+   "denominacao": "Aluguel de objetos do vestuário, jóias e acessórios"
+  },
+  "77292": {
+   "codigo": "77.29-2",
+   "gr": 1,
+   "denominacao": "Aluguel de objetos pessoais e domésticos não especificados anteriormente"
+  },
+  "77314": {
+   "codigo": "77.31-4",
+   "gr": 1,
+   "denominacao": "Aluguel de máquinas e equipamentos agrícolas sem operador"
+  },
+  "77322": {
+   "codigo": "77.32-2",
+   "gr": 1,
+   "denominacao": "Aluguel de máquinas e equipamentos para construção sem operador"
+  },
+  "77331": {
+   "codigo": "77.33-1",
+   "gr": 1,
+   "denominacao": "Aluguel de máquinas e equipamentos para escritório"
+  },
+  "77390": {
+   "codigo": "77.39-0",
+   "gr": 1,
+   "denominacao": "Aluguel de máquinas e equipamentos não especificados anteriormente"
+  },
+  "77403": {
+   "codigo": "77.40-3",
+   "gr": 1,
+   "denominacao": "Gestão de ativos intangíveis não-financeiros"
+  },
+  "78108": {
+   "codigo": "78.10-8",
+   "gr": 1,
+   "denominacao": "Seleção e agenciamento de mão-de-obra"
+  },
+  "78205": {
+   "codigo": "78.20-5",
+   "gr": 1,
+   "denominacao": "Locação de mão-de-obra temporária"
+  },
+  "78302": {
+   "codigo": "78.30-2",
+   "gr": 1,
+   "denominacao": "Fornecimento e gestão de recursos humanos para terceiros"
+  },
+  "79112": {
+   "codigo": "79.11-2",
+   "gr": 1,
+   "denominacao": "Agências de viagens"
+  },
+  "79121": {
+   "codigo": "79.12-1",
+   "gr": 1,
+   "denominacao": "Operadores turísticos"
+  },
+  "79902": {
+   "codigo": "79.90-2",
+   "gr": 1,
+   "denominacao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+  },
+  "80111": {
+   "codigo": "80.11-1",
+   "gr": 3,
+   "denominacao": "Atividades de vigilância e segurança privada"
+  },
+  "80129": {
+   "codigo": "80.12-9",
+   "gr": 3,
+   "denominacao": "Atividades de transporte de valores"
+  },
+  "80200": {
+   "codigo": "80.20-0",
+   "gr": 3,
+   "denominacao": "Atividades de monitoramento de sistemas de segurança"
+  },
+  "80307": {
+   "codigo": "80.30-7",
+   "gr": 3,
+   "denominacao": "Atividades de investigação particular"
+  },
+  "81117": {
+   "codigo": "81.11-7",
+   "gr": 2,
+   "denominacao": "Serviços combinados para apoio a edifícios, exceto condomínios prediais"
+  },
+  "81125": {
+   "codigo": "81.12-5",
+   "gr": 2,
+   "denominacao": "Condomínios prediais"
+  },
+  "81214": {
+   "codigo": "81.21-4",
+   "gr": 3,
+   "denominacao": "Limpeza em prédios e em domicílios"
+  },
+  "81222": {
+   "codigo": "81.22-2",
+   "gr": 3,
+   "denominacao": "Imunização e controle de pragas urbanas"
+  },
+  "81290": {
+   "codigo": "81.29-0",
+   "gr": 3,
+   "denominacao": "Atividades de limpeza não especificadas anteriormente"
+  },
+  "81303": {
+   "codigo": "81.30-3",
+   "gr": 1,
+   "denominacao": "Atividades paisagísticas SERVIÇOS DE ESCRITÓRIO, DE APOIO ADMINISTRATIVO E OUTROS SERVIÇOS PRESTADOS 82 ÀS EMPRESAS"
+  },
+  "82113": {
+   "codigo": "82.11-3",
+   "gr": 1,
+   "denominacao": "Serviços combinados de escritório e apoio administrativo Fotocópias, preparação de documentos e outros serviços especializados de apoio"
+  },
+  "82199": {
+   "codigo": "82.19-9",
+   "gr": 2,
+   "denominacao": "administrativo"
+  },
+  "82202": {
+   "codigo": "82.20-2",
+   "gr": 2,
+   "denominacao": "Atividades de teleatendimento"
+  },
+  "82300": {
+   "codigo": "82.30-0",
+   "gr": 2,
+   "denominacao": "Atividades de organização de eventos, exceto culturais e esportivos"
+  },
+  "82911": {
+   "codigo": "82.91-1",
+   "gr": 2,
+   "denominacao": "Atividades de cobrança e informações cadastrais"
+  },
+  "82920": {
+   "codigo": "82.92-0",
+   "gr": 2,
+   "denominacao": "Envasamento e empacotamento sob contrato Atividades de serviços prestados principalmente às empresas não especificadas"
+  },
+  "82997": {
+   "codigo": "82.99-7",
+   "gr": 2,
+   "denominacao": "anteriormente O ADMINISTRAÇÃO PÚBLICA, DEFESA E SEGURIDADE SOCIAL"
+  },
+  "84116": {
+   "codigo": "84.11-6",
+   "gr": 1,
+   "denominacao": "Administração pública em geral"
+  },
+  "84124": {
+   "codigo": "84.12-4",
+   "gr": 1,
+   "denominacao": "Regulação das atividades de saúde, educação, serviços culturais e outros serviços sociais"
+  },
+  "84132": {
+   "codigo": "84.13-2",
+   "gr": 1,
+   "denominacao": "Regulação das atividades econômicas"
+  },
+  "84213": {
+   "codigo": "84.21-3",
+   "gr": 1,
+   "denominacao": "Relações exteriores"
+  },
+  "84221": {
+   "codigo": "84.22-1",
+   "gr": 1,
+   "denominacao": "Defesa"
+  },
+  "84230": {
+   "codigo": "84.23-0",
+   "gr": 1,
+   "denominacao": "Justiça"
+  },
+  "84248": {
+   "codigo": "84.24-8",
+   "gr": 1,
+   "denominacao": "Segurança e ordem pública"
+  },
+  "84256": {
+   "codigo": "84.25-6",
+   "gr": 1,
+   "denominacao": "Defesa Civil"
+  },
+  "84302": {
+   "codigo": "84.30-2",
+   "gr": 1,
+   "denominacao": "Seguridade social obrigatória P EDUCAÇÃO"
+  },
+  "85112": {
+   "codigo": "85.11-2",
+   "gr": 2,
+   "denominacao": "Educação infantil - creche"
+  },
+  "85121": {
+   "codigo": "85.12-1",
+   "gr": 2,
+   "denominacao": "Educação infantil - pré-escola"
+  },
+  "85139": {
+   "codigo": "85.13-9",
+   "gr": 2,
+   "denominacao": "Ensino fundamental"
+  },
+  "85201": {
+   "codigo": "85.20-1",
+   "gr": 2,
+   "denominacao": "Ensino médio"
+  },
+  "85317": {
+   "codigo": "85.31-7",
+   "gr": 2,
+   "denominacao": "Educação superior - graduação"
+  },
+  "85325": {
+   "codigo": "85.32-5",
+   "gr": 2,
+   "denominacao": "Educação superior - graduação e pós-graduação"
+  },
+  "85333": {
+   "codigo": "85.33-3",
+   "gr": 2,
+   "denominacao": "Educação superior - pós-graduação e extensão"
+  },
+  "85414": {
+   "codigo": "85.41-4",
+   "gr": 2,
+   "denominacao": "Educação profissional de nível técnico"
+  },
+  "85422": {
+   "codigo": "85.42-2",
+   "gr": 2,
+   "denominacao": "Educação profissional de nível tecnológico"
+  },
+  "85503": {
+   "codigo": "85.50-3",
+   "gr": 2,
+   "denominacao": "Atividades de apoio à educação"
+  },
+  "85911": {
+   "codigo": "85.91-1",
+   "gr": 2,
+   "denominacao": "Ensino de esportes"
+  },
+  "85929": {
+   "codigo": "85.92-9",
+   "gr": 2,
+   "denominacao": "Ensino de arte e cultura"
+  },
+  "85937": {
+   "codigo": "85.93-7",
+   "gr": 2,
+   "denominacao": "Ensino de idiomas"
+  },
+  "85996": {
+   "codigo": "85.99-6",
+   "gr": 2,
+   "denominacao": "Atividades de ensino não especificadas anteriormente Q SAÚDE HUMANA E SERVIÇOS SOCIAIS"
+  },
+  "86101": {
+   "codigo": "86.10-1",
+   "gr": 3,
+   "denominacao": "Atividades de atendimento hospitalar"
+  },
+  "86216": {
+   "codigo": "86.21-6",
+   "gr": 3,
+   "denominacao": "Serviços móveis de atendimento a urgências"
+  },
+  "86224": {
+   "codigo": "86.22-4",
+   "gr": 3,
+   "denominacao": "Serviços de remoção de pacientes, exceto os serviços móveis de atendimento a urgências"
+  },
+  "86305": {
+   "codigo": "86.30-5",
+   "gr": 3,
+   "denominacao": "Atividades de atenção ambulatorial executadas por médicos e odontólogos"
+  },
+  "86402": {
+   "codigo": "86.40-2",
+   "gr": 3,
+   "denominacao": "Atividades de serviços de complementação diagnóstica e terapêutica"
+  },
+  "86500": {
+   "codigo": "86.50-0",
+   "gr": 2,
+   "denominacao": "Atividades de profissionais da área de saúde, exceto médicos e odontólogos"
+  },
+  "86607": {
+   "codigo": "86.60-7",
+   "gr": 1,
+   "denominacao": "Atividades de apoio à gestão de saúde"
+  },
+  "86909": {
+   "codigo": "86.90-9",
+   "gr": 1,
+   "denominacao": "Atividades de atenção à saúde humana não especificadas anteriormente ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA INTEGRADAS COM ASSISTÊNCIA SOCIAL,"
+  },
+  "87115": {
+   "codigo": "87.11-5",
+   "gr": 1,
+   "denominacao": "convalescentes prestadas em residências coletivas e particulares Atividades de fornecimento de infra-estrutura de apoio e assistência a paciente no"
+  },
+  "87123": {
+   "codigo": "87.12-3",
+   "gr": 1,
+   "denominacao": "domicílio Atividades de assistência psicossocial e à saúde a portadores de distúrbios psíquicos, 87.2 deficiência mental e dependência química Atividades de assistência psicossocial e à saúde a portadores de distúrbios psíquicos,"
+  },
+  "87204": {
+   "codigo": "87.20-4",
+   "gr": 1,
+   "denominacao": "deficiência mental e dependência química"
+  },
+  "87301": {
+   "codigo": "87.30-1",
+   "gr": 1,
+   "denominacao": "Atividades de assistência social prestadas em residências coletivas e particulares"
+  },
+  "88006": {
+   "codigo": "88.00-6",
+   "gr": 1,
+   "denominacao": "Serviços de assistência social sem alojamento R ARTES, CULTURA, ESPORTE E RECREAÇÃO"
+  },
+  "90019": {
+   "codigo": "90.01-9",
+   "gr": 2,
+   "denominacao": "Artes cênicas, espetáculos e atividades complementares"
+  },
+  "90027": {
+   "codigo": "90.02-7",
+   "gr": 2,
+   "denominacao": "Criação artística"
+  },
+  "90035": {
+   "codigo": "90.03-5",
+   "gr": 1,
+   "denominacao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+  },
+  "91015": {
+   "codigo": "91.01-5",
+   "gr": 2,
+   "denominacao": "Atividades de bibliotecas e arquivos Atividades de museus e de exploração, restauração artística e conservação de lugares"
+  },
+  "91023": {
+   "codigo": "91.02-3",
+   "gr": 2,
+   "denominacao": "e prédios históricos e atrações similares Atividades de jardins botânicos, zoológicos, parques nacionais, reservas ecológicas e"
+  },
+  "91031": {
+   "codigo": "91.03-1",
+   "gr": 2,
+   "denominacao": "áreas de proteção ambiental"
+  },
+  "92003": {
+   "codigo": "92.00-3",
+   "gr": 1,
+   "denominacao": "Atividades de exploração de jogos de azar e apostas"
+  },
+  "93115": {
+   "codigo": "93.11-5",
+   "gr": 1,
+   "denominacao": "Gestão de instalações de esportes"
+  },
+  "93123": {
+   "codigo": "93.12-3",
+   "gr": 2,
+   "denominacao": "Clubes sociais, esportivos e similares"
+  },
+  "93131": {
+   "codigo": "93.13-1",
+   "gr": 2,
+   "denominacao": "Atividades de condicionamento físico"
+  },
+  "93191": {
+   "codigo": "93.19-1",
+   "gr": 2,
+   "denominacao": "Atividades esportivas não especificadas anteriormente"
+  },
+  "93212": {
+   "codigo": "93.21-2",
+   "gr": 2,
+   "denominacao": "Parques de diversão e parques temáticos"
+  },
+  "93298": {
+   "codigo": "93.29-8",
+   "gr": 2,
+   "denominacao": "Atividades de recreação e lazer não especificadas anteriormente S OUTRAS ATIVIDADES DE SERVIÇOS"
+  },
+  "94111": {
+   "codigo": "94.11-1",
+   "gr": 1,
+   "denominacao": "Atividades de organizações associativas patronais e empresariais"
+  },
+  "94120": {
+   "codigo": "94.12-0",
+   "gr": 1,
+   "denominacao": "Atividades de organizações associativas profissionais"
+  },
+  "94201": {
+   "codigo": "94.20-1",
+   "gr": 1,
+   "denominacao": "Atividades de organizações sindicais"
+  },
+  "94308": {
+   "codigo": "94.30-8",
+   "gr": 1,
+   "denominacao": "Atividades de associações de defesa de direitos sociais"
+  },
+  "94910": {
+   "codigo": "94.91-0",
+   "gr": 1,
+   "denominacao": "Atividades de organizações religiosas"
+  },
+  "94928": {
+   "codigo": "94.92-8",
+   "gr": 1,
+   "denominacao": "Atividades de organizações políticas"
+  },
+  "94936": {
+   "codigo": "94.93-6",
+   "gr": 1,
+   "denominacao": "Atividades de organizações associativas ligadas à cultura e à arte"
+  },
+  "94995": {
+   "codigo": "94.99-5",
+   "gr": 1,
+   "denominacao": "Atividades associativas não especificadas anteriormente REPARAÇÃO E MANUTENÇÃO DE EQUIPAMENTOS DE INFORMÁTICA E COMUNICAÇÃO E 95 DE OBJETOS PESSOAIS E DOMÉSTICOS"
+  },
+  "95118": {
+   "codigo": "95.11-8",
+   "gr": 3,
+   "denominacao": "Reparação e manutenção de computadores e de equipamentos periféricos"
+  },
+  "95126": {
+   "codigo": "95.12-6",
+   "gr": 3,
+   "denominacao": "Reparação e manutenção de equipamentos de comunicação"
+  },
+  "95215": {
+   "codigo": "95.21-5",
+   "gr": 3,
+   "denominacao": "Reparação e manutenção de equipamentos eletroeletrônicos de uso pessoal e doméstico Reparação e manutenção de objetos e equipamentos pessoais e domésticos não"
+  },
+  "95291": {
+   "codigo": "95.29-1",
+   "gr": 3,
+   "denominacao": "especificados anteriormente"
+  },
+  "96017": {
+   "codigo": "96.01-7",
+   "gr": 2,
+   "denominacao": "Lavanderias, tinturarias e toalheiros"
+  },
+  "96025": {
+   "codigo": "96.02-5",
+   "gr": 2,
+   "denominacao": "Cabeleireiros e outras atividades de tratamento de beleza"
+  },
+  "96033": {
+   "codigo": "96.03-3",
+   "gr": 2,
+   "denominacao": "Atividades funerárias e serviços relacionados"
+  },
+  "96092": {
+   "codigo": "96.09-2",
+   "gr": 2,
+   "denominacao": "Atividades de serviços pessoais não especificadas anteriormente T SERVIÇOS DOMÉSTICOS"
+  },
+  "97005": {
+   "codigo": "97.00-5",
+   "gr": 2,
+   "denominacao": "Serviços domésticos U ORGANISMOS INTERNACIONAIS E OUTRAS INSTITUIÇÕES EXTRATERRITORIAIS"
+  },
+  "99008": {
+   "codigo": "99.00-8",
+   "gr": 1,
+   "denominacao": "Organismos internacionais e outras instituições extraterritoriais * Informações sobre detalhamentos dos CNAE ver https://cnae.ibge.gov.br/"
+  }
+ }
+}
