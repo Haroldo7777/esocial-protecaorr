@@ -156,40 +156,88 @@ h1.page{font-size:1.15rem;margin-bottom:14px}
 .st.err .tag{background:var(--st-err-bg);color:var(--st-err)}
 .st.warn .tag{background:var(--st-warn-bg);color:var(--st-warn)}
 /* ---------- módulo empresas ---------- */
+.quota{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.quota .nums{font-size:.84rem;color:var(--text2)}
+.quota .nums b{color:var(--text);font-size:1rem}
+.quota .bar{flex:1;min-width:160px;height:10px;background:var(--surface2);
+  border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.quota .bar i{display:block;height:100%;background:var(--accent);border-radius:999px}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.toolbar input[type="search"]{flex:1;min-width:180px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.88rem}
+.toolbar input[type="search"]{flex:1;min-width:170px;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.88rem}
 .toolbar select{padding:10px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.84rem}
 .btn2{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);color:var(--text2);border-radius:8px;padding:9px 14px;font-size:.82rem;font-weight:600;cursor:pointer}
 .btn2:hover{border-color:var(--accent);color:var(--accent-ink)}
 .tbl-wrap{overflow-x:auto}
 table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 .tbl th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);padding:10px;border-bottom:1px solid var(--border);white-space:nowrap}
-.tbl td{padding:11px 10px;border-bottom:1px solid var(--border);color:var(--text2);white-space:nowrap}
-.tbl td.emp{color:var(--text);font-weight:600;white-space:normal;min-width:200px}
+.tbl td{padding:11px 10px;border-bottom:1px solid var(--border);color:var(--text2);white-space:nowrap;vertical-align:top}
+.tbl td.emp{color:var(--text);white-space:normal;min-width:230px}
+.tbl td.emp .fant{font-weight:700}
+.tbl td.emp .raz{font-size:.76rem;color:var(--text2)}
+.tbl td.emp .insc{font-size:.74rem;color:var(--text3)}
 .tbl tr:hover td{background:var(--surface2)}
+.mod-badge{display:inline-flex;align-items:center;gap:4px;font-size:.66rem;font-weight:700;
+  border-radius:999px;padding:2px 8px;background:var(--accent-light);color:var(--accent-ink);margin-left:6px;vertical-align:1px}
+.fil-link{font-size:.72rem;color:var(--accent-ink);cursor:pointer;text-decoration:underline dotted}
 .chip2{display:inline-block;font-size:.7rem;font-weight:700;border-radius:999px;padding:3px 10px}
 .chip2.lib{background:var(--st-ok-bg);color:var(--st-ok)}
 .chip2.blo{background:var(--st-err-bg);color:var(--st-err)}
-.chip2.tipo{background:var(--accent-light);color:var(--accent-ink);font-weight:600}
 .pager{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:12px;font-size:.8rem;color:var(--text2);flex-wrap:wrap}
 .pager button{border:1px solid var(--border);background:var(--surface);color:var(--text2);border-radius:6px;padding:5px 10px;cursor:pointer}
 .pager button[disabled]{opacity:.4;cursor:default}
 .link-acessar{color:var(--accent-ink);font-weight:600;text-decoration:none;white-space:nowrap}
-/* modal */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+/* menu ⋮ por linha */
+.rowmenu{position:relative;display:inline-block}
+.rowmenu>button{border:1px solid var(--border);background:var(--surface);color:var(--text2);
+  border-radius:6px;width:28px;height:28px;cursor:pointer;font-weight:700}
+.rowmenu .dd{position:absolute;right:0;top:32px;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;box-shadow:var(--shadow);min-width:230px;z-index:40;display:none;overflow:hidden}
+.rowmenu.open .dd{display:block}
+.rowmenu .dd button{display:block;width:100%;text-align:left;background:none;border:none;
+  padding:10px 14px;font-size:.8rem;color:var(--text2);cursor:pointer}
+.rowmenu .dd button:hover{background:var(--surface2);color:var(--text)}
+.rowmenu .dd button.danger{color:var(--st-err)}
+/* ---------- assistente instalação inicial ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;z-index:60;padding:16px;overflow:auto}
 .modal-bg.open{display:flex}
-.modal{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);max-width:520px;width:100%;padding:22px;max-height:90vh;overflow:auto}
-.modal h2{font-size:1rem;margin-bottom:14px}
-.field{margin-bottom:12px}
-.field label{display:block;font-size:.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
-.field input,.field select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-size:.9rem}
-.field .err{color:var(--st-err);font-size:.72rem;margin-top:4px;display:none}
-.field.invalid input{border-color:var(--st-err)}
+.modal{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);max-width:720px;width:100%;padding:22px;margin:20px 0}
+.modal h2{font-size:1rem;margin-bottom:4px}
+.modal .sub{font-size:.76rem;color:var(--text2);margin-bottom:14px}
+.steps{display:flex;gap:4px;margin-bottom:18px;flex-wrap:wrap}
+.step{flex:1;min-width:110px;display:flex;align-items:center;gap:7px;border:1px solid var(--border);
+  border-radius:8px;padding:7px 9px;font-size:.7rem;color:var(--text3);background:var(--surface2)}
+.step .n{width:20px;height:20px;border-radius:50%;background:var(--border);color:var(--text2);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.7rem;flex:none}
+.step.on{border-color:var(--accent);background:var(--accent-light);color:var(--accent-ink)}
+.step.on .n{background:var(--accent);color:#fff}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.fgrid .full{grid-column:1/-1}
+.fsec{grid-column:1/-1;font-size:.72rem;font-weight:700;color:var(--accent-ink);
+  text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);
+  padding-bottom:5px;margin-top:10px}
+.field{margin-bottom:2px}
+.field label{display:block;font-size:.68rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.field input,.field select,.field textarea{width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-size:.88rem;font-family:inherit}
+.field .err{color:var(--st-err);font-size:.7rem;margin-top:3px;display:none}
+.field.invalid input,.field.invalid select{border-color:var(--st-err)}
 .field.invalid .err{display:block}
-.field .okmsg{color:var(--st-ok);font-size:.72rem;margin-top:4px;display:none}
+.field .okmsg{color:var(--st-ok);font-size:.7rem;margin-top:3px;display:none}
 .field.valid .okmsg{display:block}
+.radios{display:flex;gap:8px;flex-wrap:wrap}
+.radios label{display:flex;align-items:center;gap:6px;border:1.5px solid var(--border);
+  border-radius:8px;padding:8px 12px;font-size:.8rem;color:var(--text2);cursor:pointer;
+  text-transform:none;letter-spacing:0;font-weight:600;margin:0}
+.radios input{width:auto;accent-color:var(--accent)}
+.radios label.sel{border-color:var(--accent);background:var(--accent-light);color:var(--accent-ink)}
+.graus{display:flex;gap:8px}
+.graus button{flex:1;border:1.5px solid var(--border);background:var(--surface2);color:var(--text2);
+  border-radius:8px;padding:9px 0;font-size:.9rem;font-weight:700;cursor:pointer}
+.graus button.sel{border-color:var(--accent);background:var(--accent);color:#fff}
+.terms{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;color:var(--text2);margin-top:12px}
+.terms input{margin-top:3px;accent-color:var(--accent)}
 .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
-/* detalhe da empresa */
+.note-b{font-size:.7rem;color:var(--text3);margin-top:10px}
+/* ---------- detalhe da empresa ---------- */
 .tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:14px;flex-wrap:wrap}
 .tabs button{border:none;background:none;color:var(--text2);font-size:.84rem;padding:9px 14px;cursor:pointer;border-bottom:2px solid transparent}
 .tabs button.on{color:var(--accent-ink);font-weight:700;border-bottom-color:var(--accent)}
@@ -198,6 +246,11 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 .det-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px}
 .det-item .k{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
 .det-item .v{font-size:.9rem;font-weight:600}
+.prog{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.prog .bar{flex:1;min-width:150px;height:10px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.prog .bar i{display:block;height:100%;background:var(--accent)}
+.prog .pct{font-weight:800;font-size:.95rem}
+.prog .lbl{font-size:.76rem;color:var(--text2)}
 .empty{padding:30px;text-align:center;color:var(--text2);font-size:.85rem;line-height:1.7}
 @media(max-width:920px){.det-grid{grid-template-columns:1fr 1fr}}
 /* ---------- placeholder de módulo ---------- */
@@ -214,6 +267,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 @media(max-width:920px){
   .kpis{grid-template-columns:repeat(2,1fr)}
   .ev-grid,.venc-cols{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
 }
 @media(max-width:760px){
   .app{grid-template-columns:1fr;grid-template-areas:"top" "main"}
@@ -360,27 +414,38 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
     <!-- ================= MÓDULO: EMPRESAS ================= -->
     <section id="mod-empresas" hidden>
       <h1 class="page">Empresas</h1>
+
+      <div class="card">
+        <div class="quota">
+          <div class="nums">Plano: <b id="qUsado">—</b> de <b id="qLimite">—</b> empregados</div>
+          <div class="bar"><i id="qBar" style="width:0%"></i></div>
+          <div class="nums" id="qPct"></div>
+        </div>
+      </div>
+
       <div class="card">
         <div class="toolbar">
-          <input type="search" id="empBusca" placeholder="Buscar por nome, CNPJ ou ID…">
+          <input type="search" id="empBusca" placeholder="Buscar por nome, inscrição ou ID…">
           <select id="fSit">
             <option value="">Situação: todas</option>
             <option value="liberado">Liberado</option>
             <option value="bloqueado">Bloqueado</option>
           </select>
-          <select id="fTipo">
-            <option value="">Tipo: todos</option>
-            <option>Gestão</option>
-            <option>Só treinamentos</option>
-            <option>Via link</option>
+          <select id="fMod">
+            <option value="">Modalidade: todas</option>
+            <option value="gestao">Gestão Completa</option>
+            <option value="trein">Somente treinamentos</option>
+            <option value="link">Criada por link</option>
           </select>
-          <button class="btn" id="btnNova">+ Nova empresa</button>
-          <button class="btn2" id="btnExport">Exportar CSV</button>
+          <button class="btn" id="btnNova">+ Nova Empresa</button>
+          <button class="btn2" id="btnLink" title="Gerar link de auto-cadastro para o cliente">🔗 Convidar por link</button>
           <button class="btn2" id="btnImport">Importar</button>
+          <button class="btn2" id="btnExport">Exportar CSV</button>
+          <button class="btn2" id="btnDemLote">Demissão em lote</button>
         </div>
         <div class="tbl-wrap">
           <table class="tbl">
-            <thead><tr><th>ID</th><th>Empresa</th><th>CNPJ</th><th>Empregados</th><th>Inclusão</th><th>Tipo</th><th>Situação</th><th></th></tr></thead>
+            <thead><tr><th>ID</th><th>Empresa</th><th>Empregados</th><th>Inclusão</th><th>Situação</th><th></th><th></th></tr></thead>
             <tbody id="empTbody"></tbody>
           </table>
         </div>
@@ -390,14 +455,15 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 
     <!-- ================= DETALHE DA EMPRESA (Acessar) ================= -->
     <section id="mod-empresa-det" hidden>
-      <a class="back" href="#/empresas">← Voltar para Empresas</a>
+      <a class="back" href="#/empresas">← Voltar ao painel da consultoria</a>
       <h1 class="page" id="detNome"></h1>
       <div class="card">
+        <div class="prog" id="detProg"></div>
         <div class="det-grid" id="detGrid"></div>
         <div class="tabs" id="detTabs">
-          <button class="on" data-tab="estab">Estabelecimentos</button>
+          <button class="on" data-tab="estab">Ambientes e Estabelecimentos</button>
           <button data-tab="setores">Setores</button>
-          <button data-tab="cargos">Cargos</button>
+          <button data-tab="cargos">Funções / Cargos</button>
           <button data-tab="ghe">GHE</button>
           <button data-tab="empregados">Empregados</button>
         </div>
@@ -420,31 +486,98 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
   </main>
 </div>
 
-<!-- modal: nova empresa -->
+<!-- ============ assistente: instalação inicial ============ -->
 <div class="modal-bg" id="modalBg">
   <div class="modal">
-    <h2>Nova empresa</h2>
-    <div class="field" id="fRazao">
-      <label>Razão social *</label>
-      <input id="inRazao" type="text" placeholder="EMPRESA EXEMPLO LTDA">
-      <div class="err">Informe a razão social</div>
+    <h2>Instalação Inicial — Nova Empresa</h2>
+    <p class="sub">A empresa nasce <b>Bloqueada</b> e só fica Liberada quando as 5 etapas forem concluídas.</p>
+
+    <div class="steps">
+      <div class="step on"><span class="n">1</span> Empresa</div>
+      <div class="step"><span class="n">2</span> Ambientes</div>
+      <div class="step"><span class="n">3</span> Riscos</div>
+      <div class="step"><span class="n">4</span> Empregados</div>
+      <div class="step"><span class="n">5</span> Faturamento</div>
     </div>
-    <div class="field" id="fCnpj">
-      <label>CNPJ *</label>
-      <input id="inCnpj" type="text" inputmode="numeric" placeholder="00.000.000/0000-00" maxlength="18">
-      <div class="err">CNPJ inválido — confira os dígitos</div>
-      <div class="okmsg">CNPJ válido ✓</div>
+
+    <div class="fgrid">
+      <div class="fsec">Modalidade</div>
+      <div class="full radios" id="radMod">
+        <label class="sel"><input type="radio" name="rmod" value="gestao" checked> 🛡️ Gestão Completa (SST completo)</label>
+        <label><input type="radio" name="rmod" value="trein"> 🎓 Somente Treinamentos</label>
+      </div>
+
+      <div class="fsec">Dados da empresa</div>
+      <div class="field">
+        <label>Tipo de inscrição *</label>
+        <select id="inTpInsc">
+          <option value="CNPJ">CNPJ</option>
+          <option value="CPF">CPF</option>
+          <option value="CAEPF">CAEPF (produtor rural)</option>
+          <option value="CNO">CNO (obra)</option>
+        </select>
+      </div>
+      <div class="field" id="fInsc">
+        <label id="lblInsc">Número do CNPJ *</label>
+        <input id="inInsc" type="text" inputmode="numeric" placeholder="00.000.000/0000-00">
+        <div class="err" id="errInsc">Número inválido — confira os dígitos</div>
+        <div class="okmsg">Número válido ✓</div>
+      </div>
+      <div class="field full" id="fRazao">
+        <label>Razão social *</label>
+        <input id="inRazao" type="text" placeholder="EMPRESA EXEMPLO LTDA">
+        <div class="err">Informe a razão social</div>
+      </div>
+      <div class="field"><label>Nome fantasia</label><input id="inFant" type="text"></div>
+      <div class="field"><label>CNAE principal</label><input id="inCnae" type="text" placeholder="0151-2/01"></div>
+      <div class="field"><label>E-mail da empresa</label><input id="inEmail" type="email"></div>
+      <div class="field"><label>E-mail de cobrança</label><input id="inEmailCob" type="email"></div>
+      <div class="field"><label>Inscrição estadual</label><input id="inIE" type="text"></div>
+      <div class="field"><label>Inscrição municipal</label><input id="inIM" type="text"></div>
+      <div class="field"><label>Telefone</label><input id="inTel" type="tel"></div>
+      <div class="field"><label>Site</label><input id="inSite" type="text"></div>
+      <div class="field full">
+        <label>Grau de risco (NR-4) *</label>
+        <div class="graus" id="graus">
+          <button type="button" data-g="1">1</button>
+          <button type="button" data-g="2">2</button>
+          <button type="button" data-g="3">3</button>
+          <button type="button" data-g="4">4</button>
+        </div>
+      </div>
+
+      <div class="fsec">Endereço</div>
+      <div class="field"><label>CEP</label><input id="inCep" type="text" inputmode="numeric" placeholder="69300-000" maxlength="9"></div>
+      <div class="field"><label>Cidade</label><input id="inCidade" type="text" value="Boa Vista"></div>
+      <div class="field"><label>UF</label><input id="inUF" type="text" value="RR" maxlength="2"></div>
+      <div class="field"><label>Bairro</label><input id="inBairro" type="text"></div>
+      <div class="field full"><label>Rua / número / complemento</label><input id="inRua" type="text"></div>
+      <div class="field full"><label>Observações gerais</label><textarea id="inObs" rows="2"></textarea></div>
+
+      <div class="fsec">Acesso do cliente (responsável pela empresa)</div>
+      <div class="field"><label>Responsável</label><input id="inResp" type="text"></div>
+      <div class="field" id="fCpfResp">
+        <label>CPF do responsável</label>
+        <input id="inCpfResp" type="text" inputmode="numeric" placeholder="000.000.000-00" maxlength="14">
+        <div class="err">CPF inválido — confira os dígitos</div>
+        <div class="okmsg">CPF válido ✓</div>
+      </div>
+      <div class="field"><label>E-mail (será o login)</label><input id="inEmailResp" type="email"></div>
+      <div class="field"><label>Celular</label><input id="inCel" type="tel"></div>
+      <p class="note-b full">Senha e assinatura digital do responsável são criadas na etapa B do plano
+      (login de verdade com banco de dados) — o protótipo não guarda senhas.</p>
     </div>
-    <div class="field"><label>Nome fantasia</label><input id="inFant" type="text"></div>
-    <div class="field"><label>Tipo de contrato</label>
-      <select id="inTipo"><option>Gestão</option><option>Só treinamentos</option><option>Via link</option></select></div>
-    <div class="field"><label>Situação</label>
-      <select id="inSit"><option value="liberado">Liberado</option><option value="bloqueado">Bloqueado</option></select></div>
+
+    <label class="terms"><input type="checkbox" id="inTermos"> Declaro que li e concordo com os termos de uso.
+    </label>
+    <div class="err" id="errTermos" style="color:var(--st-err);font-size:.72rem;display:none;margin-top:4px">É preciso aceitar os termos para cadastrar.</div>
+
     <div class="acts">
       <button class="btn2" id="btnCancelar">Cancelar</button>
-      <button class="btn" id="btnSalvar">Salvar</button>
+      <button class="btn" id="btnSalvar">Cadastrar</button>
     </div>
-    <p style="font-size:.7rem;color:var(--text3);margin-top:10px">Protótipo: a empresa entra na lista desta sessão do navegador, mas ainda não é gravada em banco — a gravação de verdade chega com o Supabase (etapa B do plano).</p>
+    <p class="note-b">Protótipo: a empresa entra na lista desta sessão do navegador (nasce Bloqueada, instalação 1/5),
+    mas ainda não é gravada em banco — isso chega na etapa B do plano.</p>
   </div>
 </div>
 
@@ -463,7 +596,6 @@ const EVENTOS = [
   {cod:'S-2221', nome:'Exame Toxicológico',                    sts:{sucesso:1,    erro_xml:0,   pronto:0,  aguardando:0, erro_envio:0}}
 ];
 const MODULOS = {
-  empresas:      ['🏢','Empresas','Carteira de clientes: cadastro com CNPJ, situação, tipo de contrato, importação por planilha e acesso ao contexto de cada empresa.'],
   documentos:    ['📄','Documentos','PGR, PCMSO, LTCAT, LIP, AEP, AET, PCA, PPR, DIR, modelos e inventário de riscos, com vigência e responsável.'],
   treinamentos:  ['🎓','Treinamentos','Treinamentos por NR, turmas, alunos, certificados e avaliações de reação.'],
   medicina:      ['🩺','Medicina','ASO e agendamentos, tipos de exames, ASO avulso e ranking de exames.'],
@@ -542,8 +674,8 @@ wrap.addEventListener('mousemove',e=>showTip(e.clientX,e.clientY));
 wrap.addEventListener('mouseleave',()=>{tip.style.display='none';xh.setAttribute('visibility','hidden');});
 wrap.addEventListener('touchstart',e=>{const t=e.touches[0];showTip(t.clientX,t.clientY);},{passive:true});
 
-/* ============ módulo Empresas (dados de demonstração) ============ */
-function cnpjDV(nums){ // dígitos verificadores oficiais do CNPJ
+/* ============ validações oficiais (CNPJ / CPF) ============ */
+function cnpjDV(nums){
   const calc=a=>{let p=a.length-7,s=0;for(const n of a){s+=n*p;p--;if(p<2)p=9}const r=s%11;return r<2?0:11-r};
   const d1=calc(nums); const d2=calc([...nums,d1]); return [d1,d2];
 }
@@ -552,54 +684,110 @@ function cnpjValido(d){
   const n=d.split('').map(Number); const [d1,d2]=cnpjDV(n.slice(0,12));
   return n[12]===d1&&n[13]===d2;
 }
-function cnpjDemo(i){ // CNPJ fictício com dígitos válidos (raiz 99…)
+function cpfValido(d){
+  if(d.length!==11||/^(\d)\1{10}$/.test(d))return false;
+  const n=d.split('').map(Number);
+  let s=0; for(let i=0;i<9;i++)s+=n[i]*(10-i);
+  let r=(s*10)%11; if(r===10)r=0; if(r!==n[9])return false;
+  s=0; for(let i=0;i<10;i++)s+=n[i]*(11-i);
+  r=(s*10)%11; if(r===10)r=0; return r===n[10];
+}
+const fmtInsc={
+  CNPJ:d=>d.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\/\d{4})(\d)/,'$1-$2'),
+  CPF:d=>d.replace(/^(\d{3})(\d)/,'$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/,'.$1-$2'),
+  CAEPF:d=>d.replace(/^(\d{3})(\d)/,'$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\/\d{3})(\d{1,2})$/,'$1-$2'),
+  CNO:d=>d.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1.$2')
+};
+const LEN={CNPJ:14,CPF:11,CAEPF:14,CNO:12};
+function inscValida(tp,d){
+  if(d.length!==LEN[tp])return false;
+  if(tp==='CNPJ')return cnpjValido(d);
+  if(tp==='CPF')return cpfValido(d);
+  if(tp==='CAEPF')return cpfValido(d.slice(0,11));
+  return true; // CNO: só comprimento no protótipo
+}
+function cnpjDemo(i){
   const base=('99'+String(880000+i*7)).slice(0,8);
   const [d1,d2]=cnpjDV((base+'0001').split('').map(Number));
   return (base+'0001'+d1+d2).replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,'$1.$2.$3/$4-$5');
 }
+
+/* ============ módulo Empresas ============ */
+const LIMITE_EMPREGADOS=2000;
+const MODAL_INFO={gestao:['🛡️','Gestão Completa'],trein:['🎓','Só treinamentos'],link:['🔗','Via link']};
 let EMPRESAS=Array.from({length:60},(_,k)=>{
   const i=k+1;
   return {id:100+i,
-    nome:`Empresa Demonstração ${String(i).padStart(2,'0')} LTDA`,
+    razao:`Empresa Demonstração ${String(i).padStart(2,'0')} LTDA`,
     fantasia:`Demo ${String(i).padStart(2,'0')}`,
-    cnpj:cnpjDemo(i),
+    tpInsc:'CNPJ',
+    insc:cnpjDemo(i),
     emp:(i*13)%60+2,
     inclusao:`${String((i%28)+1).padStart(2,'0')}/${String((i%12)+1).padStart(2,'0')}/202${4+(i%3)}`,
-    tipo: i%11===0?'Via link':(i%7===0?'Só treinamentos':'Gestão'),
-    sit: i%9===0?'bloqueado':'liberado'};
+    modalidade: i%11===0?'link':(i%7===0?'trein':'gestao'),
+    sit: i%9===0?'bloqueado':'liberado',
+    filiais: i%8===0,
+    instalacao: i%9===0?((i%4)+1):5};
 });
 let empPage=1; const PAGE=10;
+function renderQuota(){
+  const usado=EMPRESAS.reduce((s,e)=>s+e.emp,0);
+  document.getElementById('qUsado').textContent=fmt(usado);
+  document.getElementById('qLimite').textContent=fmt(LIMITE_EMPREGADOS);
+  const pct=Math.min(100,Math.round(usado/LIMITE_EMPREGADOS*100));
+  document.getElementById('qBar').style.width=pct+'%';
+  document.getElementById('qPct').textContent=pct+'% da cota';
+}
 function empFiltradas(){
   const q=document.getElementById('empBusca').value.trim().toLowerCase();
   const qd=q.replace(/\D/g,'');
-  const s=document.getElementById('fSit').value, t=document.getElementById('fTipo').value;
+  const s=document.getElementById('fSit').value, m=document.getElementById('fMod').value;
   return EMPRESAS.filter(e=>{
     if(s&&e.sit!==s)return false;
-    if(t&&e.tipo!==t)return false;
+    if(m&&e.modalidade!==m)return false;
     if(!q)return true;
-    return e.nome.toLowerCase().includes(q)
+    return e.razao.toLowerCase().includes(q)
       || e.fantasia.toLowerCase().includes(q)
-      || (qd.length>=3&&e.cnpj.replace(/\D/g,'').includes(qd))
+      || (qd.length>=3&&e.insc.replace(/\D/g,'').includes(qd))
       || String(e.id)===q;
   });
 }
 function renderEmp(){
+  renderQuota();
   const list=empFiltradas();
   const pages=Math.max(1,Math.ceil(list.length/PAGE));
   if(empPage>pages)empPage=pages;
   const rows=list.slice((empPage-1)*PAGE,empPage*PAGE);
-  document.getElementById('empTbody').innerHTML=rows.length?rows.map(e=>`
+  document.getElementById('empTbody').innerHTML=rows.length?rows.map(e=>{
+    const [ic,lbl]=MODAL_INFO[e.modalidade];
+    return `
     <tr>
       <td>${e.id}</td>
-      <td class="emp">${e.nome}<br><small style="color:var(--text3);font-weight:400">${e.fantasia}</small></td>
-      <td>${e.cnpj}</td>
+      <td class="emp">
+        <span class="fant">${e.fantasia}</span><span class="mod-badge" title="${lbl}">${ic} ${lbl}</span><br>
+        <span class="raz">${e.razao}</span><br>
+        <span class="insc">${e.tpInsc}: ${e.insc}</span>
+        ${e.filiais?' · <span class="fil-link" data-fil="'+e.id+'">Filiais ⊞</span>':''}
+      </td>
       <td>${e.emp}</td>
       <td>${e.inclusao}</td>
-      <td><span class="chip2 tipo">${e.tipo}</span></td>
-      <td><span class="chip2 ${e.sit==='liberado'?'lib':'blo'}">${e.sit==='liberado'?'Liberado':'Bloqueado'}</span></td>
+      <td><span class="chip2 ${e.sit==='liberado'?'lib':'blo'}">${e.sit==='liberado'?'🟢 Liberado':'🔴 Bloqueado'}</span>
+        ${e.instalacao<5?'<br><small style="color:var(--text3)">instalação '+e.instalacao+'/5</small>':''}</td>
       <td><a class="link-acessar" href="#/empresas/${e.id}">Acessar →</a></td>
-    </tr>`).join(''):
-    `<tr><td colspan="8"><div class="empty">Nenhuma empresa encontrada com esses filtros.</div></td></tr>`;
+      <td>
+        <div class="rowmenu" data-id="${e.id}">
+          <button aria-label="Mais ações">⋮</button>
+          <div class="dd">
+            <button data-act="bloq">${e.sit==='liberado'?'Bloquear':'Liberar'}</button>
+            <button data-act="trein">Alterar p/ somente treinamentos</button>
+            <button data-act="copiar">Copiar Ambientes/GHE de outra empresa</button>
+            <button data-act="ocultar">Ocultar dados financeiros</button>
+            <button data-act="excluir" class="danger">Excluir</button>
+          </div>
+        </div>
+      </td>
+    </tr>`}).join(''):
+    `<tr><td colspan="7"><div class="empty">Nenhuma empresa encontrada com esses filtros.</div></td></tr>`;
   document.getElementById('empPager').innerHTML=`
     <span>${list.length} empresa(s)</span>
     <button id="pgPrev" ${empPage<=1?'disabled':''}>‹ Anterior</button>
@@ -608,73 +796,156 @@ function renderEmp(){
   document.getElementById('pgPrev').onclick=()=>{empPage--;renderEmp()};
   document.getElementById('pgNext').onclick=()=>{empPage++;renderEmp()};
 }
-['empBusca','fSit','fTipo'].forEach(id=>
+['empBusca','fSit','fMod'].forEach(id=>
   document.getElementById(id).addEventListener('input',()=>{empPage=1;renderEmp()}));
+
+/* menu ⋮ — abre/fecha e ações */
+document.addEventListener('click',ev=>{
+  const men=ev.target.closest('.rowmenu');
+  document.querySelectorAll('.rowmenu.open').forEach(x=>{if(x!==men)x.classList.remove('open')});
+  if(!men)return;
+  const act=ev.target.dataset.act;
+  if(!act){men.classList.toggle('open');return}
+  const e=EMPRESAS.find(x=>x.id==men.dataset.id);
+  men.classList.remove('open');
+  if(act==='bloq'){e.sit=e.sit==='liberado'?'bloqueado':'liberado';renderEmp();}
+  else if(act==='trein'){e.modalidade='trein';renderEmp();}
+  else if(act==='excluir'){
+    if(confirm(`Excluir "${e.fantasia}"? (no sistema real isso exigirá confirmação e ficará no log)`)){
+      EMPRESAS=EMPRESAS.filter(x=>x.id!==e.id);renderEmp();
+    }
+  }
+  else alert('Esta ação ganha vida na etapa B do plano (banco de dados).');
+  if(ev.target.classList.contains('fil-link'))return;
+});
+document.addEventListener('click',ev=>{
+  if(ev.target.classList&&ev.target.classList.contains('fil-link'))
+    alert('Estrutura matriz/filial: as filiais entram na aba "Ambientes e Estabelecimentos" da empresa (próximo módulo).');
+});
+
+/* exportar / importar / demissão em lote / convite por link */
 document.getElementById('btnExport').addEventListener('click',()=>{
   const esc=v=>'"'+String(v).replace(/"/g,'""')+'"';
-  const csv=['ID;Razão Social;Nome Fantasia;CNPJ;Empregados;Inclusão;Tipo;Situação',
-    ...empFiltradas().map(e=>[e.id,e.nome,e.fantasia,e.cnpj,e.emp,e.inclusao,e.tipo,e.sit].map(esc).join(';'))].join('\r\n');
+  const csv=['ID;Razão Social;Nome Fantasia;Tipo Inscrição;Inscrição;Empregados;Inclusão;Modalidade;Situação;Instalação',
+    ...empFiltradas().map(e=>[e.id,e.razao,e.fantasia,e.tpInsc,e.insc,e.emp,e.inclusao,MODAL_INFO[e.modalidade][1],e.sit,e.instalacao+'/5'].map(esc).join(';'))].join('\r\n');
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}));
   a.download='empresas.csv'; a.click(); URL.revokeObjectURL(a.href);
 });
 document.getElementById('btnImport').addEventListener('click',()=>
-  alert('A importação por planilha (Excel) entra quando o banco de dados for ligado — etapa B do plano.'));
+  alert('Importar empresas em massa (3 passos: enviar planilha → combinar campos → progresso), com modelo para baixar.\n\nGanha vida na etapa C do plano, junto com o banco de dados.'));
+document.getElementById('btnDemLote').addEventListener('click',()=>
+  alert('Demissão em lote seleciona vários empregados e registra o desligamento de uma vez.\n\nGanha vida junto com o módulo Empregados (etapa B/C do plano).'));
+document.getElementById('btnLink').addEventListener('click',()=>{
+  const token=Math.random().toString(36).slice(2,10);
+  const url=`https://esocial.protecaorr.net/#/auto-cadastro/${token}`;
+  (navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(
+    ()=>alert('Link de auto-cadastro copiado:\n\n'+url+'\n\nNo sistema real, o cliente abre esse link e preenche os próprios dados (empresa nasce "Via link"). O formulário do cliente ganha vida na etapa B.'),
+    ()=>alert('Link de auto-cadastro (demonstração):\n\n'+url));
+});
 
-/* modal nova empresa + validação de CNPJ */
-const modalBg=document.getElementById('modalBg'), inCnpj=document.getElementById('inCnpj');
-document.getElementById('btnNova').addEventListener('click',()=>{modalBg.classList.add('open');document.getElementById('inRazao').focus()});
+/* ============ assistente instalação inicial ============ */
+const modalBg=document.getElementById('modalBg');
+let grauSel=0;
+document.getElementById('btnNova').addEventListener('click',()=>{modalBg.classList.add('open')});
 document.getElementById('btnCancelar').addEventListener('click',()=>modalBg.classList.remove('open'));
 modalBg.addEventListener('click',e=>{if(e.target===modalBg)modalBg.classList.remove('open')});
-inCnpj.addEventListener('input',()=>{
-  const d=inCnpj.value.replace(/\D/g,'').slice(0,14);
-  inCnpj.value=d.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3')
-    .replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\/\d{4})(\d)/,'$1-$2');
-  const f=document.getElementById('fCnpj');
+document.querySelectorAll('#radMod label').forEach(l=>l.addEventListener('click',()=>{
+  document.querySelectorAll('#radMod label').forEach(x=>x.classList.remove('sel'));
+  l.classList.add('sel');
+}));
+document.querySelectorAll('#graus button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#graus button').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel'); grauSel=+b.dataset.g;
+}));
+const inTp=document.getElementById('inTpInsc'), inInsc=document.getElementById('inInsc');
+const PLACE={CNPJ:'00.000.000/0000-00',CPF:'000.000.000-00',CAEPF:'000.000.000/000-00',CNO:'00.000.00000-0 (12 dígitos)'};
+inTp.addEventListener('change',()=>{
+  document.getElementById('lblInsc').textContent='Número do '+inTp.value+' *';
+  inInsc.value=''; inInsc.placeholder=PLACE[inTp.value];
+  document.getElementById('fInsc').classList.remove('valid','invalid');
+});
+inInsc.addEventListener('input',()=>{
+  const tp=inTp.value;
+  const d=inInsc.value.replace(/\D/g,'').slice(0,LEN[tp]);
+  inInsc.value=fmtInsc[tp](d);
+  const f=document.getElementById('fInsc');
   f.classList.remove('invalid','valid');
-  if(d.length===14) f.classList.add(cnpjValido(d)?'valid':'invalid');
+  if(d.length===LEN[tp]) f.classList.add(inscValida(tp,d)?'valid':'invalid');
+});
+const inCpfResp=document.getElementById('inCpfResp');
+inCpfResp.addEventListener('input',()=>{
+  const d=inCpfResp.value.replace(/\D/g,'').slice(0,11);
+  inCpfResp.value=fmtInsc.CPF(d);
+  const f=document.getElementById('fCpfResp');
+  f.classList.remove('invalid','valid');
+  if(d.length===11) f.classList.add(cpfValido(d)?'valid':'invalid');
+});
+document.getElementById('inCep').addEventListener('input',e=>{
+  const d=e.target.value.replace(/\D/g,'').slice(0,8);
+  e.target.value=d.replace(/^(\d{5})(\d)/,'$1-$2');
 });
 document.getElementById('btnSalvar').addEventListener('click',()=>{
+  const tp=inTp.value;
   const razao=document.getElementById('inRazao').value.trim();
-  const d=inCnpj.value.replace(/\D/g,'');
-  const okC=cnpjValido(d);
+  const d=inInsc.value.replace(/\D/g,'');
+  const okI=inscValida(tp,d);
+  const cpfR=inCpfResp.value.replace(/\D/g,'');
+  const okCpfR=cpfR.length===0||cpfValido(cpfR);
+  const termos=document.getElementById('inTermos').checked;
   document.getElementById('fRazao').classList.toggle('invalid',!razao);
-  document.getElementById('fCnpj').classList.toggle('invalid',!okC);
-  if(!razao||!okC)return;
+  document.getElementById('fInsc').classList.toggle('invalid',!okI);
+  document.getElementById('fCpfResp').classList.toggle('invalid',!okCpfR);
+  document.getElementById('errTermos').style.display=termos?'none':'block';
+  if(!razao||!okI||!okCpfR||!termos)return;
+  const mod=document.querySelector('#radMod input:checked').value;
   EMPRESAS.unshift({id:Math.max(...EMPRESAS.map(e=>e.id))+1,
-    nome:razao.toUpperCase(),
-    fantasia:document.getElementById('inFant').value.trim()||'—',
-    cnpj:inCnpj.value, emp:0,
+    razao:razao.toUpperCase(),
+    fantasia:document.getElementById('inFant').value.trim()||razao.split(' ')[0],
+    tpInsc:tp, insc:inInsc.value, emp:0,
     inclusao:new Date().toLocaleDateString('pt-BR'),
-    tipo:document.getElementById('inTipo').value,
-    sit:document.getElementById('inSit').value});
+    modalidade:mod, sit:'bloqueado', filiais:false,
+    instalacao: mod==='gestao'?1:5});
   modalBg.classList.remove('open');
-  ['inRazao','inCnpj','inFant'].forEach(i=>document.getElementById(i).value='');
-  document.getElementById('fCnpj').classList.remove('valid');
+  ['inRazao','inInsc','inFant','inCnae','inEmail','inEmailCob','inIE','inIM','inTel','inSite',
+   'inCep','inBairro','inRua','inObs','inResp','inCpfResp','inEmailResp','inCel']
+    .forEach(i=>{const el=document.getElementById(i);if(el)el.value='';});
+  document.getElementById('inTermos').checked=false;
+  document.getElementById('fInsc').classList.remove('valid');
+  document.getElementById('fCpfResp').classList.remove('valid');
   empPage=1; location.hash='#/empresas'; renderEmp();
+  alert('Empresa cadastrada! Ela nasce BLOQUEADA (instalação 1/5). As etapas Ambientes → Riscos → Empregados → Faturamento são concluídas dentro da empresa (botão Acessar) — e ganham vida nos próximos módulos.');
 });
 
-/* detalhe da empresa (Acessar) */
+/* ============ detalhe da empresa (Acessar) ============ */
 function renderDet(id){
   const e=EMPRESAS.find(x=>String(x.id)===String(id));
   if(!e){location.hash='#/empresas';return}
-  document.getElementById('detNome').textContent=e.nome;
+  const [ic,lbl]=MODAL_INFO[e.modalidade];
+  document.getElementById('detNome').textContent=e.fantasia+' — portal da empresa';
+  const pct=Math.round(e.instalacao/5*100);
+  const etapas=['Empresa','Ambientes','Riscos','Empregados','Faturamento'];
+  document.getElementById('detProg').innerHTML=`
+    <span class="lbl">Progresso de Configuração</span>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <span class="pct">${pct}%</span>
+    <span class="lbl">${e.instalacao<5?('próxima etapa: <b>'+etapas[e.instalacao]+'</b>'):'instalação concluída ✓'}</span>`;
   document.getElementById('detGrid').innerHTML=`
-    <div class="det-item"><div class="k">CNPJ</div><div class="v">${e.cnpj}</div></div>
+    <div class="det-item"><div class="k">${e.tpInsc}</div><div class="v">${e.insc}</div></div>
+    <div class="det-item"><div class="k">Razão social</div><div class="v">${e.razao}</div></div>
+    <div class="det-item"><div class="k">Modalidade</div><div class="v">${ic} ${lbl}</div></div>
     <div class="det-item"><div class="k">Empregados</div><div class="v">${e.emp}</div></div>
-    <div class="det-item"><div class="k">Situação</div><div class="v">${e.sit==='liberado'?'Liberado':'Bloqueado'}</div></div>
-    <div class="det-item"><div class="k">Tipo de contrato</div><div class="v">${e.tipo}</div></div>
-    <div class="det-item"><div class="k">Data de inclusão</div><div class="v">${e.inclusao}</div></div>
-    <div class="det-item"><div class="k">ID</div><div class="v">${e.id}</div></div>`;
+    <div class="det-item"><div class="k">Situação</div><div class="v">${e.sit==='liberado'?'🟢 Liberado':'🔴 Bloqueado'}</div></div>
+    <div class="det-item"><div class="k">Inclusão</div><div class="v">${e.inclusao}</div></div>`;
   setTab('estab');
 }
 function setTab(t){
   document.querySelectorAll('#detTabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
   const m={
-    estab:'Estabelecimentos da empresa — matriz e filiais, com CNPJ próprio, CAEPF ou CNO (leiaute S-1005).',
+    estab:'Ambientes e Estabelecimentos — matriz e filiais, com CNPJ próprio, CAEPF ou CNO (leiaute S-1005).',
     setores:'Setores / lotações da empresa (base para o inventário de riscos).',
-    cargos:'Cargos com código CBO de 6 dígitos validado (leiaute S-2200).',
-    ghe:'Grupos Homogêneos de Exposição — ligam empregados aos riscos do PGR e ao S-2240.',
+    cargos:'Funções e cargos com código CBO de 6 dígitos validado (leiaute S-2200).',
+    ghe:'GHE — Grupos Homogêneos de Exposição: ligam empregados aos riscos do PGR e ao S-2240.',
     empregados:'Empregados com CPF validado, matrícula, categoria (Tabela 01), cargo, setor e situação.'};
   document.getElementById('detTabBody').innerHTML=
     `${m[t]}<br><br><span style="display:inline-block;background:var(--st-warn-bg);color:var(--st-warn);font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:999px">PRÓXIMO MÓDULO — entra junto com o banco de dados (etapa B)</span>`;
