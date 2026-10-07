@@ -223,6 +223,11 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 .field.invalid .err{display:block}
 .field .okmsg{color:var(--st-ok);font-size:.7rem;margin-top:3px;display:none}
 .field.valid .okmsg{display:block}
+.rf-note{font-size:.7rem;margin-top:3px;display:none}
+.rf-note.show{display:block}
+.rf-note.busca{color:var(--text2)}
+.rf-note.ok{color:var(--st-ok)}
+.rf-note.err{color:var(--st-err)}
 .radios{display:flex;gap:8px;flex-wrap:wrap}
 .radios label{display:flex;align-items:center;gap:6px;border:1.5px solid var(--border);
   border-radius:8px;padding:8px 12px;font-size:.8rem;color:var(--text2);cursor:pointer;
@@ -522,6 +527,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
         <input id="inInsc" type="text" inputmode="numeric" placeholder="00.000.000/0000-00">
         <div class="err" id="errInsc">Número inválido — confira os dígitos</div>
         <div class="okmsg">Número válido ✓</div>
+        <div class="rf-note" id="rfInfo"></div>
       </div>
       <div class="field full" id="fRazao">
         <label>Razão social *</label>
@@ -864,6 +870,7 @@ inTp.addEventListener('change',()=>{
   document.getElementById('lblInsc').textContent='Número do '+inTp.value+' *';
   inInsc.value=''; inInsc.placeholder=PLACE[inTp.value];
   document.getElementById('fInsc').classList.remove('valid','invalid');
+  rfLimpa(); rfUltimo='';
 });
 inInsc.addEventListener('input',()=>{
   const tp=inTp.value;
@@ -872,7 +879,50 @@ inInsc.addEventListener('input',()=>{
   const f=document.getElementById('fInsc');
   f.classList.remove('invalid','valid');
   if(d.length===LEN[tp]) f.classList.add(inscValida(tp,d)?'valid':'invalid');
+  // CNPJ completo e válido -> preenche o restante pela Receita Federal
+  if(tp==='CNPJ'&&d.length===14&&inscValida(tp,d)) receitaAuto(d);
+  else if(d.length<LEN[tp]) rfLimpa();
 });
+
+/* ---- Receita Federal: CNPJ válido preenche os demais campos (editáveis) ---- */
+const rfInfo=document.getElementById('rfInfo');
+let rfUltimo='', rfBusy=false;
+const tt=s=>String(s||'').trim().toLowerCase().replace(/(^|\s)\S/g,c=>c.toUpperCase());
+function rfMsg(cls,txt){rfInfo.className='rf-note show '+cls;rfInfo.textContent=txt;}
+function rfLimpa(){rfInfo.className='rf-note';rfInfo.textContent='';}
+async function receitaAuto(d){
+  if(d===rfUltimo||rfBusy)return;
+  rfBusy=true; rfUltimo=d;
+  rfMsg('busca','Buscando dados na Receita Federal…');
+  try{
+    const r=await fetch('https://brasilapi.com.br/api/cnpj/v1/'+d);
+    if(r.status===404){rfMsg('err','CNPJ não encontrado na base da Receita Federal.');return}
+    if(!r.ok)throw 0;
+    const b=await r.json();
+    const set=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
+    set('inRazao',b.razao_social);
+    set('inFant',tt(b.nome_fantasia));
+    const cn=String(b.cnae_fiscal||'').replace(/\D/g,'').padStart(7,'0');
+    if(cn.length===7&&cn!=='0000000')
+      set('inCnae',cn.slice(0,4)+'-'+cn.slice(4,5)+'/'+cn.slice(5,7));
+    set('inEmail',String(b.email||'').toLowerCase());
+    const tel=String(b.ddd_telefone_1||'').replace(/\D/g,'');
+    if(tel)set('inTel',tel.length>=10?`(${tel.slice(0,2)}) ${tel.slice(2,-4)}-${tel.slice(-4)}`:tel);
+    const cep=String(b.cep||'').replace(/\D/g,'');
+    if(cep.length===8)set('inCep',cep.replace(/^(\d{5})(\d{3})$/,'$1-$2'));
+    set('inCidade',tt(b.municipio));
+    set('inUF',String(b.uf||'').toUpperCase());
+    set('inBairro',tt(b.bairro));
+    const rua=[tt(b.logradouro),b.numero,tt(b.complemento)]
+      .map(x=>String(x||'').trim()).filter(Boolean).join(', ');
+    set('inRua',rua);
+    document.getElementById('fRazao').classList.remove('invalid');
+    rfMsg('ok','Dados preenchidos pela Receita Federal — confira e ajuste o que precisar.');
+  }catch(_){
+    rfUltimo=''; // permite tentar de novo ao editar
+    rfMsg('err','Não foi possível consultar a Receita agora — preencha manualmente.');
+  }finally{rfBusy=false;}
+}
 const inCpfResp=document.getElementById('inCpfResp');
 inCpfResp.addEventListener('input',()=>{
   const d=inCpfResp.value.replace(/\D/g,'').slice(0,11);
