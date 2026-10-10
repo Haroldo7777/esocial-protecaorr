@@ -258,6 +258,53 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 .prog .lbl{font-size:.76rem;color:var(--text2)}
 .empty{padding:30px;text-align:center;color:var(--text2);font-size:.85rem;line-height:1.7}
 @media(max-width:920px){.det-grid{grid-template-columns:1fr 1fr}}
+/* ---------- módulo gestão de vencimentos ---------- */
+.venc-top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.venc-stat{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;cursor:pointer;border:2px solid transparent}
+.venc-stat:hover{border-color:var(--accent)}
+.venc-stat .lbl{font-size:.72rem;color:var(--text2);text-transform:uppercase;letter-spacing:.3px}
+.venc-stat .val{font-size:1.5rem;font-weight:800;margin-top:4px}
+.venc-stat.red .val{color:var(--st-err)} .venc-stat.warn .val{color:var(--st-warn)}
+.venc-stat.ok .val{color:var(--st-ok)} .venc-stat.gray .val{color:var(--text2)}
+.seg{display:inline-flex;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:3px;margin-bottom:14px;flex-wrap:wrap}
+.seg button{border:none;background:none;color:var(--text2);font-size:.8rem;padding:7px 13px;border-radius:6px;cursor:pointer;font-weight:600}
+.seg button.on{background:var(--accent);color:#fff}
+.hz{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.hz button{border:1px solid var(--border);background:var(--surface);color:var(--text2);border-radius:999px;padding:5px 12px;font-size:.76rem;cursor:pointer}
+.hz button.on{border-color:var(--accent);background:var(--accent-light);color:var(--accent-ink);font-weight:700}
+.vcard{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--text3);border-radius:10px;padding:12px;margin-bottom:10px}
+.vcard.vencido{border-left-color:var(--st-err)} .vcard.andamento{border-left-color:var(--st-warn)}
+.vcard.pendente{border-left-color:var(--s-exames)} .vcard.dia{border-left-color:var(--st-ok)}
+.vcard .vc-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.vc-tipo{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;border-radius:999px;padding:2px 9px;background:var(--surface2);color:var(--text2)}
+.vc-tipo.epi{background:#eef2ff;color:#3b4ea8} .vc-tipo.exame{background:#e8f5ee;color:var(--accent-ink)} .vc-tipo.trein{background:#fdf0e6;color:#9a4b1b}
+.vc-tipo.prog{background:#f3e8ff;color:#6b2fb3}
+:root[data-theme="dark"] .vc-tipo.epi{background:#1e2a52;color:#9fb4f5}
+:root[data-theme="dark"] .vc-tipo.exame{background:#0d3524;color:#6ee7b7}
+:root[data-theme="dark"] .vc-tipo.trein{background:#3a2410;color:#eab589}
+:root[data-theme="dark"] .vc-tipo.prog{background:#2a1a40;color:#cba6f0}
+.vc-dias{margin-left:auto;font-size:.74rem;font-weight:700}
+.vc-dias.atraso{color:var(--st-err)} .vc-dias.vencer{color:var(--st-warn)} .vc-dias.ok{color:var(--st-ok)}
+.vc-item{font-size:.9rem;font-weight:700;margin-bottom:4px}
+.vc-meta{font-size:.76rem;color:var(--text2);line-height:1.5}
+.vc-foot{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+.vc-resp{font-size:.72rem;color:var(--text3)}
+.vc-resp.sem{color:var(--st-warn);font-weight:700}
+.vc-acessar{margin-left:auto;font-size:.76rem;color:var(--accent-ink);font-weight:600;text-decoration:none}
+.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kcol{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px}
+.kcol h3{font-size:.78rem;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.kcol h3 .cnt{margin-left:auto;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:1px 8px;font-size:.7rem;color:var(--text2)}
+.kcol .vcard{padding:9px} .kcol .vc-meta{font-size:.72rem}
+.cons-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cons-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px}
+.cons-box h3{font-size:.85rem;margin-bottom:10px}
+.cons-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:.82rem;color:var(--text2)}
+.cons-row:last-child{border:none}
+.cons-row .nm{display:flex;align-items:center;gap:7px}
+.cons-row b{margin-left:auto;color:var(--text)}
+.cons-row .mini{width:9px;height:9px;border-radius:2px}
+@media(max-width:920px){.venc-top{grid-template-columns:1fr 1fr}.kanban{grid-template-columns:1fr}.cons-grid{grid-template-columns:1fr}}
 /* ---------- placeholder de módulo ---------- */
 .ph{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
   padding:40px 24px;text-align:center}
@@ -476,6 +523,63 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
       </div>
     </section>
 
+    <!-- ================= MÓDULO: GESTÃO DE VENCIMENTOS ================= -->
+    <section id="mod-vencimentos" hidden>
+      <h1 class="page">Gestão de Vencimentos</h1>
+
+      <div class="venc-top">
+        <div class="venc-stat red" data-f="vencido"><div class="lbl">Vencidos</div><div class="val" id="vsVenc">0</div></div>
+        <div class="venc-stat warn" data-f="andamento"><div class="lbl">Em andamento</div><div class="val" id="vsAnd">0</div></div>
+        <div class="venc-stat ok" data-f="pendente"><div class="lbl">A vencer (pendentes)</div><div class="val" id="vsPend">0</div></div>
+        <div class="venc-stat gray" data-f=""><div class="lbl">Empresas impactadas</div><div class="val" id="vsEmp">0</div></div>
+      </div>
+
+      <div class="card">
+        <div class="seg" id="vSeg">
+          <button class="on" data-cat="colab">Por colaborador</button>
+          <button data-cat="prog">Ações e programas</button>
+        </div>
+
+        <div class="hz" id="vHz">
+          <button data-d="0">Vencidos</button>
+          <button data-d="15">15 dias</button>
+          <button data-d="30">30 dias</button>
+          <button data-d="60">60 dias</button>
+          <button data-d="90">90 dias</button>
+          <button data-d="120" class="on">120 dias</button>
+          <button data-d="all">Todos</button>
+        </div>
+
+        <div class="toolbar">
+          <input type="search" id="vBusca" placeholder="Buscar por colaborador, empresa ou item…">
+          <select id="vfTipo">
+            <option value="">Tipo: todos</option>
+            <option value="epi">EPI</option>
+            <option value="exame">Exame</option>
+            <option value="trein">Treinamento</option>
+            <option value="prog">Programa</option>
+          </select>
+          <select id="vfResp">
+            <option value="">Responsável: todos</option>
+          </select>
+          <label style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text2)">
+            <input type="checkbox" id="vfMeus" style="accent-color:var(--accent)"> Meus itens
+          </label>
+          <button class="btn2" id="vExport">Exportar CSV</button>
+        </div>
+
+        <div class="seg" id="vView">
+          <button class="on" data-v="lista">Lista</button>
+          <button data-v="colunas">Colunas</button>
+          <button data-v="consolidado">Consolidado</button>
+          <button data-v="responsaveis">Responsáveis</button>
+          <button data-v="lixeira">Lixeira</button>
+        </div>
+
+        <div id="vBody"></div>
+      </div>
+    </section>
+
     <!-- ================= PLACEHOLDER DOS DEMAIS MÓDULOS ================= -->
     <section id="mod-placeholder" hidden>
       <h1 class="page" id="phTitle"></h1>
@@ -608,7 +712,6 @@ const MODULOS = {
   medicina:      ['🩺','Medicina','ASO e agendamentos, tipos de exames, ASO avulso e ranking de exames.'],
   drive:         ['🗂️','Drive','Repositório de arquivos por empresa.'],
   relatorios:    ['📊','Relatórios','Gerador de relatórios em PDF, Excel e CSV por tipo, empresa e período.'],
-  vencimentos:   ['⏰','Gestão de Vencimentos','Painel único de prazos: EPIs, exames, treinamentos e programas, com responsável, status e horizonte de dias.'],
   auditoria:     ['🔍','Auditoria eSocial','O diferencial do Auditor: conferência dos eventos S-2210/2220/2221/2240 contra os leiautes oficiais S-1.3, erros de XML, pendências e cruzamento PGR × S-2240 e PCMSO × S-2220.'],
   financeiro:    ['💰','Financeiro','Faturamento e cobranças da consultoria.'],
   riscos:        ['⚠️','Catálogo de Riscos','Agentes nocivos com código da Tabela 24, ligados ao S-2240.'],
@@ -1059,11 +1162,170 @@ function setTab(t){
 }
 document.querySelectorAll('#detTabs button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 
+/* ============ módulo Gestão de Vencimentos (dados de demonstração) ============ */
+const RESP=['Sem responsável','Téc. SST — Ana','Téc. SST — Bruno','Enf. do Trabalho — Célia'];
+const MEU_RESP='Téc. SST — Ana';
+const ITENS_COLAB={
+  epi:['Luva nitrílica (CA 12345)','Protetor auricular (CA 9876)','Óculos de proteção (CA 4521)','Botina de segurança (CA 3310)','Respirador PFF2 (CA 7788)'],
+  exame:['ASO Periódico','Audiometria','Hemograma','Acuidade visual','Espirometria','ASO Demissional'],
+  trein:['NR-35 Trabalho em Altura','NR-10 Elétrica','NR-33 Espaço Confinado','NR-12 Máquinas','NR-06 EPI','Integração / DDS']
+};
+const ITENS_PROG=['PGR','PCMSO','AEP','AET','PCA','Checklist','Laudo Psicossocial'];
+const CARGOS=['Operador de Máquinas','Auxiliar de Produção','Técnico de Manutenção','Motorista','Vigilante','Soldador','Almoxarife','Eletricista'];
+const PERIOD={epi:'troca periódica',exame:'anual',trein:'bienal',prog:'anual'};
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+let VENC=[];
+(function gerarVenc(){
+  const hoje=new Date();
+  let id=1;
+  // por colaborador
+  for(let i=0;i<70;i++){
+    const tp=rnd(['epi','exame','trein']);
+    const dias=Math.floor(Math.random()*180)-60; // -60 (vencido) a +120
+    const dt=new Date(hoje); dt.setDate(dt.getDate()+dias);
+    const emp=rnd(EMPRESAS);
+    VENC.push({id:id++,cat:'colab',tipo:tp,item:rnd(ITENS_COLAB[tp]),
+      colaborador:'Colaborador Demo '+String((i%40)+1).padStart(2,'0'),
+      cargo:rnd(CARGOS), empresa:emp.fantasia, dias,
+      data:dt.toLocaleDateString('pt-BR'), qtd:tp==='epi'?Math.floor(Math.random()*3)+1:1,
+      resp:rnd(RESP)});
+  }
+  // ações e programas
+  for(let i=0;i<40;i++){
+    const dias=Math.floor(Math.random()*200)-50;
+    const dt=new Date(hoje); dt.setDate(dt.getDate()+dias);
+    const emp=rnd(EMPRESAS);
+    VENC.push({id:id++,cat:'prog',tipo:'prog',item:rnd(ITENS_PROG),
+      colaborador:'—', cargo:'—', empresa:emp.fantasia, dias,
+      data:dt.toLocaleDateString('pt-BR'), qtd:1, resp:rnd(RESP)});
+  }
+})();
+function vStatus(d){ return d<0?'vencido' : d<=15?'andamento' : 'pendente'; }
+let vCat='colab', vHz=120, vView='lista';
+// popular filtro de responsáveis
+document.getElementById('vfResp').innerHTML='<option value="">Responsável: todos</option>'+
+  RESP.map(r=>`<option>${r}</option>`).join('');
+function vFiltrados(){
+  const q=document.getElementById('vBusca').value.trim().toLowerCase();
+  const tf=document.getElementById('vfTipo').value;
+  const rf=document.getElementById('vfResp').value;
+  const meus=document.getElementById('vfMeus').checked;
+  return VENC.filter(v=>{
+    if(v.cat!==vCat)return false;
+    if(vHz!=='all'){ if(vHz===0){ if(v.dias>=0)return false;} else if(v.dias>vHz)return false; }
+    if(tf&&v.tipo!==tf)return false;
+    if(rf&&v.resp!==rf)return false;
+    if(meus&&v.resp!==MEU_RESP)return false;
+    if(q&&!(v.item.toLowerCase().includes(q)||v.empresa.toLowerCase().includes(q)||v.colaborador.toLowerCase().includes(q)))return false;
+    return true;
+  });
+}
+function diasTxt(d){
+  if(d<0)return `<span class="vc-dias atraso">${-d} dia(s) em atraso</span>`;
+  if(d===0)return `<span class="vc-dias atraso">vence hoje</span>`;
+  if(d<=15)return `<span class="vc-dias vencer">vence em ${d} dia(s)</span>`;
+  return `<span class="vc-dias ok">vence em ${d} dia(s)</span>`;
+}
+const TIPO_LBL={epi:'EPI',exame:'Exame',trein:'Treinamento',prog:'Programa'};
+function vCardHTML(v,mini){
+  const st=vStatus(v.dias);
+  return `<div class="vcard ${st}">
+    <div class="vc-top">
+      <span class="vc-tipo ${v.tipo}">${TIPO_LBL[v.tipo]}</span>
+      ${diasTxt(v.dias)}
+    </div>
+    <div class="vc-item">${v.item}${v.qtd>1?' ×'+v.qtd:''}</div>
+    <div class="vc-meta">
+      ${v.cat==='colab'?`👤 ${v.colaborador} · ${v.cargo}<br>`:''}
+      🏢 ${v.empresa} · 📅 ${v.data} · ${PERIOD[v.tipo]}
+    </div>
+    <div class="vc-foot">
+      <span class="vc-resp ${v.resp==='Sem responsável'?'sem':''}">👷 ${v.resp}</span>
+      <a class="vc-acessar" href="#/empresas">Acessar →</a>
+    </div>
+  </div>`;
+}
+function renderVenc(){
+  const list=vFiltrados();
+  // indicadores (sempre sobre a categoria atual, horizonte "todos")
+  const base=VENC.filter(v=>v.cat===vCat);
+  document.getElementById('vsVenc').textContent=fmt(base.filter(v=>v.dias<0).length);
+  document.getElementById('vsAnd').textContent=fmt(base.filter(v=>v.dias>=0&&v.dias<=15).length);
+  document.getElementById('vsPend').textContent=fmt(base.filter(v=>v.dias>15).length);
+  document.getElementById('vsEmp').textContent=fmt(new Set(base.map(v=>v.empresa)).size);
+  const body=document.getElementById('vBody');
+  if(vView==='lixeira'){ body.innerHTML=`<div class="empty">🗑️ Lixeira vazia.<br>Itens removidos ficam aqui por 30 dias antes da exclusão definitiva.</div>`; return; }
+  if(!list.length){ body.innerHTML=`<div class="empty">Nenhum vencimento com esses filtros. 🎉</div>`; return; }
+  if(vView==='lista'){
+    const ord=[...list].sort((a,b)=>a.dias-b.dias);
+    body.innerHTML=ord.map(v=>vCardHTML(v)).join('');
+  }
+  else if(vView==='colunas'){
+    const cols=[['vencido','🔴 Vencido'],['andamento','🟠 Em andamento (≤15d)'],['pendente','🟢 A vencer']];
+    body.innerHTML=`<div class="kanban">`+cols.map(([k,lbl])=>{
+      const items=list.filter(v=>vStatus(v.dias)===k).sort((a,b)=>a.dias-b.dias);
+      return `<div class="kcol"><h3>${lbl}<span class="cnt">${items.length}</span></h3>
+        ${items.slice(0,30).map(v=>vCardHTML(v,true)).join('')||'<div style="font-size:.76rem;color:var(--text3);padding:6px">—</div>'}</div>`;
+    }).join('')+`</div>`;
+  }
+  else if(vView==='consolidado'){
+    const porTipo={}, porSit={vencido:0,andamento:0,pendente:0};
+    list.forEach(v=>{porTipo[v.tipo]=(porTipo[v.tipo]||0)+1; porSit[vStatus(v.dias)]++;});
+    const cT={epi:'var(--s-exames)',exame:'var(--s-epis)',trein:'var(--s-trein)',prog:'#8b5cf6'};
+    const cS={vencido:'var(--st-err)',andamento:'var(--st-warn)',pendente:'var(--st-ok)'};
+    body.innerHTML=`<div class="cons-grid">
+      <div class="cons-box"><h3>Por tipo</h3>${Object.entries(porTipo).map(([k,n])=>
+        `<div class="cons-row"><span class="nm"><span class="mini" style="background:${cT[k]}"></span>${TIPO_LBL[k]}</span><b>${n}</b></div>`).join('')}</div>
+      <div class="cons-box"><h3>Por situação</h3>${Object.entries(porSit).map(([k,n])=>
+        `<div class="cons-row"><span class="nm"><span class="mini" style="background:${cS[k]}"></span>${k==='vencido'?'Vencido':k==='andamento'?'Em andamento':'A vencer'}</span><b>${n}</b></div>`).join('')}</div>
+    </div>`;
+  }
+  else if(vView==='responsaveis'){
+    const porR={};
+    list.forEach(v=>{(porR[v.resp]=porR[v.resp]||{t:0,venc:0}); porR[v.resp].t++; if(v.dias<0)porR[v.resp].venc++;});
+    body.innerHTML=`<div class="cons-box"><h3>Carga por responsável</h3>`+
+      Object.entries(porR).sort((a,b)=>b[1].t-a[1].t).map(([r,o])=>
+        `<div class="cons-row"><span class="nm ${r==='Sem responsável'?'':''}" style="${r==='Sem responsável'?'color:var(--st-warn);font-weight:700':''}">👷 ${r}</span>
+          <span style="font-size:.74rem;color:var(--st-err);margin-left:auto">${o.venc} vencido(s)</span>
+          <b style="margin-left:12px">${o.t} item(ns)</b></div>`).join('')+`</div>`;
+  }
+}
+document.querySelectorAll('#vSeg button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#vSeg button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); vCat=b.dataset.cat; renderVenc();
+}));
+document.querySelectorAll('#vHz button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#vHz button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); vHz=b.dataset.d==='all'?'all':+b.dataset.d; renderVenc();
+}));
+document.querySelectorAll('#vView button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#vView button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); vView=b.dataset.v; renderVenc();
+}));
+['vBusca','vfTipo','vfResp','vfMeus'].forEach(id=>
+  document.getElementById(id).addEventListener('input',renderVenc));
+document.querySelectorAll('.venc-stat').forEach(s=>s.addEventListener('click',()=>{
+  const f=s.dataset.f;
+  if(f){document.querySelectorAll('#vHz button').forEach(x=>x.classList.toggle('on',x.dataset.d==='all'));vHz='all';
+    document.querySelectorAll('#vView button').forEach(x=>x.classList.toggle('on',x.dataset.v==='lista'));vView='lista';}
+  renderVenc();
+}));
+document.getElementById('vExport').addEventListener('click',()=>{
+  const esc=v=>'"'+String(v).replace(/"/g,'""')+'"';
+  const csv=['Tipo;Item;Colaborador;Cargo;Empresa;Vencimento;Dias;Situação;Qtd;Responsável',
+    ...vFiltrados().map(v=>[TIPO_LBL[v.tipo],v.item,v.colaborador,v.cargo,v.empresa,v.data,
+      v.dias<0?(-v.dias)+' em atraso':v.dias+' p/ vencer',vStatus(v.dias),v.qtd,v.resp].map(esc).join(';'))].join('\r\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}));
+  a.download='vencimentos.csv'; a.click(); URL.revokeObjectURL(a.href);
+});
+
 /* ============ navegação (hash router) ============ */
 const SECS={dash:document.getElementById('mod-dashboard'),
   ph:document.getElementById('mod-placeholder'),
   emp:document.getElementById('mod-empresas'),
-  det:document.getElementById('mod-empresa-det')};
+  det:document.getElementById('mod-empresa-det'),
+  venc:document.getElementById('mod-vencimentos')};
 function route(){
   const h=(location.hash.replace('#/','')||'dashboard');
   const [r,arg]=h.split('/');
@@ -1072,6 +1334,7 @@ function route(){
   if(r==='dashboard'){ SECS.dash.hidden=false; }
   else if(r==='empresas'&&arg){ SECS.det.hidden=false; renderDet(arg); }
   else if(r==='empresas'){ SECS.emp.hidden=false; renderEmp(); }
+  else if(r==='vencimentos'){ SECS.venc.hidden=false; renderVenc(); }
   else{
     const m=MODULOS[r]||['🧩',r,'Módulo planejado.'];
     document.getElementById('phTitle').textContent=m[1];
