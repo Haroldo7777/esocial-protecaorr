@@ -258,6 +258,35 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
 .prog .lbl{font-size:.76rem;color:var(--text2)}
 .empty{padding:30px;text-align:center;color:var(--text2);font-size:.85rem;line-height:1.7}
 @media(max-width:920px){.det-grid{grid-template-columns:1fr 1fr}}
+/* ---------- portal da empresa ---------- */
+.cportal-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.cportal-nome{margin-left:auto;font-weight:800;font-size:1rem;color:var(--accent-ink);
+  background:var(--accent-light);padding:6px 14px;border-radius:999px}
+.cnav{display:flex;gap:4px;overflow-x:auto;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:6px;margin-bottom:16px;box-shadow:var(--shadow)}
+.cnav button{border:none;background:none;color:var(--text2);font-size:.8rem;padding:8px 12px;
+  border-radius:7px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.cnav button:hover{background:var(--surface2)}
+.cnav button.on{background:var(--accent);color:#fff;font-weight:600}
+.cover-wrap{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center}
+.gauge{position:relative;width:160px;height:160px;margin:0 auto}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .mid b{font-size:1.9rem;font-weight:800;color:var(--accent)}
+.gauge .mid span{font-size:.72rem;color:var(--text2)}
+.cover-bars{flex:1}
+.cbar{margin-bottom:14px}
+.cbar .cb-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text2);margin-bottom:5px}
+.cbar .cb-top b{color:var(--text)}
+.cbar .track{height:14px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.cbar .track i{display:block;height:100%;border-radius:999px}
+.ghe-tbl{width:100%;border-collapse:collapse;font-size:.84rem}
+.ghe-tbl th{text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.4px;color:var(--text3);padding:10px;border-bottom:1px solid var(--border)}
+.ghe-tbl td{padding:11px 10px;border-bottom:1px solid var(--border);color:var(--text2)}
+.ghe-tbl td.ref{color:var(--text);font-weight:700}
+.ghe-ok{color:var(--st-ok);font-weight:700}
+.ghe-apl{display:inline-block;background:var(--s-exames);color:#fff;font-size:.72rem;font-weight:700;border-radius:6px;padding:3px 10px}
+@media(max-width:760px){.cover-wrap{grid-template-columns:1fr}}
 /* ---------- módulo gestão de vencimentos ---------- */
 .venc-top{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
 .venc-stat{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;cursor:pointer;border:2px solid transparent}
@@ -505,22 +534,14 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.84rem}
       </div>
     </section>
 
-    <!-- ================= DETALHE DA EMPRESA (Acessar) ================= -->
+    <!-- ================= PORTAL DA EMPRESA (Acessar) ================= -->
     <section id="mod-empresa-det" hidden>
-      <a class="back" href="#/empresas">← Voltar ao painel da consultoria</a>
-      <h1 class="page" id="detNome"></h1>
-      <div class="card">
-        <div class="prog" id="detProg"></div>
-        <div class="det-grid" id="detGrid"></div>
-        <div class="tabs" id="detTabs">
-          <button class="on" data-tab="estab">Ambientes e Estabelecimentos</button>
-          <button data-tab="setores">Setores</button>
-          <button data-tab="cargos">Funções / Cargos</button>
-          <button data-tab="ghe">GHE</button>
-          <button data-tab="empregados">Empregados</button>
-        </div>
-        <div class="empty" id="detTabBody"></div>
+      <div class="cportal-bar">
+        <a class="back" href="#/empresas">← Voltar ao login da Consultoria</a>
+        <span class="cportal-nome" id="detNome"></span>
       </div>
+      <div class="cnav" id="cNav"></div>
+      <div id="cBody"></div>
     </section>
 
     <!-- ================= MÓDULO: GESTÃO DE VENCIMENTOS ================= -->
@@ -1127,40 +1148,147 @@ document.getElementById('btnSalvar').addEventListener('click',()=>{
   alert('Empresa cadastrada! Ela nasce BLOQUEADA (instalação 1/5). As etapas Ambientes → Riscos → Empregados → Faturamento são concluídas dentro da empresa (botão Acessar) — e ganham vida nos próximos módulos.');
 });
 
-/* ============ detalhe da empresa (Acessar) ============ */
+/* ============ portal da empresa (Acessar) ============ */
+const CMODS=[
+  ['dashboard','📊 Dashboard'],['empresa','🏢 Empresa'],['empregados','👥 Empregados'],
+  ['documentos','📄 Documentos'],['treinamentos','🎓 Treinamentos'],['medicina','🩺 Medicina'],
+  ['epi','🦺 EPI'],['cipa','🚨 CIPA'],['auditoria','✅ Auditoria / Checklist'],
+  ['riscos','⚠️ Catálogo de Riscos'],['drive','🗂️ Drive'],['relatorios','📈 Relatórios'],
+  ['vencimentos','⏰ Gestão de Vencimentos'],['financeiro','💰 Financeiro'],
+  ['cadastros','✏️ Gerenciar Cadastros'],['usuarios','👤 Usuários'],
+  ['permissoes','🛡️ Permissões'],['config','⚙️ Configurações']];
+const CMOD_DESC={
+  empresa:'Ambientes e Estabelecimentos, GHE (Grupos de Trabalho) e Funções da empresa (leiautes S-1005 e S-2200).',
+  empregados:'Empregados da empresa: CPF validado, matrícula, categoria (Tabela 01), cargo, setor e situação (S-2200).',
+  documentos:'PGR, PCMSO, LTCAT, PPP e demais documentos desta empresa, com vigência e responsável.',
+  treinamentos:'Treinamentos por NR, turmas e certificados desta empresa.',
+  medicina:'ASO, agendamentos e exames desta empresa.',
+  epi:'Ficha de EPI, estoque e entregas com CA.',
+  cipa:'Comissão Interna de Prevenção de Acidentes — dimensionamento, eleição e atas.',
+  auditoria:'Auditoria / Checklist da empresa contra os requisitos de SST.',
+  riscos:'Catálogo de riscos desta empresa (agentes nocivos, código Tabela 24, ligados ao S-2240).',
+  drive:'Arquivos desta empresa.',
+  relatorios:'Relatórios desta empresa em PDF, Excel e CSV.',
+  financeiro:'Faturamento e cobranças desta empresa.',
+  cadastros:'Gerenciar cadastros desta empresa.',
+  usuarios:'Usuários com acesso a esta empresa.',
+  permissoes:'Perfis de acesso nesta empresa (RBAC).',
+  config:'Configurações desta empresa: identidade, certificado e integrações.'};
+const GHE_DEMO=[
+  ['Administração - Silo','Gerenciamento de documentos e suporte administrativo'],
+  ['Linha de Produção/Operação','Condução de máquinas e implementos'],
+  ['Manutenção','Manutenção mecânica e elétrica de equipamentos'],
+  ['Armazenagem','Movimentação e estocagem de insumos']];
+let cEmpId=null;
 function renderDet(id){
   const e=EMPRESAS.find(x=>String(x.id)===String(id));
   if(!e){location.hash='#/empresas';return}
-  const [ic,lbl]=MODAL_INFO[e.modalidade];
-  document.getElementById('detNome').textContent=e.fantasia+' — portal da empresa';
-  const pct=Math.round(e.instalacao/5*100);
+  cEmpId=e.id;
+  document.getElementById('detNome').textContent='AGRICOLA / '+e.fantasia.toUpperCase();
+  document.getElementById('cNav').innerHTML=CMODS.map((m,i)=>
+    `<button class="${i===0?'on':''}" data-cmod="${m[0]}">${m[1]}</button>`).join('');
+  document.querySelectorAll('#cNav button').forEach(b=>b.addEventListener('click',()=>renderCMod(b.dataset.cmod)));
+  renderCMod('dashboard');
+}
+function renderCMod(mod){
+  document.querySelectorAll('#cNav button').forEach(b=>b.classList.toggle('on',b.dataset.cmod===mod));
+  const e=EMPRESAS.find(x=>x.id===cEmpId);
+  const body=document.getElementById('cBody');
+  if(mod==='dashboard'){ body.innerHTML=cDashboard(e); return; }
+  if(mod==='vencimentos'){
+    body.innerHTML=`<div class="ph"><div class="ico">⏰</div><h2>Gestão de Vencimentos</h2>
+      <p>O painel de prazos desta empresa usa o mesmo módulo já pronto, filtrado por ela.</p>
+      <a class="btn" href="#/vencimentos">Abrir painel de vencimentos →</a></div>`;
+    return;
+  }
+  const nome=(CMODS.find(m=>m[0]===mod)||['','',''])[1];
+  body.innerHTML=`<div class="ph"><div class="ico">${nome.split(' ')[0]}</div>
+    <h2>${nome.replace(/^\S+\s/,'')}</h2>
+    <p>${CMOD_DESC[mod]||'Módulo da empresa.'}</p>
+    <span class="tag">PRÓXIMO MÓDULO — entra com o banco de dados (etapa B)</span></div>`;
+}
+function cDashboard(e){
+  const pct=e.instalacao*20;                      // progresso de instalação (0–100)
+  const cobEpi=(e.id*7)%101, cobExame=(e.id*13)%101, cobTrein=(e.id*5)%101;
+  const cobGeral=Math.round((cobEpi+cobExame+cobTrein)/3);
+  const r=64, C=2*Math.PI*r, off=C*(1-cobGeral/100);
+  const nGhe=2+(e.id%3);
   const etapas=['Empresa','Ambientes','Riscos','Empregados','Faturamento'];
-  document.getElementById('detProg').innerHTML=`
-    <span class="lbl">Progresso de Configuração</span>
-    <div class="bar"><i style="width:${pct}%"></i></div>
-    <span class="pct">${pct}%</span>
-    <span class="lbl">${e.instalacao<5?('próxima etapa: <b>'+etapas[e.instalacao]+'</b>'):'instalação concluída ✓'}</span>`;
-  document.getElementById('detGrid').innerHTML=`
-    <div class="det-item"><div class="k">${e.tpInsc}</div><div class="v">${e.insc}</div></div>
-    <div class="det-item"><div class="k">Razão social</div><div class="v">${e.razao}</div></div>
-    <div class="det-item"><div class="k">Modalidade</div><div class="v">${ic} ${lbl}</div></div>
-    <div class="det-item"><div class="k">Empregados</div><div class="v">${e.emp}</div></div>
-    <div class="det-item"><div class="k">Situação</div><div class="v">${e.sit==='liberado'?'🟢 Liberado':'🔴 Bloqueado'}</div></div>
-    <div class="det-item"><div class="k">Inclusão</div><div class="v">${e.inclusao}</div></div>`;
-  setTab('estab');
+  const gheRows=GHE_DEMO.slice(0,nGhe).map((g,i)=>{
+    const y=(e.id+i)%3+1, x=Math.min(y,(e.id%y)+1);
+    return `<tr><td class="ref">${g[0]}</td><td>${i+1}</td><td>${g[1]}</td>
+      <td class="ghe-ok">✓</td><td><span class="ghe-apl">${x} de ${y}</span></td></tr>`;
+  }).join('');
+  const bar=(lbl,v,cor)=>`<div class="cbar"><div class="cb-top"><span>${lbl}</span><b>${v}%</b></div>
+    <div class="track"><i style="width:${v}%;background:${cor}"></i></div></div>`;
+  return `
+  <div class="card" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+    <div style="flex:1;min-width:200px">
+      <div class="prog">
+        <span class="lbl">Progresso de Instalação</span>
+        <div class="bar"><i style="width:${pct}%"></i></div>
+        <span class="pct">${pct}%</span>
+        <span class="lbl">${e.instalacao<5?('próxima etapa: <b>'+etapas[e.instalacao]+'</b>'):'instalação concluída ✓'}</span>
+      </div>
+      <div class="det-grid" style="margin:0">
+        <div class="det-item"><div class="k">${e.tpInsc}</div><div class="v">${e.insc}</div></div>
+        <div class="det-item"><div class="k">Empregados</div><div class="v">${e.emp}</div></div>
+        <div class="det-item"><div class="k">Situação</div><div class="v">${e.sit==='liberado'?'🟢 Liberado':'🔴 Bloqueado'}</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Cobertura geral</h2>
+    <p class="desc">Percentual de EPIs, exames e treinamentos em dia nesta empresa</p>
+    <div class="cover-wrap">
+      <div class="gauge">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="${r}" fill="none" stroke="var(--surface2)" stroke-width="14"/>
+          <circle cx="80" cy="80" r="${r}" fill="none" stroke="var(--accent)" stroke-width="14"
+            stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/>
+        </svg>
+        <div class="mid"><b>${cobGeral}%</b><span>cobertura</span></div>
+      </div>
+      <div class="cover-bars">
+        ${bar('EPIs',cobEpi,'var(--s-epis)')}
+        ${bar('Exames',cobExame,'var(--s-exames)')}
+        ${bar('Treinamentos',cobTrein,'var(--s-trein)')}
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="venc-head">
+      <div><h2>Gestão de vencimentos</h2>
+        <p class="desc" style="margin:0">Itens vencidos e a vencer desta empresa</p></div>
+      <div class="big">${(e.id*3)%40}<small>VENCIDOS</small></div>
+      <a class="btn" href="#/vencimentos">Abrir painel</a>
+    </div>
+    <div class="venc-cols">
+      <div class="venc-box"><h3>Por colaborador</h3><p>EPIs, exames e treinamentos</p>
+        <div class="pills"><span class="pill">Hoje: <b>${e.id%2}</b></span>
+        <span class="pill">Semana: <b>${e.id%3}</b></span>
+        <span class="pill">Próx. dias: <b>${e.id%12}</b></span></div></div>
+      <div class="venc-box"><h3>Ações e programas</h3><p>PGR, AEP, AET, PCA, PCMSO, checklist, psicossocial</p>
+        <div class="pills"><span class="pill">Hoje: <b>0</b></span>
+        <span class="pill">Semana: <b>${e.id%2}</b></span>
+        <span class="pill">Próx. dias: <b>${e.id%6}</b></span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Segmentações da Empresa</h2>
+    <p class="desc">Grupos Homogêneos de Exposição (GHE) — agrupam empregados sujeitos a riscos
+      ocupacionais semelhantes, nos mesmos ambientes de trabalho. Base do inventário de riscos e do S-2240.</p>
+    <div class="tbl-wrap">
+      <table class="ghe-tbl">
+        <thead><tr><th>Referência</th><th>Número</th><th>Processo</th><th>Situação</th><th>Aplicação por empregados</th></tr></thead>
+        <tbody>${gheRows}</tbody>
+      </table>
+    </div>
+  </div>`;
 }
-function setTab(t){
-  document.querySelectorAll('#detTabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
-  const m={
-    estab:'Ambientes e Estabelecimentos — matriz e filiais, com CNPJ próprio, CAEPF ou CNO (leiaute S-1005).',
-    setores:'Setores / lotações da empresa (base para o inventário de riscos).',
-    cargos:'Funções e cargos com código CBO de 6 dígitos validado (leiaute S-2200).',
-    ghe:'GHE — Grupos Homogêneos de Exposição: ligam empregados aos riscos do PGR e ao S-2240.',
-    empregados:'Empregados com CPF validado, matrícula, categoria (Tabela 01), cargo, setor e situação.'};
-  document.getElementById('detTabBody').innerHTML=
-    `${m[t]}<br><br><span style="display:inline-block;background:var(--st-warn-bg);color:var(--st-warn);font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:999px">PRÓXIMO MÓDULO — entra junto com o banco de dados (etapa B)</span>`;
-}
-document.querySelectorAll('#detTabs button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 
 /* ============ módulo Gestão de Vencimentos (dados de demonstração) ============ */
 const RESP=['Sem responsável','Téc. SST — Ana','Téc. SST — Bruno','Enf. do Trabalho — Célia'];
