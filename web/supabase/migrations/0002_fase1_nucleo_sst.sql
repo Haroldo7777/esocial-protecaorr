@@ -188,6 +188,10 @@ create table risco_catalogo (
   categoria       text not null,               -- Físico/Químico/Biológico/Ergonômico[sub]/Mecânico/…
   codigo_tabela24 text,                         -- código oficial do agente (eSocial)
   qualitativo     boolean not null default true,
+  observacoes     text,
+  -- medidas recomendadas (EPC/EPI/administrativas) e exigências (treinamentos/exames) do risco
+  medidas_recomendadas jsonb not null default '[]'::jsonb,
+  exigencias           jsonb not null default '{}'::jsonb,
   -- dados técnicos (medição/exposição)
   intensidade     text, limite_tolerancia text, metodo_medicao text,
   aposentadoria_especial boolean default false,
