@@ -132,6 +132,8 @@ create table ghe (
   obs_pgr       text,
   obs_ltcat     text,
   obs_pcmso     text,
+  -- etapa 3 do wizard: % insalubridade (NR-15) e listas de atividades periculosas/insalubres
+  atividades    jsonb not null default '{}'::jsonb,
   situacao      situacao_ghe not null default 'incompleto',
   created_at    timestamptz not null default now(),
   updated_at    timestamptz not null default now()

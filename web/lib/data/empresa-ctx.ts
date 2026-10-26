@@ -52,3 +52,67 @@ export async function listarGhe(empresaId: string) {
     sb.from("ghe").select("id,referencia,numero,processo,situacao").eq("empresa_id", empresaId).order("referencia"),
   );
 }
+
+export type Ambiente = { id: string; nome: string };
+export async function listarAmbientes(empresaId: string) {
+  return consulta<Ambiente[]>((sb) =>
+    sb
+      .from("ambiente")
+      .select("id,nome,estabelecimento!inner(empresa_id)")
+      .eq("estabelecimento.empresa_id", empresaId)
+      .order("nome"),
+  );
+}
+
+export type RiscoCat = { id: string; nome: string; categoria: string; codigo_tabela24: string | null; camada: string };
+export async function listarRiscosCatalogo(empresaId: string) {
+  return consulta<RiscoCat[]>((sb) =>
+    sb
+      .from("risco_catalogo")
+      .select("id,nome,categoria,codigo_tabela24,camada")
+      .eq("ativo", true)
+      .or(`camada.eq.esocial,camada.eq.consultoria,empresa_id.eq.${empresaId}`)
+      .order("categoria"),
+  );
+}
+
+export type GheCompleto = {
+  ghe: {
+    id: string; referencia: string; numero: number; processo: string | null;
+    jornada: string | null; obs_geral: string | null; obs_pgr: string | null;
+    obs_ltcat: string | null; obs_pcmso: string | null;
+    atividades: Record<string, unknown>; situacao: string;
+  } | null;
+  ambienteIds: string[];
+  funcaoIds: string[];
+  empregados: { empregado_id: string; inicio: string | null; fim: string | null }[];
+  riscoIds: string[];
+  medidas: { id: string; tipo: string; descricao: string; periodicidade_meses: number | null }[];
+};
+
+export async function getGheCompleto(gheId: string): Promise<GheCompleto> {
+  const vazio: GheCompleto = {
+    ghe: null, ambienteIds: [], funcaoIds: [], empregados: [], riscoIds: [], medidas: [],
+  };
+  try {
+    const sb = await createClient();
+    const [ghe, amb, fun, emp, ris, med] = await Promise.all([
+      sb.from("ghe").select("id,referencia,numero,processo,jornada,obs_geral,obs_pgr,obs_ltcat,obs_pcmso,atividades,situacao").eq("id", gheId).single(),
+      sb.from("ghe_ambiente").select("ambiente_id").eq("ghe_id", gheId),
+      sb.from("ghe_funcao").select("funcao_id").eq("ghe_id", gheId),
+      sb.from("ghe_empregado").select("empregado_id,inicio,fim").eq("ghe_id", gheId),
+      sb.from("ghe_risco").select("risco_id").eq("ghe_id", gheId),
+      sb.from("medida_controle").select("id,tipo,descricao,periodicidade_meses").eq("ghe_id", gheId),
+    ]);
+    return {
+      ghe: (ghe.data as GheCompleto["ghe"]) ?? null,
+      ambienteIds: ((amb.data ?? []) as { ambiente_id: string }[]).map((r) => r.ambiente_id),
+      funcaoIds: ((fun.data ?? []) as { funcao_id: string }[]).map((r) => r.funcao_id),
+      empregados: (emp.data ?? []) as GheCompleto["empregados"],
+      riscoIds: ((ris.data ?? []) as { risco_id: string }[]).map((r) => r.risco_id),
+      medidas: (med.data ?? []) as GheCompleto["medidas"],
+    };
+  } catch {
+    return vazio;
+  }
+}

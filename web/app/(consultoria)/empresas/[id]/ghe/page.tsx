@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { listarGhe } from "@/lib/data/empresa-ctx";
 import { CabecalhoLista, AvisoBanco, Vazio } from "@/components/ui";
 
@@ -32,6 +33,7 @@ export default async function GhePage({
                 <th className="p-3">Número</th>
                 <th className="p-3">Processo</th>
                 <th className="p-3">Situação</th>
+                <th className="p-3"></th>
               </tr>
             </thead>
             <tbody>
@@ -42,6 +44,11 @@ export default async function GhePage({
                   <td className="p-3">{g.processo ?? "—"}</td>
                   <td className="p-3">
                     {g.situacao === "completo" ? "✓ Completo" : "⚠ Incompleto"}
+                  </td>
+                  <td className="p-3">
+                    <Link href={`/empresas/${id}/ghe/${g.id}`} className="text-brand-ink font-semibold">
+                      Editar (wizard) →
+                    </Link>
                   </td>
                 </tr>
               ))}
