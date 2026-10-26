@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 const ITENS: { href: string; label: string; pronto?: boolean }[] = [
   { href: "/dashboard", label: "Dashboard", pronto: true },
   { href: "/empresas", label: "Empresas", pronto: true },
-  { href: "/documentos", label: "Documentos" },
+  { href: "/documentos", label: "Documentos", pronto: true },
   { href: "/treinamentos", label: "Treinamentos" },
-  { href: "/medicina", label: "Medicina" },
+  { href: "/medicina", label: "Medicina", pronto: true },
   { href: "/vencimentos", label: "Gestão de Vencimentos" },
   { href: "/riscos", label: "Catálogo de Riscos", pronto: true },
   { href: "/usuarios", label: "Usuários" },

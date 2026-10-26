@@ -14,7 +14,7 @@
 | LTCAT | 1 ano | padrão |
 | LIP   | 1 ano | padrão |
 | PPR   | 1 ano | padrão |
-| PCA (Conservação Auditiva) | 1 ano | *o Haroldo escreveu "PPA" — confirmar se é o PCA* |
+| PCA (Conservação Auditiva) | 1 ano | confirmado (Haroldo escreveu "PPA" = PCA) |
 | **PGR**   | **variável: 1 ou 2 anos** | definido por cliente na emissão |
 | **PGRTR** | **variável: 1 ou 2 anos** | PGR rural (NR-31); idem variável |
 
