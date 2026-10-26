@@ -64,6 +64,24 @@ export async function listarAmbientes(empresaId: string) {
   );
 }
 
+export type PlanoExame = {
+  id: string;
+  periodicidade_meses: number;
+  observacao: string | null;
+  exame: { id: string; nome: string } | null;
+  ghe: { referencia: string } | null;
+};
+export async function listarPlanoExame(empresaId: string) {
+  return consulta<PlanoExame[]>((sb) =>
+    sb
+      .from("plano_exame")
+      .select("id,periodicidade_meses,observacao,exame:exame_tipo_id(id,nome),ghe:ghe_id(referencia)")
+      .eq("empresa_id", empresaId)
+      .eq("ativo", true)
+      .order("created_at"),
+  );
+}
+
 export type RiscoCat = { id: string; nome: string; categoria: string; codigo_tabela24: string | null; camada: string };
 export async function listarRiscosCatalogo(empresaId: string) {
   return consulta<RiscoCat[]>((sb) =>

@@ -12,6 +12,7 @@ export function EmpresaTabs({ empresaId }: { empresaId: string }) {
     { href: `${base}/funcoes`, label: "Funções" },
     { href: `${base}/ghe`, label: "GHE" },
     { href: `${base}/empregados`, label: "Empregados" },
+    { href: `${base}/exames`, label: "Exames (PCMSO)" },
   ];
   return (
     <div className="flex gap-1 overflow-x-auto bg-[var(--surface)] border border-gray-200 rounded-xl p-1.5 mb-4">

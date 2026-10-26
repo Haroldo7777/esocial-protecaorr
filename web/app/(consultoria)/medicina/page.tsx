@@ -1,5 +1,6 @@
 import { listarTiposExame } from "@/lib/data/medicina";
 import { CabecalhoLista, AvisoBanco, Vazio } from "@/components/ui";
+import { MedicinaTabs } from "@/components/medicina-tabs";
 
 export const dynamic = "force-dynamic";
 
@@ -24,9 +25,10 @@ export default async function MedicinaPage() {
     <div>
       <h1 className="text-xl font-bold mb-1">Medicina</h1>
       <p className="text-sm opacity-70 mb-4">
-        Catálogo de tipos de exame por tipo de ASO. ASO (agendamento → guia →
-        emissão) e o evento S-2220 entram no próximo bloco.
+        Catálogo de tipos de exame por tipo de ASO. A periodicidade de cada exame é
+        definida no plano de cada empresa (Empresa → Exames do PCMSO).
       </p>
+      <MedicinaTabs />
 
       <CabecalhoLista titulo="Tipos de exame" hrefNovo="/medicina/nova" rotuloNovo="+ Novo tipo de exame" />
       {!res.ok ? (
