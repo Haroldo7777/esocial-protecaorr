@@ -82,6 +82,93 @@ export async function listarPlanoExame(empresaId: string) {
   );
 }
 
+export type SugestaoGhe = {
+  gheId: string;
+  referencia: string;
+  exames: { nome: string; exameTipoId: string | null; jaNoPlano: boolean }[];
+};
+
+/**
+ * Sugere exames para o plano de cada GHE a partir das exigências dos riscos
+ * ligados ao GHE (risco_catalogo.exigencias.exames). Casa o nome com o catálogo
+ * exame_tipo e marca o que já está no plano (por GHE ou empresa toda).
+ */
+export async function sugestoesExamesGhe(empresaId: string): Promise<Res<SugestaoGhe[]>> {
+  try {
+    const sb = await createClient();
+    const [gr, tipos, plano] = await Promise.all([
+      sb
+        .from("ghe_risco")
+        .select("ghe_id,risco:risco_id(exigencias),ghe:ghe_id!inner(empresa_id,referencia)")
+        .eq("ghe.empresa_id", empresaId),
+      sb.from("exame_tipo").select("id,nome").eq("ativo", true),
+      sb
+        .from("plano_exame")
+        .select("ghe_id,exame:exame_tipo_id(nome)")
+        .eq("empresa_id", empresaId)
+        .eq("ativo", true),
+    ]);
+    if (gr.error) return { ok: false, erro: gr.error.message };
+
+    // catálogo: nome(lower) → id
+    const tiposMap = new Map<string, string>();
+    for (const t of (tipos.data ?? []) as { id: string; nome: string }[]) {
+      tiposMap.set(t.nome.trim().toLowerCase(), t.id);
+    }
+
+    // plano existente: empresa toda (ghe null) cobre todos os GHE
+    const empresaToda = new Set<string>();
+    const porGhe = new Map<string, Set<string>>();
+    for (const p of (plano.data ?? []) as unknown as {
+      ghe_id: string | null;
+      exame: { nome: string } | null;
+    }[]) {
+      const nm = p.exame?.nome?.trim().toLowerCase();
+      if (!nm) continue;
+      if (p.ghe_id) {
+        if (!porGhe.has(p.ghe_id)) porGhe.set(p.ghe_id, new Set());
+        porGhe.get(p.ghe_id)!.add(nm);
+      } else {
+        empresaToda.add(nm);
+      }
+    }
+
+    // agrupa exigências por GHE
+    type Acc = { referencia: string; nomes: Map<string, string> };
+    const grupos = new Map<string, Acc>();
+    for (const row of (gr.data ?? []) as unknown as {
+      ghe_id: string;
+      risco: { exigencias: { exames?: string[] } | null } | null;
+      ghe: { referencia: string } | null;
+    }[]) {
+      const exames = row.risco?.exigencias?.exames ?? [];
+      if (exames.length === 0) continue;
+      if (!grupos.has(row.ghe_id))
+        grupos.set(row.ghe_id, { referencia: row.ghe?.referencia ?? "—", nomes: new Map() });
+      const g = grupos.get(row.ghe_id)!;
+      for (const e of exames) {
+        const nm = e.trim();
+        if (nm) g.nomes.set(nm.toLowerCase(), nm); // dedupe, mantém 1ª grafia
+      }
+    }
+
+    const out: SugestaoGhe[] = [];
+    for (const [gheId, g] of grupos) {
+      const exames = [...g.nomes.entries()].map(([lower, nome]) => ({
+        nome,
+        exameTipoId: tiposMap.get(lower) ?? null,
+        jaNoPlano: empresaToda.has(lower) || (porGhe.get(gheId)?.has(lower) ?? false),
+      }));
+      // só GHE com algo ainda não incluído
+      if (exames.some((e) => !e.jaNoPlano)) out.push({ gheId, referencia: g.referencia, exames });
+    }
+    out.sort((a, b) => a.referencia.localeCompare(b.referencia));
+    return { ok: true, dados: out };
+  } catch (e) {
+    return { ok: false, erro: e instanceof Error ? e.message : "Erro" };
+  }
+}
+
 export type RiscoCat = { id: string; nome: string; categoria: string; codigo_tabela24: string | null; camada: string };
 export async function listarRiscosCatalogo(empresaId: string) {
   return consulta<RiscoCat[]>((sb) =>

@@ -1,4 +1,5 @@
-import { listarPlanoExame } from "@/lib/data/empresa-ctx";
+import { listarPlanoExame, sugestoesExamesGhe } from "@/lib/data/empresa-ctx";
+import { incluirSugestao } from "./suggest-actions";
 import { CabecalhoLista, AvisoBanco, Vazio } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
@@ -9,7 +10,11 @@ export default async function ExamesEmpresaPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const res = await listarPlanoExame(id);
+  const [res, sug] = await Promise.all([
+    listarPlanoExame(id),
+    sugestoesExamesGhe(id),
+  ]);
+  const incluir = incluirSugestao.bind(null, id);
 
   return (
     <div>
@@ -52,6 +57,68 @@ export default async function ExamesEmpresaPage({
           </table>
         </div>
       )}
+
+      {/* Sugestões automáticas a partir dos riscos dos GHE */}
+      {sug.ok && sug.dados.length > 0 ? (
+        <div className="mt-8">
+          <h2 className="text-sm font-bold uppercase tracking-wide opacity-70 mb-1">
+            Sugeridos pelos riscos dos GHE
+          </h2>
+          <p className="text-xs opacity-60 mb-3">
+            Exames exigidos pelos riscos vinculados a cada GHE. Defina a periodicidade
+            (meses) e inclua no plano — o exame entra no catálogo se ainda não existir.
+          </p>
+          <div className="grid gap-4">
+            {sug.dados.map((g) => {
+              const pendentes = g.exames.filter((e) => !e.jaNoPlano);
+              if (pendentes.length === 0) return null;
+              return (
+                <div key={g.gheId} className="bg-[var(--surface)] rounded-xl shadow p-4">
+                  <div className="font-semibold mb-2">GHE {g.referencia}</div>
+                  <div className="grid gap-2">
+                    {pendentes.map((e) => (
+                      <form
+                        key={e.nome}
+                        action={incluir}
+                        className="flex flex-wrap items-center gap-2 text-sm border-b last:border-0 pb-2 last:pb-0"
+                      >
+                        <input type="hidden" name="ghe_id" value={g.gheId} />
+                        <input type="hidden" name="nome" value={e.nome} />
+                        {e.exameTipoId ? (
+                          <input type="hidden" name="exame_tipo_id" value={e.exameTipoId} />
+                        ) : null}
+                        <span className="font-medium flex-1 min-w-[10rem]">{e.nome}</span>
+                        {e.exameTipoId ? (
+                          <span className="text-[10px] uppercase bg-brand-light text-brand-ink rounded px-1.5 py-0.5">
+                            no catálogo
+                          </span>
+                        ) : (
+                          <span className="text-[10px] uppercase bg-amber-100 text-amber-700 rounded px-1.5 py-0.5">
+                            novo
+                          </span>
+                        )}
+                        <label className="flex items-center gap-1 opacity-70">
+                          <input
+                            type="number"
+                            name="periodicidade_meses"
+                            min={1}
+                            defaultValue={12}
+                            className="w-16 rounded border border-gray-300 px-2 py-1"
+                          />
+                          meses
+                        </label>
+                        <button className="px-3 py-1 rounded-lg bg-brand text-white text-xs font-semibold">
+                          Incluir
+                        </button>
+                      </form>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
