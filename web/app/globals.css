@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --text: #1a1a2e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111827;
+    --surface: #1f2937;
+    --text: #f1f3f5;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111827;
+  --surface: #1f2937;
+  --text: #f1f3f5;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
