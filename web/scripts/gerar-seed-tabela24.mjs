@@ -1,68 +1,123 @@
 #!/usr/bin/env node
-// Gera o SQL de seed da Tabela 24 (camada eSocial) a partir do CSV oficial.
+// Gera os SQLs de seed do catálogo (riscos e exames) a partir dos CSVs oficiais.
 //
 // Uso:
 //   node scripts/gerar-seed-tabela24.mjs
 //
-// Lê  web/supabase/seeds/tabela24_esocial.csv  (colunas: codigo,categoria,nome)
-// e escreve  web/supabase/seeds/tabela24_esocial.sql  com um DELETE + INSERTs
-// idempotentes (recria toda a camada 'esocial'). Rode após atualizar o CSV com
-// os dados oficiais do eSocial (gov.br → Documentação técnica → Tabelas → 24).
+// Lê em web/supabase/seeds/:
+//   - riscos_esocial.csv       (nome,categoria,nome_esocial,codigo) → camada eSocial
+//   - riscos_consultoria.csv   (nome,categoria,nome_esocial,codigo) → camada consultoria
+//   - exames.csv               (nome,A,P,D,RT,MR)                   → exame_tipo
+// e escreve os .sql correspondentes (idempotentes). Rode após atualizar os CSVs.
+//
+// Fonte dos dados: catálogo da Tabela 24 do eSocial (agentes nocivos, público) e
+// a lista de tipos de exame da Proteção RR. Nada de código/layout/texto de produto
+// de terceiro — apenas a nomenclatura técnica.
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const base = join(dirname(fileURLToPath(import.meta.url)), "..", "supabase", "seeds");
-const csv = readFileSync(join(base, "tabela24_esocial.csv"), "utf8");
 
-// parser CSV simples (suporta aspas e vírgulas dentro de aspas)
-function parseLinha(linha) {
-  const out = [];
-  let campo = "";
-  let aspas = false;
-  for (let i = 0; i < linha.length; i++) {
-    const c = linha[i];
-    if (aspas) {
-      if (c === '"' && linha[i + 1] === '"') { campo += '"'; i++; }
-      else if (c === '"') aspas = false;
+function parseCsv(txt) {
+  const linhas = txt.split(/\r?\n/).filter((l) => l.trim().length > 0);
+  const parseLinha = (linha) => {
+    const out = [];
+    let campo = "";
+    let aspas = false;
+    for (let i = 0; i < linha.length; i++) {
+      const c = linha[i];
+      if (aspas) {
+        if (c === '"' && linha[i + 1] === '"') { campo += '"'; i++; }
+        else if (c === '"') aspas = false;
+        else campo += c;
+      } else if (c === '"') aspas = true;
+      else if (c === ",") { out.push(campo); campo = ""; }
       else campo += c;
-    } else if (c === '"') aspas = true;
-    else if (c === ",") { out.push(campo); campo = ""; }
-    else campo += c;
-  }
-  out.push(campo);
-  return out.map((s) => s.trim());
-}
-
-const linhas = csv.split(/\r?\n/).filter((l) => l.trim().length > 0);
-const cab = parseLinha(linhas[0]).map((h) => h.toLowerCase());
-const iCod = cab.indexOf("codigo");
-const iCat = cab.indexOf("categoria");
-const iNome = cab.indexOf("nome");
-if (iCod < 0 || iCat < 0 || iNome < 0) {
-  console.error("CSV precisa ter as colunas: codigo,categoria,nome");
-  process.exit(1);
+    }
+    out.push(campo);
+    return out;
+  };
+  const header = parseLinha(linhas[0]).map((h) => h.trim().toLowerCase());
+  return linhas.slice(1).map((l) => {
+    const cols = parseLinha(l);
+    const obj = {};
+    header.forEach((h, i) => (obj[h] = (cols[i] ?? "").trim()));
+    return obj;
+  });
 }
 
 const esc = (s) => `'${String(s ?? "").replace(/'/g, "''")}'`;
-const registros = linhas.slice(1).map(parseLinha);
+const nul = (s) => (s && s.length ? esc(s) : "null");
+const read = (f) => (existsSync(join(base, f)) ? parseCsv(readFileSync(join(base, f), "utf8")) : []);
 
-let sql = `-- Seed gerado de tabela24_esocial.csv — NÃO editar à mão.
--- Camada oficial do eSocial (Tabela 24), somente leitura no app.
+// ---- riscos camada eSocial -------------------------------------------------
+{
+  const regs = read("riscos_esocial.csv");
+  let sql = `-- Seed gerado de riscos_esocial.csv — NÃO editar à mão.
+-- Catálogo oficial de agentes nocivos (Tabela 24 do eSocial), camada eSocial
+-- (consultoria_id null, somente leitura no app).
 begin;
 delete from risco_catalogo where camada = 'esocial';
 `;
-
-if (registros.length === 0) {
-  sql += "-- (CSV vazio: preencha com os dados oficiais e rode o gerador novamente)\n";
-} else {
-  const valores = registros
-    .map((r) => `  ('esocial', ${esc(r[iCat])}, ${esc(r[iCod])}, ${esc(r[iNome])}, true)`)
-    .join(",\n");
-  sql += `insert into risco_catalogo (camada, categoria, codigo_tabela24, nome, qualitativo) values\n${valores};\n`;
+  if (regs.length) {
+    const vals = regs
+      .map((r) => `  ('esocial', ${esc(r.categoria)}, ${esc(r.nome)}, ${nul(r.nome_esocial)}, ${nul(r.codigo)}, true)`)
+      .join(",\n");
+    sql += `insert into risco_catalogo (camada, categoria, nome, nome_esocial, codigo_tabela24, qualitativo) values\n${vals};\n`;
+  }
+  sql += "commit;\n";
+  writeFileSync(join(base, "riscos_esocial.sql"), sql);
+  console.log(`riscos_esocial.sql: ${regs.length} registro(s).`);
 }
-sql += "commit;\n";
 
-writeFileSync(join(base, "tabela24_esocial.sql"), sql);
-console.log(`Gerado tabela24_esocial.sql com ${registros.length} registro(s).`);
+// ---- riscos camada consultoria (um por consultoria existente) --------------
+{
+  const regs = read("riscos_consultoria.csv");
+  let sql = `-- Seed gerado de riscos_consultoria.csv — NÃO editar à mão.
+-- Riscos próprios da consultoria (camada consultoria). Inserido para cada
+-- consultoria existente; idempotente via NOT EXISTS (nome por consultoria).
+begin;
+`;
+  for (const r of regs) {
+    sql += `insert into risco_catalogo (camada, consultoria_id, categoria, nome, nome_esocial, codigo_tabela24, qualitativo)
+select 'consultoria', c.id, ${esc(r.categoria)}, ${esc(r.nome)}, ${nul(r.nome_esocial)}, ${nul(r.codigo)}, true
+from consultoria c
+where not exists (
+  select 1 from risco_catalogo x
+  where x.camada = 'consultoria' and x.consultoria_id = c.id and x.nome = ${esc(r.nome)}
+);
+`;
+  }
+  sql += "commit;\n";
+  writeFileSync(join(base, "riscos_consultoria.sql"), sql);
+  console.log(`riscos_consultoria.sql: ${regs.length} registro(s).`);
+}
+
+// ---- exames (exame_tipo, um conjunto por consultoria) ----------------------
+{
+  const regs = read("exames.csv");
+  const sim = (v) => (String(v).trim().toLowerCase() === "sim" ? "true" : "false");
+  let sql = `-- Seed gerado de exames.csv — NÃO editar à mão.
+-- Catálogo de tipos de exame por consultoria (exame_tipo). Inserido para cada
+-- consultoria existente; idempotente via ON CONFLICT (consultoria_id, nome).
+begin;
+`;
+  if (regs.length) {
+    const vals = regs
+      .map((r) => `  (${esc(r.nome)}, ${sim(r.a)}, ${sim(r.p)}, ${sim(r.d)}, ${sim(r.rt)}, ${sim(r.mr)})`)
+      .join(",\n");
+    sql += `insert into exame_tipo (consultoria_id, nome, aso_admissional, aso_periodico, aso_demissional, aso_retorno, aso_mudanca)
+select c.id, v.nome, v.a, v.p, v.d, v.rt, v.mr
+from consultoria c
+cross join (values
+${vals}
+) as v(nome, a, p, d, rt, mr)
+on conflict (consultoria_id, nome) do nothing;
+`;
+  }
+  sql += "commit;\n";
+  writeFileSync(join(base, "exames.sql"), sql);
+  console.log(`exames.sql: ${regs.length} registro(s).`);
+}

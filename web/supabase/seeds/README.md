@@ -1,28 +1,33 @@
-# Seeds
+# Seeds — catálogo inicial
 
-## Tabela 24 do eSocial (Agentes Nocivos / Fatores de Risco)
+Nomenclatura técnica de SST (agentes de risco da **Tabela 24 do eSocial** e tipos
+de exame ocupacional). São dados técnicos/públicos — **não** código, layout, textos
+de produto ou marca de terceiro.
 
-Dados **oficiais** do eSocial, carregados como camada `esocial` do catálogo de
-riscos (somente leitura no app). Fonte autoritativa:
+## Fontes de verdade (CSV, versionadas)
 
-> gov.br → eSocial → Documentação técnica → Leiautes do eSocial → **Tabelas** → **Tabela 24**
-> (https://www.gov.br/esocial/pt-br/documentacao-tecnica/leiautes-esocial-html/tabelas.html)
+| Arquivo | Conteúdo | Vira |
+|---|---|---|
+| `riscos_esocial.csv` | 919 agentes nocivos (Tabela 24), `nome,categoria,nome_esocial,codigo` | `risco_catalogo` camada **eSocial** |
+| `riscos_consultoria.csv` | Riscos próprios da consultoria | `risco_catalogo` camada **consultoria** |
+| `exames.csv` | 10 tipos de exame, `nome,A,P,D,RT,MR` | `exame_tipo` |
 
-### Como atualizar
+## Gerar os SQLs
 
-1. Baixe a Tabela 24 oficial e preencha `tabela24_esocial.csv` com as colunas:
-   `codigo,categoria,nome`
-   - `codigo` — código oficial (ex.: `01.01.001`)
-   - `categoria` — grupo (Físico, Químico, Biológico, …)
-   - `nome` — descrição oficial do agente/fator
-2. Gere o SQL:
-   ```bash
-   node scripts/gerar-seed-tabela24.mjs
-   ```
-   Isso recria `tabela24_esocial.sql` (um `DELETE` da camada eSocial + `INSERT`s,
-   idempotente).
-3. Aplique no banco quando ele estiver conectado (no lançamento), via
-   `supabase db execute` / painel SQL do Supabase, ou rode o SQL direto.
+```bash
+node scripts/gerar-seed-tabela24.mjs
+```
+Gera (idempotentes):
+- `riscos_esocial.sql` — `DELETE` da camada eSocial + `INSERT` dos 919.
+- `riscos_consultoria.sql` — insere para cada consultoria (guarda `NOT EXISTS`).
+- `exames.sql` — insere para cada consultoria (`ON CONFLICT (consultoria_id, nome)`).
 
-> Nada aqui é copiado de sistema de terceiros — apenas a tabela pública oficial
-> do eSocial.
+## Aplicar (no lançamento, com o banco conectado)
+
+1. Rode as migrations (`0001`…`0007`). A `0007` adiciona `risco_catalogo.nome_esocial`.
+2. Rode `riscos_esocial.sql` (independe de haver consultoria).
+3. Crie a consultoria (Auth/onboarding).
+4. Rode `exames.sql` e `riscos_consultoria.sql` (populam por consultoria).
+
+> Códigos da Tabela 24: 120 dos 919 agentes têm código oficial (`01.03.001` etc.);
+> os demais são agentes sem código próprio na tabela (campo vazio).
