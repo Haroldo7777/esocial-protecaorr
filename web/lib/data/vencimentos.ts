@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 export type ItemVencimento = {
   chave: string;
   natureza: "colaborador" | "acoes_programas";
-  tipo: "exame" | "programa" | "treinamento";
+  tipo: "exame" | "programa" | "treinamento" | "epi";
   item: string; // ex.: "ASO Periódico" ou "PCMSO"
   empresa: string;
   empregado: string | null;
@@ -76,10 +76,20 @@ export async function listarVencimentos(opts?: {
       .not("turma.periodicidade_meses", "is", null);
     if (opts?.empresaId) qTreino = qTreino.eq("turma.empresa_id", opts.empresaId);
 
-    const [asoR, progR, treinoR] = await Promise.all([qAso, qProg, qTreino]);
+    let qEpi = sb
+      .from("epi_entrega")
+      .select(
+        "id,empregado_id,data_entrega,data_proxima,epi:epi_id(nome),empregado:empregado_id(nome),empresa:empresa_id(razao_social,nome_fantasia)",
+      )
+      .not("data_proxima", "is", null)
+      .order("data_entrega", { ascending: false });
+    if (opts?.empresaId) qEpi = qEpi.eq("empresa_id", opts.empresaId);
+
+    const [asoR, progR, treinoR, epiR] = await Promise.all([qAso, qProg, qTreino, qEpi]);
     if (asoR.error) return { ok: false, erro: asoR.error.message };
     if (progR.error) return { ok: false, erro: progR.error.message };
     if (treinoR.error) return { ok: false, erro: treinoR.error.message };
+    if (epiR.error) return { ok: false, erro: epiR.error.message };
 
     const itens: ItemVencimento[] = [];
 
@@ -166,6 +176,45 @@ export async function listarVencimentos(opts?: {
         empregado: v.empregado,
         data_prazo: prazo,
         dias: diasAte(prazo),
+      });
+    }
+
+    // EPI: próxima troca por empregado × EPI (entrega mais recente de cada combinação)
+    const epiRecente = new Map<
+      string,
+      { empregado: string | null; empresa: string; epi: string; data_entrega: string; data_proxima: string }
+    >();
+    for (const r of (epiR.data ?? []) as unknown as {
+      empregado_id: string;
+      data_entrega: string;
+      data_proxima: string;
+      epi: { nome: string } | null;
+      empregado: { nome: string } | null;
+      empresa: { razao_social: string; nome_fantasia: string | null } | null;
+    }[]) {
+      const nomeEpi = r.epi?.nome ?? "EPI";
+      const chave = `${r.empregado_id}|${nomeEpi}`;
+      const atual = epiRecente.get(chave);
+      if (!atual || r.data_entrega > atual.data_entrega) {
+        epiRecente.set(chave, {
+          empregado: r.empregado?.nome ?? null,
+          empresa: r.empresa?.nome_fantasia || r.empresa?.razao_social || "—",
+          epi: nomeEpi,
+          data_entrega: r.data_entrega,
+          data_proxima: r.data_proxima,
+        });
+      }
+    }
+    for (const [chave, v] of epiRecente) {
+      itens.push({
+        chave: `epi:${chave}`,
+        natureza: "colaborador",
+        tipo: "epi",
+        item: `EPI ${v.epi}`,
+        empresa: v.empresa,
+        empregado: v.empregado,
+        data_prazo: v.data_proxima,
+        dias: diasAte(v.data_proxima),
       });
     }
 
