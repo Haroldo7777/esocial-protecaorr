@@ -15,10 +15,34 @@ const DOCS: [string, string][] = [
   ["doc_aep", "AEP"],
 ];
 
+type Opt = { id: string; nome: string };
+
+function Checklist({ campo, itens, vazio }: { campo: string; itens: Opt[]; vazio: string }) {
+  if (itens.length === 0) return <p className="text-sm opacity-60">{vazio}</p>;
+  return (
+    <div className="grid gap-1.5 max-h-56 overflow-y-auto">
+      {itens.map((i) => (
+        <label
+          key={i.id}
+          className="flex items-center gap-2 text-sm border border-gray-200 rounded-lg px-3 py-2"
+        >
+          <input type="checkbox" name={campo} value={i.id} /> {i.nome}
+        </label>
+      ))}
+    </div>
+  );
+}
+
 export function FormRisco({
   agentes,
+  exames,
+  treinamentos,
+  epis,
 }: {
   agentes: { id: string; nome: string; codigo_tabela24: string | null }[];
+  exames: Opt[];
+  treinamentos: Opt[];
+  epis: Opt[];
 }) {
   const [state, action, pending] = useActionState<Estado, FormData>(criarRisco, {});
   const [passo, setPasso] = useState(0);
@@ -93,20 +117,22 @@ export function FormRisco({
           </Campo>
         </div>
 
-        <div className={passo === 2 ? "grid sm:grid-cols-2 gap-4" : "hidden"}>
-          <Campo label="Treinamentos exigidos — um por linha">
-            <textarea name="treinamentos" rows={5} className={inputCls} />
-          </Campo>
-          <Campo label="Exames exigidos — um por linha">
-            <textarea name="exames" rows={5} className={inputCls} />
-          </Campo>
-          <div className="sm:col-span-2">
-            <Campo label="EPIs exigidos — um por linha">
-              <textarea name="epis" rows={4} className={inputCls} placeholder="Protetor auricular&#10;Luva de segurança" />
+        <div className={passo === 2 ? "grid gap-4" : "hidden"}>
+          <p className="text-xs opacity-60">
+            Selecione no catálogo os itens exigidos por este risco. A auditoria cruza
+            exatamente esses itens com o que foi prescrito/entregue a cada empregado
+            exposto.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Campo label="Exames exigidos">
+              <Checklist campo="exames" itens={exames} vazio="Sem tipos de exame no catálogo (Medicina)." />
             </Campo>
-            <p className="text-xs opacity-60 mt-1">
-              Use o mesmo nome do catálogo de EPI para a auditoria cruzar a entrega.
-            </p>
+            <Campo label="Treinamentos exigidos">
+              <Checklist campo="treinamentos" itens={treinamentos} vazio="Sem treinamentos no catálogo." />
+            </Campo>
+            <Campo label="EPIs exigidos">
+              <Checklist campo="epis" itens={epis} vazio="Sem EPIs no catálogo." />
+            </Campo>
           </div>
         </div>
 

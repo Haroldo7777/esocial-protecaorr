@@ -65,8 +65,8 @@ export default async function ExamesEmpresaPage({
             Sugeridos pelos riscos dos GHE
           </h2>
           <p className="text-xs opacity-60 mb-3">
-            Exames exigidos pelos riscos vinculados a cada GHE. Defina a periodicidade
-            (meses) e inclua no plano — o exame entra no catálogo se ainda não existir.
+            Exames exigidos pelos riscos vinculados a cada GHE (do catálogo). Defina a
+            periodicidade (meses) e inclua no plano desta empresa.
           </p>
           <div className="grid gap-4">
             {sug.dados.map((g) => {
@@ -88,15 +88,6 @@ export default async function ExamesEmpresaPage({
                           <input type="hidden" name="exame_tipo_id" value={e.exameTipoId} />
                         ) : null}
                         <span className="font-medium flex-1 min-w-[10rem]">{e.nome}</span>
-                        {e.exameTipoId ? (
-                          <span className="text-[10px] uppercase bg-brand-light text-brand-ink rounded px-1.5 py-0.5">
-                            no catálogo
-                          </span>
-                        ) : (
-                          <span className="text-[10px] uppercase bg-amber-100 text-amber-700 rounded px-1.5 py-0.5">
-                            novo
-                          </span>
-                        )}
                         <label className="flex items-center gap-1 opacity-70">
                           <input
                             type="number"

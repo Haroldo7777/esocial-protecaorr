@@ -90,8 +90,8 @@ export type SugestaoGhe = {
 
 /**
  * Sugere exames para o plano de cada GHE a partir das exigências dos riscos
- * ligados ao GHE (risco_catalogo.exigencias.exames). Casa o nome com o catálogo
- * exame_tipo e marca o que já está no plano (por GHE ou empresa toda).
+ * ligados ao GHE (risco_catalogo.exigencias.exames, por ID do catálogo). Marca
+ * o que já está no plano (por GHE ou empresa toda).
  */
 export async function sugestoesExamesGhe(empresaId: string): Promise<Res<SugestaoGhe[]>> {
   try {
@@ -104,60 +104,49 @@ export async function sugestoesExamesGhe(empresaId: string): Promise<Res<Sugesta
       sb.from("exame_tipo").select("id,nome").eq("ativo", true),
       sb
         .from("plano_exame")
-        .select("ghe_id,exame:exame_tipo_id(nome)")
+        .select("ghe_id,exame_tipo_id")
         .eq("empresa_id", empresaId)
         .eq("ativo", true),
     ]);
     if (gr.error) return { ok: false, erro: gr.error.message };
 
-    // catálogo: nome(lower) → id
-    const tiposMap = new Map<string, string>();
-    for (const t of (tipos.data ?? []) as { id: string; nome: string }[]) {
-      tiposMap.set(t.nome.trim().toLowerCase(), t.id);
-    }
+    // catálogo: id → nome
+    const nomeExame = new Map<string, string>();
+    for (const t of (tipos.data ?? []) as { id: string; nome: string }[]) nomeExame.set(t.id, t.nome);
 
-    // plano existente: empresa toda (ghe null) cobre todos os GHE
+    // plano existente (por exame_tipo_id): empresa toda (ghe null) cobre todos os GHE
     const empresaToda = new Set<string>();
     const porGhe = new Map<string, Set<string>>();
-    for (const p of (plano.data ?? []) as unknown as {
-      ghe_id: string | null;
-      exame: { nome: string } | null;
-    }[]) {
-      const nm = p.exame?.nome?.trim().toLowerCase();
-      if (!nm) continue;
+    for (const p of (plano.data ?? []) as { ghe_id: string | null; exame_tipo_id: string }[]) {
       if (p.ghe_id) {
         if (!porGhe.has(p.ghe_id)) porGhe.set(p.ghe_id, new Set());
-        porGhe.get(p.ghe_id)!.add(nm);
+        porGhe.get(p.ghe_id)!.add(p.exame_tipo_id);
       } else {
-        empresaToda.add(nm);
+        empresaToda.add(p.exame_tipo_id);
       }
     }
 
-    // agrupa exigências por GHE
-    type Acc = { referencia: string; nomes: Map<string, string> };
-    const grupos = new Map<string, Acc>();
+    // agrupa exigências (IDs) por GHE
+    const grupos = new Map<string, { referencia: string; ids: Set<string> }>();
     for (const row of (gr.data ?? []) as unknown as {
       ghe_id: string;
       risco: { exigencias: { exames?: string[] } | null } | null;
       ghe: { referencia: string } | null;
     }[]) {
-      const exames = row.risco?.exigencias?.exames ?? [];
-      if (exames.length === 0) continue;
+      const ids = row.risco?.exigencias?.exames ?? [];
+      if (ids.length === 0) continue;
       if (!grupos.has(row.ghe_id))
-        grupos.set(row.ghe_id, { referencia: row.ghe?.referencia ?? "—", nomes: new Map() });
+        grupos.set(row.ghe_id, { referencia: row.ghe?.referencia ?? "—", ids: new Set() });
       const g = grupos.get(row.ghe_id)!;
-      for (const e of exames) {
-        const nm = e.trim();
-        if (nm) g.nomes.set(nm.toLowerCase(), nm); // dedupe, mantém 1ª grafia
-      }
+      for (const id of ids) if (id) g.ids.add(id);
     }
 
     const out: SugestaoGhe[] = [];
     for (const [gheId, g] of grupos) {
-      const exames = [...g.nomes.entries()].map(([lower, nome]) => ({
-        nome,
-        exameTipoId: tiposMap.get(lower) ?? null,
-        jaNoPlano: empresaToda.has(lower) || (porGhe.get(gheId)?.has(lower) ?? false),
+      const exames = [...g.ids].map((id) => ({
+        nome: nomeExame.get(id) ?? "exame",
+        exameTipoId: id,
+        jaNoPlano: empresaToda.has(id) || (porGhe.get(gheId)?.has(id) ?? false),
       }));
       // só GHE com algo ainda não incluído
       if (exames.some((e) => !e.jaNoPlano)) out.push({ gheId, referencia: g.referencia, exames });

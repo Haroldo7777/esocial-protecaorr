@@ -20,12 +20,10 @@ export async function criarRisco(
 
   const medidas = String(formData.get("medidas_recomendadas") ?? "")
     .split("\n").map((s) => s.trim()).filter(Boolean);
-  const treinamentos = String(formData.get("treinamentos") ?? "")
-    .split("\n").map((s) => s.trim()).filter(Boolean);
-  const exames = String(formData.get("exames") ?? "")
-    .split("\n").map((s) => s.trim()).filter(Boolean);
-  const epis = String(formData.get("epis") ?? "")
-    .split("\n").map((s) => s.trim()).filter(Boolean);
+  // exigências por ID (seleção do catálogo)
+  const treinamentos = formData.getAll("treinamentos").map(String).filter(Boolean);
+  const exames = formData.getAll("exames").map(String).filter(Boolean);
+  const epis = formData.getAll("epis").map(String).filter(Boolean);
 
   const supabase = await createClient();
   const { error } = await supabase.from("risco_catalogo").insert({
