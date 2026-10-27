@@ -15,7 +15,7 @@ const ITENS: { href: string; label: string; pronto?: boolean }[] = [
   { href: "/riscos", label: "Catálogo de Riscos", pronto: true },
   { href: "/usuarios", label: "Usuários", pronto: true },
   { href: "/permissoes", label: "Permissões", pronto: true },
-  { href: "/configuracoes", label: "Configurações" },
+  { href: "/configuracoes", label: "Configurações", pronto: true },
 ];
 
 export function ConsultoriaNav() {
