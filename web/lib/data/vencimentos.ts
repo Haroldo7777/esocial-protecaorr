@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 export type ItemVencimento = {
   chave: string;
   natureza: "colaborador" | "acoes_programas";
-  tipo: "exame" | "programa";
+  tipo: "exame" | "programa" | "treinamento";
   item: string; // ex.: "ASO Periódico" ou "PCMSO"
   empresa: string;
   empregado: string | null;
@@ -19,6 +19,13 @@ function diasAte(iso: string): number {
   const [y, m, d] = iso.split("-").map(Number);
   const alvo = Date.UTC(y, m - 1, d);
   return Math.round((alvo - hoje.getTime()) / 86400000);
+}
+
+function somaMeses(iso: string, meses: number): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  const base = new Date(Date.UTC(y, m - 1, d));
+  base.setUTCMonth(base.getUTCMonth() + meses);
+  return base.toISOString().slice(0, 10);
 }
 
 const LABEL_ASO: Record<string, string> = {
@@ -60,9 +67,19 @@ export async function listarVencimentos(opts?: {
       .not("vigencia_fim", "is", null);
     if (opts?.empresaId) qProg = qProg.eq("empresa_id", opts.empresaId);
 
-    const [asoR, progR] = await Promise.all([qAso, qProg]);
+    let qTreino = sb
+      .from("turma_aluno")
+      .select(
+        "empregado_id,empregado:empregado_id(nome),turma:turma_id!inner(data_fim,periodicidade_meses,empresa_id,treinamento:treinamento_id(nome),empresa:empresa_id(razao_social,nome_fantasia))",
+      )
+      .not("turma.data_fim", "is", null)
+      .not("turma.periodicidade_meses", "is", null);
+    if (opts?.empresaId) qTreino = qTreino.eq("turma.empresa_id", opts.empresaId);
+
+    const [asoR, progR, treinoR] = await Promise.all([qAso, qProg, qTreino]);
     if (asoR.error) return { ok: false, erro: asoR.error.message };
     if (progR.error) return { ok: false, erro: progR.error.message };
+    if (treinoR.error) return { ok: false, erro: treinoR.error.message };
 
     const itens: ItemVencimento[] = [];
 
@@ -105,6 +122,50 @@ export async function listarVencimentos(opts?: {
         empregado: null,
         data_prazo: p.vigencia_fim,
         dias: diasAte(p.vigencia_fim),
+      });
+    }
+
+    // treinamentos: próxima reciclagem por empregado × treinamento
+    // (mantém só a turma concluída mais recente de cada combinação)
+    const maisRecente = new Map<
+      string,
+      { empregado: string | null; empresa: string; treino: string; data_fim: string; periodicidade: number }
+    >();
+    for (const r of (treinoR.data ?? []) as unknown as {
+      empregado_id: string;
+      empregado: { nome: string } | null;
+      turma: {
+        data_fim: string;
+        periodicidade_meses: number;
+        treinamento: { nome: string } | null;
+        empresa: { razao_social: string; nome_fantasia: string | null } | null;
+      } | null;
+    }[]) {
+      if (!r.turma) continue;
+      const treino = r.turma.treinamento?.nome ?? "Treinamento";
+      const chave = `${r.empregado_id}|${treino}`;
+      const atual = maisRecente.get(chave);
+      if (!atual || r.turma.data_fim > atual.data_fim) {
+        maisRecente.set(chave, {
+          empregado: r.empregado?.nome ?? null,
+          empresa: r.turma.empresa?.nome_fantasia || r.turma.empresa?.razao_social || "—",
+          treino,
+          data_fim: r.turma.data_fim,
+          periodicidade: r.turma.periodicidade_meses,
+        });
+      }
+    }
+    for (const [chave, v] of maisRecente) {
+      const prazo = somaMeses(v.data_fim, v.periodicidade);
+      itens.push({
+        chave: `treino:${chave}`,
+        natureza: "colaborador",
+        tipo: "treinamento",
+        item: v.treino,
+        empresa: v.empresa,
+        empregado: v.empregado,
+        data_prazo: prazo,
+        dias: diasAte(prazo),
       });
     }
 
