@@ -11,6 +11,7 @@ const ITENS: { href: string; label: string; pronto?: boolean }[] = [
   { href: "/medicina", label: "Medicina", pronto: true },
   { href: "/epi", label: "EPI", pronto: true },
   { href: "/vencimentos", label: "Gestão de Vencimentos", pronto: true },
+  { href: "/auditoria", label: "Auditoria", pronto: true },
   { href: "/riscos", label: "Catálogo de Riscos", pronto: true },
   { href: "/usuarios", label: "Usuários" },
   { href: "/permissoes", label: "Permissões" },
