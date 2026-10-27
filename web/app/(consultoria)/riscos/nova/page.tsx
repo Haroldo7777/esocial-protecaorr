@@ -4,6 +4,7 @@ import { listarTiposExame } from "@/lib/data/medicina";
 import { listarTreinamentos } from "@/lib/data/treinamentos";
 import { listarEpis } from "@/lib/data/epi";
 import { FormRisco } from "./form";
+import { criarRisco } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +34,13 @@ export default async function NovoRiscoPage() {
         Camada <b>Consultoria</b>. Ao editar um risco, lembre de reaplicá-lo ao GHE
         para persistir as mudanças no mapeamento.
       </p>
-      <FormRisco agentes={agentes} exames={exames} treinamentos={treinamentos} epis={epis} />
+      <FormRisco
+        agentes={agentes}
+        exames={exames}
+        treinamentos={treinamentos}
+        epis={epis}
+        action={criarRisco}
+      />
     </div>
   );
 }

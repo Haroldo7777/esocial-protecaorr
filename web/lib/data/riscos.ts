@@ -37,6 +37,46 @@ export async function listarRiscos(
   }
 }
 
+export type RiscoCompleto = {
+  id: string;
+  camada: string;
+  nome: string;
+  codigo_tabela24: string | null;
+  categoria: string;
+  qualitativo: boolean;
+  observacoes: string | null;
+  medidas_recomendadas: string[];
+  exigencias: { exames?: string[]; treinamentos?: string[]; epis?: string[] } | null;
+  intensidade: string | null;
+  limite_tolerancia: string | null;
+  metodo_medicao: string | null;
+  tipo_exposicao: string | null;
+  aposentadoria_especial: boolean;
+  doc_lip: boolean;
+  doc_ltcat: boolean;
+  doc_pgr: boolean;
+  doc_pcmso: boolean;
+  doc_aep: boolean;
+};
+
+/** Busca um risco com todos os campos (para edição). */
+export async function getRisco(id: string): Promise<Res<RiscoCompleto>> {
+  try {
+    const sb = await createClient();
+    const { data, error } = await sb
+      .from("risco_catalogo")
+      .select(
+        "id,camada,nome,codigo_tabela24,categoria,qualitativo,observacoes,medidas_recomendadas,exigencias,intensidade,limite_tolerancia,metodo_medicao,tipo_exposicao,aposentadoria_especial,doc_lip,doc_ltcat,doc_pgr,doc_pcmso,doc_aep",
+      )
+      .eq("id", id)
+      .single();
+    if (error) return { ok: false, erro: error.message };
+    return { ok: true, dados: data as unknown as RiscoCompleto };
+  } catch (e) {
+    return { ok: false, erro: e instanceof Error ? e.message : "Erro" };
+  }
+}
+
 /** Agentes da camada eSocial (Tabela 24) para o dropdown do cadastro. */
 export async function listarAgentesEsocial(): Promise<
   { id: string; nome: string; codigo_tabela24: string | null }[]

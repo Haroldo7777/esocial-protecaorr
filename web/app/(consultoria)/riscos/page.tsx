@@ -74,6 +74,7 @@ export default async function RiscosPage({
                 <th className="p-3">Categoria</th>
                 <th className="p-3">Código (Tabela 24)</th>
                 <th className="p-3">Qualitativo</th>
+                {!readonly ? <th className="p-3"></th> : null}
               </tr>
             </thead>
             <tbody>
@@ -83,6 +84,13 @@ export default async function RiscosPage({
                   <td className="p-3">{r.categoria}</td>
                   <td className="p-3">{r.codigo_tabela24 ?? "—"}</td>
                   <td className="p-3">{r.qualitativo ? "Sim" : "Não"}</td>
+                  {!readonly ? (
+                    <td className="p-3 text-right">
+                      <Link href={`/riscos/${r.id}/editar`} className="text-brand-ink font-medium">
+                        Editar
+                      </Link>
+                    </td>
+                  ) : null}
                 </tr>
               ))}
             </tbody>
