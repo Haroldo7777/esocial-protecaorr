@@ -5,6 +5,7 @@ export type CategoriaAchado =
   | "exame_aso"
   | "exame_plano"
   | "treinamento"
+  | "epi"
   | "cadastro";
 
 export type Achado = {
@@ -43,6 +44,7 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
     let qFuncoes = sb.from("funcao").select("id,cbo");
     let qPlano = sb.from("plano_exame").select("empresa_id,ghe_id,exame:exame_tipo_id(nome)").eq("ativo", true);
     let qAso = sb.from("aso").select("empregado_id,data_proximo");
+    let qEpiEntrega = sb.from("epi_entrega").select("empregado_id,tipo,data_proxima,empresa_id,epi:epi_id(nome)");
     if (empresaId) {
       qEmpresas = qEmpresas.eq("id", empresaId);
       qGhe = qGhe.eq("empresa_id", empresaId);
@@ -50,9 +52,10 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
       qFuncoes = qFuncoes.eq("empresa_id", empresaId);
       qPlano = qPlano.eq("empresa_id", empresaId);
       qAso = qAso.eq("empresa_id", empresaId);
+      qEpiEntrega = qEpiEntrega.eq("empresa_id", empresaId);
     }
 
-    const [empresasR, gheR, gheRiscoR, gheEmpR, empregadosR, funcoesR, planoR, asoR, turmaAlunoR] =
+    const [empresasR, gheR, gheRiscoR, gheEmpR, empregadosR, funcoesR, planoR, asoR, turmaAlunoR, epiEntregaR] =
       await Promise.all([
         qEmpresas,
         qGhe,
@@ -65,9 +68,10 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
         sb
           .from("turma_aluno")
           .select("empregado_id,turma:turma_id!inner(data_fim,periodicidade_meses,empresa_id,treinamento:treinamento_id(nome))"),
+        qEpiEntrega,
       ]);
 
-    for (const r of [empresasR, gheR, gheRiscoR, gheEmpR, empregadosR, funcoesR, planoR, asoR, turmaAlunoR]) {
+    for (const r of [empresasR, gheR, gheRiscoR, gheEmpR, empregadosR, funcoesR, planoR, asoR, turmaAlunoR, epiEntregaR]) {
       if (r.error) return { ok: false, erro: r.error.message };
     }
 
@@ -80,14 +84,18 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
     const ghes = (gheR.data ?? []) as { id: string; empresa_id: string; referencia: string; situacao: string }[];
     const gheMap = new Map(ghes.map((g) => [g.id, g]));
 
-    // exigências por GHE (exames e treinamentos, texto livre dos riscos)
-    const exigGhe = new Map<string, { exames: Map<string, string>; treinos: Map<string, string> }>();
+    // exigências por GHE (exames, treinamentos e EPIs — texto livre dos riscos)
+    const exigGhe = new Map<
+      string,
+      { exames: Map<string, string>; treinos: Map<string, string>; epis: Map<string, string> }
+    >();
     for (const row of (gheRiscoR.data ?? []) as unknown as {
       ghe_id: string;
-      risco: { exigencias: { exames?: string[]; treinamentos?: string[] } | null } | null;
+      risco: { exigencias: { exames?: string[]; treinamentos?: string[]; epis?: string[] } | null } | null;
     }[]) {
       if (!gheMap.has(row.ghe_id)) continue; // respeita filtro de empresa
-      if (!exigGhe.has(row.ghe_id)) exigGhe.set(row.ghe_id, { exames: new Map(), treinos: new Map() });
+      if (!exigGhe.has(row.ghe_id))
+        exigGhe.set(row.ghe_id, { exames: new Map(), treinos: new Map(), epis: new Map() });
       const alvo = exigGhe.get(row.ghe_id)!;
       for (const e of row.risco?.exigencias?.exames ?? []) {
         const nm = e.trim();
@@ -96,6 +104,10 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
       for (const t of row.risco?.exigencias?.treinamentos ?? []) {
         const nm = t.trim();
         if (nm) alvo.treinos.set(nm.toLowerCase(), nm);
+      }
+      for (const p of row.risco?.exigencias?.epis ?? []) {
+        const nm = p.trim();
+        if (nm) alvo.epis.set(nm.toLowerCase(), nm);
       }
     }
 
@@ -159,6 +171,21 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
       if (vence && vence < hoje) continue; // reciclagem vencida não conta como válido
       if (!treinoValido.has(r.empregado_id)) treinoValido.set(r.empregado_id, new Set());
       treinoValido.get(r.empregado_id)!.add(nm);
+    }
+
+    // EPIs válidos por empregado (entrega/troca com troca em dia; devolução não conta)
+    const epiValido = new Map<string, Set<string>>();
+    for (const r of (epiEntregaR.data ?? []) as unknown as {
+      empregado_id: string;
+      tipo: string;
+      data_proxima: string | null;
+      epi: { nome: string } | null;
+    }[]) {
+      const nm = r.epi?.nome?.trim().toLowerCase();
+      if (!nm || r.tipo === "devolucao") continue;
+      if (r.data_proxima && r.data_proxima < hoje) continue; // troca vencida não conta
+      if (!epiValido.has(r.empregado_id)) epiValido.set(r.empregado_id, new Set());
+      epiValido.get(r.empregado_id)!.add(nm);
     }
 
     const achados: Achado[] = [];
@@ -230,6 +257,21 @@ export async function auditar(empresaId?: string): Promise<Res<Achado[]>> {
               empresa: emp,
               titulo: `Sem treinamento exigido: ${e.nome}`,
               detalhe: `GHE ${g.referencia} exige "${orig}" e o empregado não tem turma válida (vencida ou inexistente).`,
+            });
+          }
+        }
+
+        // exposto sem EPI exigido
+        const episOk = epiValido.get(empId) ?? new Set<string>();
+        for (const [lower, orig] of exig.epis) {
+          if (!episOk.has(lower)) {
+            add({
+              chave: `epi:${empId}:${lower}`,
+              severidade: "alta",
+              categoria: "epi",
+              empresa: emp,
+              titulo: `Sem EPI exigido: ${e.nome}`,
+              detalhe: `GHE ${g.referencia} exige "${orig}" e o empregado não tem entrega válida (troca vencida ou inexistente).`,
             });
           }
         }

@@ -24,6 +24,8 @@ export async function criarRisco(
     .split("\n").map((s) => s.trim()).filter(Boolean);
   const exames = String(formData.get("exames") ?? "")
     .split("\n").map((s) => s.trim()).filter(Boolean);
+  const epis = String(formData.get("epis") ?? "")
+    .split("\n").map((s) => s.trim()).filter(Boolean);
 
   const supabase = await createClient();
   const { error } = await supabase.from("risco_catalogo").insert({
@@ -35,7 +37,7 @@ export async function criarRisco(
     qualitativo: formData.get("qualitativo") === "sim",
     observacoes: String(formData.get("observacoes") ?? "").trim() || null,
     medidas_recomendadas: medidas,
-    exigencias: { treinamentos, exames },
+    exigencias: { treinamentos, exames, epis },
     intensidade: String(formData.get("intensidade") ?? "").trim() || null,
     limite_tolerancia: String(formData.get("limite_tolerancia") ?? "").trim() || null,
     metodo_medicao: String(formData.get("metodo_medicao") ?? "").trim() || null,

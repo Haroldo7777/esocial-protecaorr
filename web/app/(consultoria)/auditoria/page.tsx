@@ -8,6 +8,7 @@ const LABEL_CAT: Record<CategoriaAchado, string> = {
   exame_aso: "Exame / ASO",
   exame_plano: "Plano de exames",
   treinamento: "Treinamento",
+  epi: "EPI",
   cadastro: "Cadastro",
 };
 

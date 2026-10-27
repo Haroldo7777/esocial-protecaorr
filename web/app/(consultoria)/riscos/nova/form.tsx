@@ -100,6 +100,14 @@ export function FormRisco({
           <Campo label="Exames exigidos — um por linha">
             <textarea name="exames" rows={5} className={inputCls} />
           </Campo>
+          <div className="sm:col-span-2">
+            <Campo label="EPIs exigidos — um por linha">
+              <textarea name="epis" rows={4} className={inputCls} placeholder="Protetor auricular&#10;Luva de segurança" />
+            </Campo>
+            <p className="text-xs opacity-60 mt-1">
+              Use o mesmo nome do catálogo de EPI para a auditoria cruzar a entrega.
+            </p>
+          </div>
         </div>
 
         <div className={passo === 3 ? "grid sm:grid-cols-2 gap-4" : "hidden"}>
