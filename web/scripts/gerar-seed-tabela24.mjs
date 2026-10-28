@@ -69,7 +69,9 @@ delete from risco_catalogo where camada = 'esocial';
   }
   sql += "commit;\n";
   writeFileSync(join(base, "riscos_esocial.sql"), sql);
-  console.log(`riscos_esocial.sql: ${regs.length} registro(s).`);
+  // seed.sql (lido pelo `supabase db reset`): só a camada eSocial, idempotente
+  writeFileSync(join(base, "..", "seed.sql"), sql);
+  console.log(`riscos_esocial.sql + seed.sql: ${regs.length} registro(s).`);
 }
 
 // ---- riscos camada consultoria (um por consultoria existente) --------------
