@@ -94,6 +94,13 @@ export default async function AuditoriaPage({
         >
           Exportar CSV
         </a>
+        <a
+          href={`/relatorio/auditoria?empresa=${empresa ?? ""}&sev=${sevFiltro ?? ""}`}
+          target="_blank"
+          className="px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+        >
+          Relatório PDF
+        </a>
       </form>
 
       {!res.ok ? (
