@@ -24,7 +24,7 @@ export default async function TurmasPage() {
       </p>
       <TreinamentosTabs />
 
-      <CabecalhoLista titulo="Turmas" hrefNovo="/treinamentos/turmas/nova" rotuloNovo="+ Nova turma" />
+      <CabecalhoLista titulo="Turmas" hrefNovo="/treinamentos/turmas/nova" rotuloNovo="+ Nova turma" hrefExport="/treinamentos/turmas/export" />
       {!res.ok ? (
         <AvisoBanco erro={res.erro} />
       ) : res.dados.length === 0 ? (

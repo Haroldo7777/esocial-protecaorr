@@ -4,17 +4,30 @@ export function CabecalhoLista({
   titulo,
   hrefNovo,
   rotuloNovo,
+  hrefExport,
 }: {
   titulo: string;
   hrefNovo: string;
   rotuloNovo: string;
+  hrefExport?: string;
 }) {
   return (
     <div className="flex items-center gap-3 mb-4">
       <h2 className="text-lg font-bold">{titulo}</h2>
+      {hrefExport ? (
+        <a
+          href={hrefExport}
+          className="ml-auto px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+        >
+          Exportar CSV
+        </a>
+      ) : null}
       <Link
         href={hrefNovo}
-        className="ml-auto px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold"
+        className={[
+          "px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold",
+          hrefExport ? "" : "ml-auto",
+        ].join(" ")}
       >
         {rotuloNovo}
       </Link>

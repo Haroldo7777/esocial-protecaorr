@@ -14,7 +14,7 @@ export default async function EmpregadosPage({
 
   return (
     <div>
-      <CabecalhoLista titulo="Empregados" hrefNovo={`/empresas/${id}/empregados/nova`} rotuloNovo="+ Adicionar empregado" />
+      <CabecalhoLista titulo="Empregados" hrefNovo={`/empresas/${id}/empregados/nova`} rotuloNovo="+ Adicionar empregado" hrefExport={`/empresas/${id}/empregados/export`} />
       {!res.ok ? (
         <AvisoBanco erro={res.erro} />
       ) : res.dados.length === 0 ? (

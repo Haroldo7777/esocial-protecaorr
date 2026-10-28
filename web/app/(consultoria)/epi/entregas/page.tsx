@@ -40,7 +40,7 @@ export default async function EntregasEpiPage() {
       </p>
       <EpiTabs />
 
-      <CabecalhoLista titulo="Entregas" hrefNovo="/epi/entregas/nova" rotuloNovo="+ Registrar entrega" />
+      <CabecalhoLista titulo="Entregas" hrefNovo="/epi/entregas/nova" rotuloNovo="+ Registrar entrega" hrefExport="/epi/entregas/export" />
       {!res.ok ? (
         <AvisoBanco erro={res.erro} />
       ) : res.dados.length === 0 ? (

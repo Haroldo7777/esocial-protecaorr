@@ -19,10 +19,16 @@ export default async function RiscosPage({
     <div>
       <div className="flex items-center gap-3 mb-3">
         <h1 className="text-xl font-bold">Catálogo de Riscos</h1>
+        <a
+          href={`/riscos/export?camada=${camada}&q=${encodeURIComponent(sp.q ?? "")}`}
+          className="ml-auto px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+        >
+          Exportar CSV
+        </a>
         {camada === "consultoria" ? (
           <Link
             href="/riscos/nova"
-            className="ml-auto px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold"
+            className="px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold"
           >
             + Cadastrar Risco
           </Link>

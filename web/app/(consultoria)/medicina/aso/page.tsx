@@ -39,7 +39,7 @@ export default async function AsoPage() {
       </p>
       <MedicinaTabs />
 
-      <CabecalhoLista titulo="ASO" hrefNovo="/medicina/aso/nova" rotuloNovo="+ Registrar ASO" />
+      <CabecalhoLista titulo="ASO" hrefNovo="/medicina/aso/nova" rotuloNovo="+ Registrar ASO" hrefExport="/medicina/aso/export" />
       {!res.ok ? (
         <AvisoBanco erro={res.erro} />
       ) : res.dados.length === 0 ? (
