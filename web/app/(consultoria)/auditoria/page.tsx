@@ -88,6 +88,12 @@ export default async function AuditoriaPage({
         <button className="px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold">
           Filtrar
         </button>
+        <a
+          href={`/auditoria/export?empresa=${empresa ?? ""}&sev=${sevFiltro ?? ""}`}
+          className="px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+        >
+          Exportar CSV
+        </a>
       </form>
 
       {!res.ok ? (

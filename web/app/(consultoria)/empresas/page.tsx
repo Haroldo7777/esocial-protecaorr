@@ -27,9 +27,15 @@ export default async function EmpresasPage({
     <div>
       <div className="flex items-center gap-3 mb-4">
         <h1 className="text-xl font-bold">Empresas</h1>
+        <a
+          href={`/empresas/export?q=${encodeURIComponent(q ?? "")}`}
+          className="ml-auto px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+        >
+          Exportar CSV
+        </a>
         <Link
           href="/empresas/nova"
-          className="ml-auto px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold"
+          className="px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold"
         >
           + Nova Empresa
         </Link>

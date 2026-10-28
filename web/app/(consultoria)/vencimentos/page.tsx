@@ -64,6 +64,12 @@ export default async function VencimentosPage({
             {d} dias
           </Link>
         ))}
+        <a
+          href={`/vencimentos/export?h=${horizonte}`}
+          className="ml-auto px-3 py-1.5 rounded-lg text-sm border border-gray-300 hover:bg-gray-50"
+        >
+          Exportar CSV
+        </a>
       </div>
 
       {!res.ok ? (
