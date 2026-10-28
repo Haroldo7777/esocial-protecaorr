@@ -5,19 +5,33 @@ export function CabecalhoLista({
   hrefNovo,
   rotuloNovo,
   hrefExport,
+  hrefImport,
 }: {
   titulo: string;
   hrefNovo: string;
   rotuloNovo: string;
   hrefExport?: string;
+  hrefImport?: string;
 }) {
+  const primeiroAutoMargin = !hrefImport && !hrefExport;
   return (
     <div className="flex items-center gap-3 mb-4">
       <h2 className="text-lg font-bold">{titulo}</h2>
+      {hrefImport ? (
+        <a
+          href={hrefImport}
+          className="ml-auto px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+        >
+          Importar
+        </a>
+      ) : null}
       {hrefExport ? (
         <a
           href={hrefExport}
-          className="ml-auto px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50"
+          className={[
+            "px-4 py-2 rounded-lg border border-gray-300 text-sm hover:bg-gray-50",
+            hrefImport ? "" : "ml-auto",
+          ].join(" ")}
         >
           Exportar CSV
         </a>
@@ -26,7 +40,7 @@ export function CabecalhoLista({
         href={hrefNovo}
         className={[
           "px-4 py-2 rounded-lg bg-brand text-white text-sm font-semibold",
-          hrefExport ? "" : "ml-auto",
+          primeiroAutoMargin ? "ml-auto" : "",
         ].join(" ")}
       >
         {rotuloNovo}
