@@ -90,9 +90,13 @@ consultoria existente (idempotente).
 - **Convite de usuários por e-mail** (Supabase Auth: invite/magic link) — hoje o
   acesso é criado via `onboarding.mjs`; a tela de Usuários gere perfis/status.
 - **Enforcement das permissões** nas telas (o RBAC já está modelado e os perfis
-  padrão são criados; falta aplicar o gate por módulo em botões/ações).
-- **Importação por planilha** das 60 empresas / 1.084 empregados (Fase 1, item 7).
+  padrão são criados; falta aplicar o gate por módulo em botões/ações — melhor
+  fazer com login real, depois do onboarding).
 - **Transmissão eSocial** (certificado A1 + eventos S-22xx) — Fase 6.
+
+> **Importação por planilha** já está pronta: em Empresas → **Importar** (modelo
+> em Empresas → Importar → "modelo") e, dentro de cada empresa, Empregados →
+> **Importar**. É por onde entram as 60 empresas / 1.084 empregados sem digitação.
 
 ## Reaplicar seeds após atualizar os CSVs
 ```bash
